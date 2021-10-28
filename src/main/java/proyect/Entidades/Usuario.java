@@ -3,6 +3,7 @@ package proyect.Entidades;
 
 
 import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,12 +13,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
+@MappedSuperclass
 public abstract class Usuario {
 	
 	@NonNull
 	@Column(nullable=false,unique=true)
 	protected String nombreUsuario;
-	
 	protected String nombreCompleto;
 	protected String email;
 	protected String telefono;
