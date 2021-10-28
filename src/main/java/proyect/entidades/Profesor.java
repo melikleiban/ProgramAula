@@ -1,9 +1,12 @@
 package proyect.Entidades;
 
-import java.util.List;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,11 +15,13 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode (callSuper = true)
 public class Profesor extends Usuario {
-
+	
+	@Id
+	@GeneratedValue(generator="uuid")
+	@GenericGenerator(name="uuid", strategy="uuid2")
+	protected String idProfesor;
 
 	private String descripcion;
-	
-	private List<Curso> cursosCargados;
 	
 	@OneToOne
 	private Foto foto;

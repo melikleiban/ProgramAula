@@ -3,10 +3,6 @@ package proyect.Entidades;
 
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.GenericGenerator;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,12 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Usuario {
-	
-	@Id
-	@GeneratedValue(generator="uuid")
-	@GenericGenerator(name="uuid", strategy="uuid2")
-	protected String id;
+public abstract class Usuario {
 	
 	@NonNull
 	@Column(nullable=false,unique=true)

@@ -1,20 +1,19 @@
 package proyect.Entidades;
 
-import java.util.List;
 
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.GenericGenerator;
-
 import lombok.Data;
 
-
 @Entity
-public @Data class Curso {
+@Data
+public class Curso {
 	
 	@Id
 	@GeneratedValue(generator="uuid")
@@ -26,9 +25,11 @@ public @Data class Curso {
 	private Double precioPorHora;
 	private String nivelDificultad;
 	private String descripcion;
-	private List<Alumno> alumnos;
 	
 	@ManyToOne
 	private Profesor profesor;
+	
+	@ManyToMany
+	private List<Alumno> alumnosInscriptos;
 
 }
