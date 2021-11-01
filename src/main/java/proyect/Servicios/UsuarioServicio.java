@@ -1,84 +1,99 @@
 package proyect.Servicios;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
 
-import proyect.Entidades.Alumno;
-import proyect.Entidades.Profesor;
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import proyect.Entidades.Foto;
+import proyect.Entidades.Usuario;
+import proyect.Enums.Rol;
 import proyect.ErrorServicio.ErrorServicio;
-import proyect.Repositorios.AlumnoRepositorio;
-import proyect.Repositorios.ProfesorRepositorio;
+import proyect.Repositorios.UsuarioRepositorio;
 
 @Service
-public class UsuarioServicio {
+public class UsuarioServicio implements UserDetailsService {
+
+	@Autowired
+	private UsuarioRepositorio usuarioRepositorio;
+
+	@Autowired
+	private FotoServicio fotoServicio;
 	
 	@Autowired
-	AlumnoRepositorio alumnoRepositorio;
+	private NotificacionServicio notificacionServicio;
 	
-	@Autowired
-	ProfesorRepositorio profesorRepositorio;
-	
+	@Transactional
 	public void registro(String nombreUsuario, 
 			String nombreCompleto,
 			String email,
 			String telefono,
 			String localidad,
 			String contrasenia,
-			Boolean esProfesor) throws ErrorServicio{
+			String descripcion,
+			MultipartFile foto,
+			Boolean esProfesor) throws ErrorServicio {	
+
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
-		if (esProfesor == true) {
-			Profesor profesor = new Profesor();
-			profesor.setNombreUsuario(nombreUsuario);
-			profesor.setNombreCompleto(nombreCompleto);
-			profesor.setEmail(email);
-			profesor.setTelefono(telefono);
-			profesor.setLocalidad(localidad);
-			//profesor.setContrasenia(contrasenia) -> Spring Security
-			
-			try {
-				profesorRepositorio.save(profesor);
-			} catch( Exception e ) {
-				e.printStackTrace();;
-			}
-			
+
+		Usuario usuario = new Usuario();
+		usuario.setNombreUsuario(nombreUsuario);
+		usuario.setNombreCompleto(nombreCompleto);
+		usuario.setEmail(email);
+		usuario.setTelefono(telefono);
+		usuario.setLocalidad(localidad);
+		usuario.setDescripcion(descripcion);
+
+		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
+		usuario.setContrasenia(contraEncriptada);
+
+		Foto nuevaFoto = fotoServicio.guardarFoto(foto);
+
+		usuario.setFoto(nuevaFoto);
+
+		if(esProfesor == true) {
+			usuario.setRol(Rol.PROFESOR);
 		} else {
-			Alumno alumno = new Alumno();
-			alumno.setNombreUsuario(nombreUsuario);
-			alumno.setNombreCompleto(nombreCompleto);
-			alumno.setEmail(email);
-			alumno.setTelefono(telefono);
-			alumno.setLocalidad(localidad);
-			//alumno.setContrasenia(contrasenia) -> Spring Security
-			
-			try {
-				alumnoRepositorio.save(alumno);
-			} catch( Exception e ) {
-				e.printStackTrace();;
-			
-			
-			}
+			usuario.setRol(Rol.ALUMNO);
+		}
+
+		try {
+			usuarioRepositorio.save(usuario);
+		} catch( Exception e ) {
+			e.printStackTrace();;
 		}
 		
+		notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 	}
-	
-	
+
+
 	public void validar(String nombreUsuario, 
 			String nombreCompleto,
 			String email,
 			String telefono,
 			String localidad,
 			String contrasenia)throws ErrorServicio{
-		
+
 		if(nombreUsuario==null || nombreUsuario.isEmpty()) {
 			throw new ErrorServicio ("El nombre de usuario no puede ser nulo/vacío.");
 		}
 		if(nombreCompleto==null || nombreCompleto.isEmpty() || nombreCompleto.length() < 3 ) {
 			throw new ErrorServicio ("El nombre de la persona no puede estar vacío o contener menos de 3 letras.");
 		}
-		if(email==null || email.isEmpty() || email.contains(" ") || !email.contains("@")) {
+		if(email==null || email.isEmpty() || email.contains(" ") || !email.contains("@") || !email.contains(".com")) {
 			throw new ErrorServicio ("El email debe ser válido.");
 		}
-		if(telefono==null || telefono.isEmpty()) {
+		if(telefono==null || telefono.isEmpty() || UsuarioServicio.esNumero(telefono) == false) {
 			throw new ErrorServicio ("El numero de teléfono debe ser válido.");
 		}
 		if(localidad==null || localidad.isEmpty()) {
@@ -87,7 +102,69 @@ public class UsuarioServicio {
 		if(contrasenia==null || contrasenia.isEmpty() || contrasenia.contains(" ") || contrasenia.length() < 8 || contrasenia.length() > 12) {
 			throw new ErrorServicio ("La contraseña debe poseer entre 8 y 12 caracteres válidos.");
 		}
+
+	}
+
+	@SuppressWarnings("unused")
+	public static boolean esNumero(String strNumero) {
+		if (strNumero == null) {
+			return false;
+		}
+
+		try {
+			Long l = Long.parseLong(strNumero);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+
+		return true;
+	}
+
+
+	@Override
+	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
+		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
+		if (usuario != null && usuario.getRol() == Rol.PROFESOR) {
+			List<GrantedAuthority> permisos = new ArrayList<>();
+
+			GrantedAuthority p1 = new SimpleGrantedAuthority("MODULO_CURSOS");
+			permisos.add(p1);
+			GrantedAuthority p2 = new SimpleGrantedAuthority("MODULO_FOTO");
+			permisos.add(p2);
+
+			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
+
+			return user;
+		}
+		if (usuario != null && usuario.getRol() == Rol.ALUMNO) {
+			List<GrantedAuthority> permisos = new ArrayList<>();
+
+			GrantedAuthority p1 = new SimpleGrantedAuthority("MODULO_CURSOS");
+			permisos.add(p1);
+			GrantedAuthority p2 = new SimpleGrantedAuthority("MODULO_FOTO");
+			permisos.add(p2);
+
+			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
+
+			return user;
+
+		} else {
+			return null;
+		}
+	}
+	
+	public String registroExitosoMensaje(String nombreUsuario, String contrasenia, String nombreCompleto) {
 		
+		String registroExitoso = 
+		"Bienvenido a ProgramAula " + nombreCompleto + "!"
+		+"Su nombre de usuario es: " + nombreUsuario
+		+"Su contraseña es: " + contrasenia
+		+"Esperamos que pueda sacar provecho y enriquecer sus conocimientos con"
+		+"otros usuarios de la web."
+		+ ""
+		+ "Si usted no se registró, por favor, desestime este mensaje.";
+		
+		return registroExitoso;
 	}
 
 }
