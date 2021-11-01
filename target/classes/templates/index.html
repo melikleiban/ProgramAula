@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>ProgramAula</title>
+</head>
+<body>
+    <div id="contenedor_redes">
+        <div class="redes"><a href="#"><i class="fab fa-facebook" style="font-size:24px;color:white"></i></a></div>
+        <div class="redes"><a href="#"><i class="fab fa-instagram" style="font-size:24px;color:white"></i></a></div>
+        <div class="redes"><a href="#"><i class="fab fa-twitter" style="font-size:24px;color:white"></i></a></div>
+        <div class="redes"><a href="#"><i class="fab fa-youtube" style="font-size:24px;color:white"></i></a></div>
+        <div class="redes"><a href="#"><i class="fab fa-whatsapp" style="font-size:24px;color:white"></i></a></div>
+        <a id="inicia" href="login.html">Iniciar Sesion</a>
+    </div>
+
+    <div id="contenedor_logo">
+        <div id="logo"><a href="index.html"><img src="../static/img/icono.jpg" alt="Logito"></a></div>
+        <div id="nombre_logo"><h1>ProgramAula</h1></div>
+    </div>
+
+    <div class="carteles">
+        <p class="cartel1"><a style="text-decoration: none; color: white;" href="index.html">Inicio</a></p>
+        <p class="cartel1"><a style="text-decoration: none; color: white;" href="#">Cursos</a></p>
+        <p class="cartel1"><a style="text-decoration: none; color: white;" href="#">Profesores</a></p>
+        <p class="cartel1"><a style="text-decoration: none; color: white;" href="#">Buscador</a></p>
+        <p class="cartel1"><a style="text-decoration: none; color: white;" href="#">Registrate</a></p>
+    </div>
+
+    <div class="buscador">
+      <div class="input-group mb-3" style="position: absolute; padding:50px;margin-top: 60px;">
+        <div class="input-group-prepend">
+        </div>
+        <input type="text" class="form-control" placeholder="Buscar..." aria-label="Username" aria-describedby="basic-addon1">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Buscar</button>
+      </div>
+    </div>
+
+    <div class="slider">
+      <div id="texto_hist">
+        <p>ProgramAula te ofrece todo tipo de cursos de programación de la mano de los mejores tutores del país. Si queres especializarte en algun lenguaje de programación buscá tu curso con el profesor que prefieras haciendo click <a id ="textito" href="productos.html">aca</a></p>
+      </div>
+      <div class="fotitos">
+        <img class="miSlide" src="../static/img/java.jpg">
+        <img class="miSlide" src="../static/img/python.png">
+        <img class="miSlide" src="../static/img/javascript.jpg">
+        <img class="miSlide" src="../static/img/aviso1.png">
+      </div>
+    </div>
+
+    <script>
+        var indice = 0;
+        carousel();
+
+        function carousel() {
+          var i;
+          var x = document.getElementsByClassName("miSlide");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+          }
+          indice++;
+          if (indice > x.length) {indice = 1}
+          x[indice-1].style.display = "block";
+          setTimeout(carousel, 3000); //Cambia cada 3 segundos
+        }
+    </script>
+
+      <div class="slider_p">
+        <div class="profes">
+          <div class="miSlider_p"><img class="miSlide_p" src="../static/img/cara2.jpg"><p class="textite">Pepito Garcia</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../static/img/cara3.jpg"><p class="textite">Ricardo Fort</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../static/img/cara4.jpg"><p class="textite">Juana Gomez</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../static/img/cara1.jpg"><p class="textite">Luisa Oreo</p></div>
+        </div>
+        <div class="profes2">
+          <div class="miSlider_p2"><img class="miSlide_p2" src="../static/img/cara1.jpg"><p class="textite">Mariela Perez</p></div>
+          <div class="miSlider_p2"><img class="miSlide_p2" src="../static/img/cara2.jpg"><p class="textite">Jorge Lina</p></div>
+          <div class="miSlider_p2"><img class="miSlide_p2" src="../static/img/cara4.jpg"><p class="textite">Carla Lopez</p></div>
+          <div class="miSlider_p2"><img class="miSlide_p2" src="../static/img/cara3.jpg"><p class="textite">Franco Meta</p></div>
+        </div>
+        <div class="profes3">
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../static/img/cara2.jpg"><p class="textite">Juan Perez</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../static/img/cara1.jpg"><p class="textite">Mirtha Legrand</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../static/img/cara3.jpg"><p class="textite">Jorge Lanata</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../static/img/cara4.jpg"><p class="textite">Susana Gimenez</p></div>
+        </div>
+        <div id="texto_prod">
+          <p>Con ProgramAula tenes al alcance los mejores profesores para tu necesidad, conoce nuestros profesores mas destacados, sus cursos y las reseñas de sus alumnos y contactalos <a id ="textito" href="productos.html">aca</a></p>
+        </div>
+      </div>
+
+  <script>
+        var indices = 0;
+        carousell();
+
+        function carousell() {
+          var j;
+          var y = document.getElementsByClassName("miSlider_p");
+          for (j = 0; j < y.length; j++) {
+            y[j].style.display = "none";
+          }
+          indices++;
+          if (indices > y.length) {indices = 1}
+          y[indices-1].style.display = "block";
+          setTimeout(carousell, 3000); //Cambia cada 3 segundos
+        }
+    </script>
+
+    <script>
+          var indicesp = 0;
+          carousellp();
+
+          function carousellp() {
+            var k;
+            var z = document.getElementsByClassName("miSlider_p2");
+            for (k = 0; k < z.length; k++) {
+              z[k].style.display = "none";
+            }
+            indicesp++;
+            if (indicesp > z.length) {indicesp = 1}
+            z[indicesp-1].style.display = "block";
+            setTimeout(carousellp, 3000); //Cambia cada 3 segundos
+          }
+      </script>
+
+
+      <script>
+            var indices_p = 0;
+            carousell_p();
+
+            function carousell_p() {
+              var l;
+              var w = document.getElementsByClassName("miSlider_p3");
+              for (l = 0; l < w.length; l++) {
+                w[l].style.display = "none";
+              }
+              indices_p++;
+              if (indices_p> w.length) {indices_p = 1}
+              w[indices_p-1].style.display = "block";
+              setTimeout(carousell_p, 3000); //Cambia cada 3 segundos
+            }
+        </script>
+
+    
+<footer class="page-footer font-small cyan darken-3">
+
+  
+  <div class="container" style="margin-top: 20px;">
+  
+  <div class="footer-copyright text-center py-3">©
+    <a style="text-decoration: none; color: silver;" href="index.html"> ProgramAula</a>
+  </div>
+  
+
+</footer>
+</body>
+</html>
