@@ -242,7 +242,7 @@ footer{
     margin-top: 20px;
     width: 100%;
     display: flex;
-    background-image: url("../imagenes/banner.png");
+    background-image: url("../img/banner.png");
     /* Control the height of the image */
   min-height: 380px;
 
