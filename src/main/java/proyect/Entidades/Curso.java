@@ -3,6 +3,7 @@ package proyect.Entidades;
 
 import java.util.List;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,9 +29,9 @@ public class Curso {
 	private String descripcion;
 	
 	@ManyToOne
-	private Profesor profesor;
+	private Usuario profesor;
 		
 	@OneToMany
-	private List<Alumno> alumnosInscriptos;
+	private List<Usuario> alumnosInscriptos;
 
 }
