@@ -2,29 +2,54 @@ package proyect.Entidades;
 
 
 
+import java.util.List;
+
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
-@Getter
-@Setter
-@EqualsAndHashCode
+import lombok.Data;
+import proyect.Enums.Rol;
+
+@Entity
+@Data
 @MappedSuperclass
-public abstract class Usuario {
-	
-	@NonNull
+public class Usuario {
+
+	@Id
+	@GeneratedValue(generator="uuid")
+	@GenericGenerator(name="uuid", strategy="uuid2")
+	private String id;
+
+
 	@Column(nullable=false,unique=true)
-	protected String nombreUsuario;
-	protected String nombreCompleto;
-	protected String email;
-	protected String telefono;
-	protected String localidad;
-	
-	@NonNull
-	protected String contraseña;
+	private String nombreUsuario;
+
+	private String nombreCompleto;
+	private String email;
+	private String telefono;
+	private String localidad;
+	private String descripcion;
+
+	@OneToOne
+	private Foto foto;
+
+	@Enumerated(EnumType.STRING)
+	private Rol rol;
+
+	@Column(nullable=false)
+	private String contrasenia;
+
+	@OneToMany
+	private List<Curso> listaCursos;
 
 }

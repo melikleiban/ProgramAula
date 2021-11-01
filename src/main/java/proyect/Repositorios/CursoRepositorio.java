@@ -17,6 +17,6 @@ public interface CursoRepositorio extends JpaRepository<Curso, String>{
 	@Query("SELECT a FROM Curso a WHERE a.nivelDificultad= :nivelDificultad")
 	public List<Curso> existByDificultad(@Param("nivelDificultad") String nivelDificultad);
 	
-
+	
 
 }
