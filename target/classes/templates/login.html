@@ -18,7 +18,26 @@
 		<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
 		<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
 		<meta name="theme-color" content="#7952b3">
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("formulario").addEventListener('submit', validarFormulario); 
+    });
 
+    function validarFormulario(evento) {
+      evento.preventDefault();
+      var usuario = document.getElementById('usuario').value;
+      if(usuario.length == 0) {
+      alert('No has escrito nada en el usuario');
+      return;
+      }
+      var clave = document.getElementById('clave').value;
+      if (clave.length < 6) {
+        alert('La clave no es válida');
+        return;
+      }
+      this.submit();
+    }
+    </script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -78,7 +97,7 @@
   
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         
         <img class="bi me-2 rounded-3" src="../static/img/logo.png" alt="" weight="30px" height="30px">
         <span class="fs-4">ProgramAula</span>
@@ -91,17 +110,17 @@
   </div>
 
   <div class="container">
-	<main class="form-signin">
-  <form>
+	<main class="form-signin" style="padding-top: 10%">
+  <form id="formulario">
     <img class="mb-4 rounded-3" src="../static/img/imgLogin.png" alt="" weight="90px" height="90px">
     <h1 class="h3 mb-3 fw-normal"> Iniciar sesión </h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="Usuario">
+      <input type="email" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
       <label for="floatingInput"> Usuario </label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="clave" name="clave" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -113,7 +132,7 @@
   </div>
 
 
-  <div class="container position-absolute bottom-0" style="margin-left: auto;">
+  <div class="container" style="margin-left: auto; padding-top: 14%;">
   <footer class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #f5f5f5;width: 100%;">
     <div class="col-md-4 d-flex align-items-center" style="margin-left: 1em;">
       <a href="index.html" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1" style="margin-left: 2em;">
