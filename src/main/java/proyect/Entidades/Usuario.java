@@ -39,6 +39,7 @@ public class Usuario {
 	private String telefono;
 	private String localidad;
 	private String descripcion;
+	private Boolean altaBaja;
 
 	@OneToOne
 	private Foto foto;
