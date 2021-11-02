@@ -171,11 +171,11 @@ p {
     margin-bottom: 1.6em;
 }
 
-<<<<<<< HEAD
 .container {
     width: 100%;
     margin: 0 auto;
-=======
+}
+
 .pie {
     width: 100%;
     margin: 0 auto;
@@ -184,13 +184,12 @@ p {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
->>>>>>> e383f54bd9f5d71adb899c109afb20140b64f394
 }
 
 .header {
     background-color: #7c73ff;
     color: white;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     padding-right: 4rem;
     position: fixed;
     left: 0;
@@ -213,7 +212,7 @@ p {
 
 .logo {
     letter-spacing: 4px;
-    font-size: 2.4em;
+    font-size: 1.8em;
     padding-left: 5rem;
 }
 
@@ -294,4 +293,14 @@ p {
     .navigation ul li a:hover {
         background: #3163cf;
     }
+    
+    .logo {
+	    letter-spacing: 4px;
+	    font-size: 1.5em;
+	    margin-left: 0;
+    }
+    
+    .header{
+		padding: 0;
+	}
 }
