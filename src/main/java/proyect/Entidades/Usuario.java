@@ -11,7 +11,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -22,7 +21,6 @@ import proyect.Enums.Rol;
 
 @Entity
 @Data
-@MappedSuperclass
 public class Usuario {
 
 	@Id
