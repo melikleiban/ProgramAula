@@ -171,9 +171,14 @@ p {
     margin-bottom: 1.6em;
 }
 
-.container {
+.pie {
     width: 100%;
     margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .header {
