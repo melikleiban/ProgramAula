@@ -57,9 +57,6 @@ public class UsuarioServicio implements UserDetailsService {
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
-		//Foto nuevaFoto = fotoServicio.guardarFoto(foto);
-
-		//usuario.setFoto(nuevaFoto);
 
 		if(esProfesor == true) {
 			usuario.setRol(Rol.PROFESOR);
