@@ -171,6 +171,11 @@ p {
     margin-bottom: 1.6em;
 }
 
+<<<<<<< HEAD
+.container {
+    width: 100%;
+    margin: 0 auto;
+=======
 .pie {
     width: 100%;
     margin: 0 auto;
@@ -179,6 +184,7 @@ p {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+>>>>>>> e383f54bd9f5d71adb899c109afb20140b64f394
 }
 
 .header {
