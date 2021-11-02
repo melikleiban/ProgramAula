@@ -18,5 +18,6 @@ public interface CursoRepositorio extends JpaRepository<Curso, String>{
 	public List<Curso> existByDificultad(@Param("nivelDificultad") String nivelDificultad);
 	
 	
+	
 
 }
