@@ -1,0 +1,21 @@
+
+div.alinearForm{
+    margin-left:24%;
+    
+ }
+button{
+     margin-left: auto;
+     margin-right: auto;
+}
+h4{
+    text-align: center;
+}
+body{
+    
+    background-image: url(/static/img/professor.png) ;
+    background-position: left ;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: 20%;
+
+}
