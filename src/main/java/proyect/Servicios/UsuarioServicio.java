@@ -41,7 +41,6 @@ public class UsuarioServicio implements UserDetailsService {
 			String localidad,
 			String contrasenia,
 			String descripcion,
-			MultipartFile foto,
 			Boolean esProfesor) throws ErrorServicio {	
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
@@ -53,13 +52,14 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
 		usuario.setDescripcion(descripcion);
+		usuario.setAltaBaja(true);
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
-		Foto nuevaFoto = fotoServicio.guardarFoto(foto);
+		//Foto nuevaFoto = fotoServicio.guardarFoto(foto);
 
-		usuario.setFoto(nuevaFoto);
+		//usuario.setFoto(nuevaFoto);
 
 		if(esProfesor == true) {
 			usuario.setRol(Rol.PROFESOR);
@@ -76,7 +76,55 @@ public class UsuarioServicio implements UserDetailsService {
 		notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 	}
 
+	@Transactional
+	public void modificar(String nombreUsuario, 
+			String nombreCompleto,
+			String email,
+			String telefono,
+			String localidad,
+			String contrasenia,
+			String descripcion,
+			Boolean esProfesor) throws ErrorServicio {	
 
+		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
+
+		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
+		usuario.setNombreCompleto(nombreCompleto);
+		usuario.setEmail(email);
+		usuario.setTelefono(telefono);
+		usuario.setLocalidad(localidad);
+		usuario.setDescripcion(descripcion);
+
+		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
+		usuario.setContrasenia(contraEncriptada);
+
+		try {
+			usuarioRepositorio.save(usuario);
+		} catch( Exception e ) {
+			e.printStackTrace();;
+		}
+		
+	}
+
+	@Transactional
+	public void subirFoto(MultipartFile foto, String nombreUsuario) throws ErrorServicio {
+		
+		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
+		
+		Foto nuevaFoto = fotoServicio.guardarFoto(foto);
+
+		usuario.setFoto(nuevaFoto);
+		
+		usuarioRepositorio.save(usuario);
+	}
+	
+	public void desactivarCuenta(String nombreUsuario) {
+		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
+		usuario.setAltaBaja(false);
+		
+		usuarioRepositorio.save(usuario);
+	}
+	
 	public void validar(String nombreUsuario, 
 			String nombreCompleto,
 			String email,
