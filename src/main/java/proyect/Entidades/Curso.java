@@ -27,6 +27,8 @@ public class Curso {
 	private Double precioPorHora;
 	private String nivelDificultad;
 	private String descripcion;
+	
+	private String lalal;
 		
 	@OneToMany
 	private List<Usuario> alumnosInscriptos;
