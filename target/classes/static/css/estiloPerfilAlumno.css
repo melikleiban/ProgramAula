@@ -244,22 +244,17 @@ p {
     background: #7c73ff;
     color: white;
     padding: 0.1rem 0;
-    text-align: center;
+    text-align: left;
     margin-top: 6rem;
 }
 
-.lista-datos p{
-	background: #7c73ff; 
-	color: rgb(0, 0, 0); 
-	font-weight: bold; 
+.perfil-usuario-footer input {
+	background-color: rgb(124, 115, 255, .5); ;
+	color: rgb(0, 0, 0);
 	padding: 2px; 
-	border: 2px solid rgb(128, 0, 255); 
+	border: 2px solid rgb(64, 0, 128, .5); 
 	border-radius: 5px;
 	width: 15rem;
-}
-
-.lista-datos p{
-	opacity: .5;
 	height: 2em;
 	width: 150px;
 	text-align: center;
