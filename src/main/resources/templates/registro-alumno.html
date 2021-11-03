@@ -19,11 +19,17 @@
 
     <div class="header">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <img class="d-block mx-auto mb-4" src="../static/img/logoChiquito.png" alt="ProgramAula" width="57" height="57"> 
+            <div class="logo">
+                <img class="d-block mx-auto mb-4" src="../static/img/logoChiquito.png" alt="ProgramAula" width="57" height="57"> 
+            </div>
+            
             <span class="fs-4"><h2>ProgramAula</h2></span>
           </a>
+          <span>
+              <img src="/static/img/icono-alumna-sin-circulo.png" alt="estudiante">
+          </span>
         </header>
     </div>
    
@@ -55,6 +61,10 @@
                 <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
                 <label for="email" class="form-label">Teléfono</label>
                 <input type="email" class="form-control" id="email" placeholder="341358975">
                 <div class="invalid-feedback">
@@ -72,7 +82,7 @@
                     <option>Chile</option>
                 </select>
                 <div class="invalid-feedback">
-                    Please select a valid country.
+                    Ingrese un país válido.
                 </div>
 
             </div>

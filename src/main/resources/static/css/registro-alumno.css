@@ -35,3 +35,7 @@ body{
     margin: 20px;
     margin-bottom: 0px;
 }
+
+img{
+    border-radius: 5px;
+}
