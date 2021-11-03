@@ -173,6 +173,8 @@ p {
 .container {
     width: 100%;
     margin: 0 auto;
+<<<<<<< HEAD
+=======
 }
 
 .pie {
@@ -183,6 +185,7 @@ p {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+>>>>>>> c0c812d7c3d46a36e70ae1d863b6ecaf2a22102f
 }
 
 .header {
