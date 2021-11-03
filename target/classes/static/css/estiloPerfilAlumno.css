@@ -117,8 +117,7 @@ body {
 .seccion-perfil-usuario .perfil-usuario-footer,
 .seccion-perfil-usuario .perfil-usuario-bio,
 .seccion-perfil-usuario .perfil-usuario-cursos {
-    display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
     padding: 1.5rem 2rem;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     background-color: #fff;
@@ -174,12 +173,25 @@ p {
 .container {
     width: 100%;
     margin: 0 auto;
+<<<<<<< HEAD
+=======
+}
+
+.pie {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+>>>>>>> c0c812d7c3d46a36e70ae1d863b6ecaf2a22102f
 }
 
 .header {
     background-color: #7c73ff;
     color: white;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     padding-right: 4rem;
     position: fixed;
     left: 0;
@@ -202,7 +214,7 @@ p {
 
 .logo {
     letter-spacing: 4px;
-    font-size: 2.4em;
+    font-size: 1.8em;
     padding-left: 5rem;
 }
 
@@ -235,10 +247,21 @@ p {
     background: #7c73ff;
     color: white;
     padding: 0.1rem 0;
-    text-align: center;
+    text-align: left;
     margin-top: 6rem;
 }
 
+.perfil-usuario-footer input {
+	background-color: rgb(124, 115, 255, .5); ;
+	color: rgb(0, 0, 0);
+	padding: 2px; 
+	border: 2px solid rgb(64, 0, 128, .5); 
+	border-radius: 5px;
+	width: 15rem;
+	height: 2em;
+	width: 150px;
+	text-align: center;
+}
 
 @media (max-width: 750px) {
     .seccion-perfil-usuario .lista-datos .lista-cursos{
@@ -283,4 +306,14 @@ p {
     .navigation ul li a:hover {
         background: #3163cf;
     }
+    
+    .logo {
+	    letter-spacing: 4px;
+	    font-size: 1.5em;
+	    margin-left: 0;
+    }
+    
+    .header{
+		padding: 0;
+	}
 }
