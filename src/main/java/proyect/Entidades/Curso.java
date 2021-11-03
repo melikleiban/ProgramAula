@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -31,4 +32,6 @@ public class Curso {
 	@OneToMany
 	private List<Usuario> alumnosInscriptos;
 
+	@ManyToOne
+	private Usuario profesor;
 }

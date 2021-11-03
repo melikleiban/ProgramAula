@@ -2,6 +2,8 @@ package proyect.Servicios;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class CursoServicio {
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio;
 	
+	@Autowired
+	private NotificacionServicio notificacionServicio;
+	
+	
+	@Transactional
 	public void crearCurso(String nombreUsuario, 
 			String titulo, 
 			Boolean altaBaja, 
@@ -42,15 +49,10 @@ public class CursoServicio {
 				curso.setDescripcion(descripcion);
 					
 				cursoRepositorio.save(curso);
-				
 			}
 		}catch(Exception e){
 			System.err.print(e.getMessage());
-			
 		}
-		
-		
-		
 	}
 
 	
@@ -64,11 +66,8 @@ public class CursoServicio {
 		}else {
 			throw new ErrorServicio("No existe el curso buscado.");
 		}
-		
-		
-		
-		
 	}
+	
 	
 	public void validar(String titulo, 
 			Double precioPorHora, 
@@ -93,6 +92,30 @@ public class CursoServicio {
 	}
 	
 	
+	public void alertaProfesor(String nombreUsuario,String idCurso){
+		Optional<Usuario> result=Optional.ofNullable(usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario));
+		if(result.isPresent()&&result.get().getRol()==Rol.ALUMNO) {
+			Optional<Curso> resultCurso=cursoRepositorio.findById(idCurso);
+			notificacionServicio.enviar("El usuario " + nombreUsuario + " de nombre " + result.get().getNombreCompleto() + 
+					" solicita acceso a su curso de " + resultCurso.get().getTitulo() + ".",
+					"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
+		}
+	}
+	
+	@Transactional
+	public void cargarAlumno(String idCurso,String nombreUsuario) throws ErrorServicio {
+		Optional<Curso> resultCurso=cursoRepositorio.findById(idCurso);
+		Optional<Usuario> result=Optional.ofNullable(usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario));
+		if(resultCurso.isPresent()&&result.get().getRol()==Rol.ALUMNO) {
+			resultCurso.get().getAlumnosInscriptos().add(result.get());
+			result.get().getListaCursos().add(resultCurso.get());
+			usuarioRepositorio.save(result.get());
+			cursoRepositorio.save(resultCurso.get());
+		}else {
+			throw new ErrorServicio("Se ha producido un error en la solicitud.");
+		}
+		
+	}
 	
 	
 
