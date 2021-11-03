@@ -117,8 +117,7 @@ body {
 .seccion-perfil-usuario .perfil-usuario-footer,
 .seccion-perfil-usuario .perfil-usuario-bio,
 .seccion-perfil-usuario .perfil-usuario-cursos {
-    display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
     padding: 1.5rem 2rem;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     background-color: #fff;
@@ -249,6 +248,22 @@ p {
     margin-top: 6rem;
 }
 
+.lista-datos p{
+	background: #7c73ff; 
+	color: rgb(0, 0, 0); 
+	font-weight: bold; 
+	padding: 2px; 
+	border: 2px solid rgb(128, 0, 255); 
+	border-radius: 5px;
+	width: 15rem;
+}
+
+.lista-datos p{
+	opacity: .5;
+	height: 2em;
+	width: 150px;
+	text-align: center;
+}
 
 @media (max-width: 750px) {
     .seccion-perfil-usuario .lista-datos .lista-cursos{
