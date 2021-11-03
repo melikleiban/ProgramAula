@@ -13,6 +13,11 @@ public class MainControlador {
 		return "index.html";
 	}
 	
+	@GetMapping("/login.html")
+	public String login() {
+		return "login.html";
+	}
+	
 
 	
 
