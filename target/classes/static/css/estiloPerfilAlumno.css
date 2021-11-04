@@ -141,7 +141,7 @@ body {
 }
 
 .seccion-perfil-usuario .lista-cursos{
-    width: 50%;
+    width: 100%;
     list-style: none;
     text-align: center;
 }
@@ -151,7 +151,7 @@ body {
 }
 
 .seccion-perfil-usuario .lista-datos {
-    width: 50%;
+    width: 100%;
     list-style: none;
     text-align: center;
 }
@@ -248,8 +248,16 @@ p {
     margin-top: 6rem;
 }
 
-.perfil-usuario-footer ul {
-	display: inline-block;
+.lista-datos i {
+	padding-left: 2rem;
+}
+
+#edit1, #edit2, #edit3 {
+	padding-left: 0.05rem;
+}
+
+.lista-datos{
+	padding-top: 1.5rem;
 }
 
 .perfil-usuario-footer input {
@@ -262,6 +270,33 @@ p {
 	height: 2em;
 	width: 150px;
 	text-align: center;
+	pointer-events:none;
+}
+
+.lista-cursos-finalizados,
+.lista-cursos-actuales{
+	background-color: rgb(124, 115, 255, .5); ;
+	color: rgb(0, 0, 0);
+	padding: 2px; 
+	padding-top: 0.5rem;
+	border: 2px solid rgb(64, 0, 128, .5); 
+	border-radius: 5px;
+	text-align: center;
+	margin: 0 15%;
+}
+
+.lista-cursos-finalizados {
+	text-align: center;
+	padding: 10 0;
+}
+
+.lista-cursos i{
+	padding-top: 1.5rem;
+	padding-bottom: 0.8rem;
+}
+
+.lista-cursos ul li{
+	list-style-position: inside;
 }
 
 @media (max-width: 750px) {
@@ -316,5 +351,17 @@ p {
     
     .header{
 		padding: 0;
+	}
+	
+	.lista-cursos-finalizados,
+	.lista-cursos-actuales{
+		background-color: rgb(124, 115, 255, .5); ;
+		color: rgb(0, 0, 0);
+		padding: 1px; 
+		border: 2px solid rgb(64, 0, 128, .5); 
+		border-radius: 5px;
+		text-align: center;
+		margin: 0 10%;
+		font-size: 0.8em;
 	}
 }
