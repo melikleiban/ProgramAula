@@ -41,7 +41,7 @@ public class UsuarioServicio implements UserDetailsService {
 			String localidad,
 			String contrasenia,
 			String descripcion,
-			Boolean esProfesor) throws ErrorServicio {	
+			Boolean rol) throws ErrorServicio {	
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 
@@ -72,6 +72,10 @@ public class UsuarioServicio implements UserDetailsService {
 		notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 	}
 
+
+	
+	
+	
 	@Transactional
 	public void modificar(String nombreUsuario, 
 			String nombreCompleto,
