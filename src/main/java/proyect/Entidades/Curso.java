@@ -28,6 +28,10 @@ public class Curso {
 	private Double precioPorHora;
 	private String nivelDificultad;
 	private String descripcion;
+	private Integer promedioValoracion;
+	private Integer cantidadValoracion;
+	private Integer totalValoracion;
+	
 		
 	@OneToMany
 	private List<Usuario> alumnosInscriptos;

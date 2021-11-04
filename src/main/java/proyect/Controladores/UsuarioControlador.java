@@ -18,33 +18,73 @@ public class UsuarioControlador {
 	@Autowired
 	private UsuarioServicio usuarioServicio;
 	
+	
 	@GetMapping("/registro")
 	public String registro() {
-		return "registro.html";
+		return "registro-alumno-profesor.html";
+	}	
+	
+	
+	@GetMapping("/registro/profesor")
+	public String registroProfesor() {
+		return "registro-profesor.html";
 	}
 	
-	@PostMapping("/registro")
-	public String registroUsuario(ModelMap modelo,
+	
+	@PostMapping("/registro/profesor")
+	public String registroProfesor(ModelMap modelo,
 			@RequestParam(required = false) String nombreUsuario,
 			@RequestParam(required = false) String nombreCompleto,
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
 			@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia,
-			@RequestParam(required = false) Boolean rol) throws ErrorServicio {
+			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
+		
 		try {
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, rol);
+			
+			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, true);
 			modelo.put("exito", "registro exitoso");
 			return "redirect:/";
 			
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());
-				return "registro.html";		
+				return "registro-alumno-profesor.html";		
 		}
 
 	}
 	 
+	@GetMapping("/registro/alumno")
+	public String registroAlumno() {
+		return "registro-alumno.html";
+	}
+	
+	
+	@PostMapping("/registro/alumno")
+	public String registro(ModelMap modelo,
+			@RequestParam(required = false) String nombreUsuario,
+			@RequestParam(required = false) String nombreCompleto,
+			@RequestParam(required = false) String email,
+			@RequestParam(required = false) String telefono,
+			@RequestParam(required = false) String localidad,
+			@RequestParam(required = false) String descripcion,
+			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
+		try {
+			
+			
+			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, false);
+			modelo.put("exito", "registro exitoso");
+			return "redirect:/";
+			
+		}catch(Exception e){
+			modelo.put("error", e.getMessage());
+				return "registro-alumno-profesor.html";		
+		}
+
+	}
+	
+	
+	
 	
 	
 	@GetMapping("/login")
