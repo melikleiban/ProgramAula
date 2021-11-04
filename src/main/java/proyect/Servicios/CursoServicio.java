@@ -117,6 +117,35 @@ public class CursoServicio {
 		
 	}
 	
+	public void calificarCurso(String nombreUsuario, String idCurso, Integer valoracion) throws ErrorServicio {
+		Optional<Usuario> result = Optional.ofNullable(usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario));
+		Optional<Curso> resultCurso = cursoRepositorio.findById(idCurso);
+		
+		if(result.isPresent() && result.get().getRol() == Rol.ALUMNO) {
+			
+			Curso curso = resultCurso.get();
+			
+			
+			curso.setCantidadValoracion(curso.getCantidadValoracion()+1);
+			curso.setTotalValoracion(curso.getTotalValoracion()+valoracion);
+			
+			curso.setPromedioValoracion((Integer) Math.round(curso.getTotalValoracion()/curso.getCantidadValoracion()));
+			
+			
+			cursoRepositorio.save(resultCurso.get());
+			
+		}else {
+			throw new ErrorServicio("Se ha producido un error en la solicitud.");
+		}
+	}
+	
+	
+		
+		
+		
+		
+		
+	
 	
 
 }
