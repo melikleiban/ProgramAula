@@ -57,7 +57,7 @@ public class UsuarioServicio implements UserDetailsService {
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
-		if( rol == true ) {
+		if(esProfesor == true) {
 			usuario.setRol(Rol.PROFESOR);
 		} else {
 			usuario.setRol(Rol.ALUMNO);
