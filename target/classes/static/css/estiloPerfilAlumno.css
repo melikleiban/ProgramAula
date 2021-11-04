@@ -237,7 +237,7 @@ p {
 }
 
 .navigation ul li a:hover {
-    background: #3163cf;
+    background: #7c73ff;
 }
 
 .footer {
@@ -246,6 +246,10 @@ p {
     padding: 0.1rem 0;
     text-align: left;
     margin-top: 6rem;
+}
+
+.perfil-usuario-footer ul {
+	display: inline-block;
 }
 
 .perfil-usuario-footer input {
