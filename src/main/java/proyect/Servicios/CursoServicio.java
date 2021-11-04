@@ -55,7 +55,7 @@ public class CursoServicio {
 		}
 	}
 
-	
+	@Transactional
 	public void bajaCurso(String idCurso) throws ErrorServicio {
 		Optional <Curso> respuesta = cursoRepositorio.findById(idCurso);
 		if (respuesta.isPresent()) {
