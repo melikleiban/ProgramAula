@@ -304,10 +304,17 @@ p {
 .lista-cursos i{
 	padding-top: 1.5rem;
 	padding-bottom: 0.8rem;
+	font-size: large;
 }
 
 .lista-cursos ul li{
 	list-style-position: inside;
+}
+
+.lista-datos button{
+	border: none;
+	text-decoration: none;
+	background-color: transparent;
 }
 
 @media (max-width: 750px) {
