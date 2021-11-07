@@ -10,11 +10,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
-<body>
+<body onload="trayendo()">
     <div class="input-group mb-3 busca">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
         <input id="myInput" type="text" class="form-control" placeholder="Buscar.." aria-label="Username" aria-describedby="basic-addon1">
     </div>
+
+    <script>
+        /**
+         * @param String name
+         * @return String
+         */
+        function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function trayendo(){
+            document.getElementById('myInput').value = getParameterByName('param');
+            pro();
+        }
+    </script>
     <!--
     <div class="tabla">
         <table class="table">
@@ -171,7 +189,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
+$(document).ready(function(){ //filtra cada vez que se modifica el input
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
@@ -180,3 +198,13 @@ $(document).ready(function(){
   });
 });
 </script>
+<script>
+    function pro(){ //para que filtre con lo traido desde el index
+    $(document).ready(function(){
+        var value = getParameterByName('param').toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    }
+    </script>
