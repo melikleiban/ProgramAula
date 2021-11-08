@@ -41,7 +41,7 @@ public class UsuarioServicio implements UserDetailsService {
 			String localidad,
 			String contrasenia,
 			String descripcion,
-			Boolean esProfesor) throws ErrorServicio {	
+			Boolean rol) throws ErrorServicio {	
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 
@@ -57,11 +57,7 @@ public class UsuarioServicio implements UserDetailsService {
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
-		//Foto nuevaFoto = fotoServicio.guardarFoto(foto);
-
-		//usuario.setFoto(nuevaFoto);
-
-		if(esProfesor == true) {
+		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
 		} else {
 			usuario.setRol(Rol.ALUMNO);
@@ -76,6 +72,10 @@ public class UsuarioServicio implements UserDetailsService {
 		notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 	}
 
+
+	
+	
+	
 	@Transactional
 	public void modificar(String nombreUsuario, 
 			String nombreCompleto,
