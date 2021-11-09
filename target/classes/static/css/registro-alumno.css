@@ -13,7 +13,9 @@ body{
 
 }
     
-
+h2{
+    color: white;
+}
 .boton{
     border: none;
     border-radius: 5px;
@@ -34,4 +36,8 @@ body{
 .header{
     margin: 20px;
     margin-bottom: 0px;
+}
+
+img{
+    border-radius: 5px;
 }
