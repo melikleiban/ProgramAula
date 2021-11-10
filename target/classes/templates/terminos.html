@@ -37,6 +37,9 @@
 			body {
   			height: 100%;
         font-family: 'Ubuntu', sans-serif;
+        background: #1c92d2;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to top, #f2fcfe, #7c73ffda);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #f2fcfe, #7c73ffda); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 			}
 
 			body {
@@ -80,12 +83,12 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         
-        <img class="bi me-2 rounded-3" src="../static/img/logo.png" alt="" weight="30px" height="30px">
+        <img class="bi me-2 rounded-3" src="../static/img/logoChiquito.png" alt="" weight="30px" height="30px">
         <span class="fs-4">ProgramAula</span>
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link">Ayuda</a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link">Iniciar Sesion</a></li>
       </ul>
     </header>
   </div>
@@ -103,15 +106,15 @@
 	
 
   <div class="container" style="margin-left: auto; padding-top: 14%;">
-  <footer class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #f5f5f5;width: 100%;">
+  <footer class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4" style="width: 100%; background: transparent;">
     <div class="col-md-4 d-flex align-items-center" style="margin-left: 1em;">
       <a href="index.html" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1" style="margin-left: 2em;">
         
-        <img class="bi me-2 rounded-3" src="../static/img/logo.png" alt="" weight="30px" height="30px">
+        <img class="bi me-2 rounded-3" src="../static/img/logoChiquito.png" alt="" weight="30px" height="30px">
       </a>
-      <span class="text-muted" style="margin-left: 2em;">&copy; Equipo 6 &#128526 - 2021</span>
+      <span class="" style="margin-left: 2em; color: #333333;">&copy; Equipo 6 &#128526 - 2021</span>
     </div>
-    <p style="margin-right: 2em;"><small><a href="terminos.html">Terminos y condiciones</a></small> </p>
+    <p style="margin-right: 2em; color: #333333;"><small><a href="terminos.html" style="color: #333333;">Terminos y condiciones</a></small> </p>
   </footer>
   </div>
 

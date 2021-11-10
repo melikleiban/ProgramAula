@@ -90,7 +90,11 @@ h1{
     }
 
     #nombre_logo{
+<<<<<<< HEAD
         padding-left: 20%;
+=======
+        padding-left: 30%;
+>>>>>>> 35535702b1317e7b78b73069d97b740d2b6429be
         padding-top: 10px;
         position: absolute;
     }
