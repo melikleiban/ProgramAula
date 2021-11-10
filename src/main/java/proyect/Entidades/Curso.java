@@ -1,55 +1,46 @@
 package proyect.Entidades;
 
 
-
 import java.util.List;
 
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
-
 import lombok.Data;
-import proyect.Enums.Rol;
+import proyect.Enums.Lenguajes;
 
 @Entity
 @Data
-public class Usuario {
-
+public class Curso {
+	
 	@Id
 	@GeneratedValue(generator="uuid")
 	@GenericGenerator(name="uuid", strategy="uuid2")
-	private String id;
-
-
-	@Column(nullable=false,unique=true)
-	private String nombreUsuario;
-
-	private String nombreCompleto;
-	private String email;
-	private String telefono;
-	private String localidad;
-	private String descripcion;
+	private String idCurso;
+	
+	private String titulo;
 	private Boolean altaBaja;
-	private Boolean login;
-
-	@OneToOne
-	private Foto foto;
-
+	private Double precioPorHora;
+	private String nivelDificultad;
+	private String descripcion;
+	private Integer promedioValoracion;
+	private Integer cantidadValoracion;
+	private Integer totalValoracion;
 	@Enumerated(EnumType.STRING)
-	private Rol rol;
-
-	@Column(nullable=false)
-	private String contrasenia;
-
+	private Lenguajes lenguajes;
+	
+		
 	@OneToMany
-	private List<Curso> listaCursos;
+	private List<Usuario> alumnosInscriptos;
 
+	@ManyToOne
+	private Usuario profesor;
 }
