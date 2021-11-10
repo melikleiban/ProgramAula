@@ -29,6 +29,19 @@ spring:
 #Que thymeleaf no guarde datos en cache
   thymeleaf:
    cache: false
+   
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mymail@gmail.com
+    password: mypassword
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+        auth: true
+        starttls.enable: true
+        ssl.trust: smtp.gmail.com
+
 server:
   port: 8080
   
