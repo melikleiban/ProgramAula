@@ -24,12 +24,8 @@ public class NotificacionServicio{
 		mensaje.setText(cuerpo);
 		
 		mailSender.send(mensaje);
-	}
-<<<<<<< HEAD
-	
-	}
-=======
+		
 
-	
+
+	}	
 }
->>>>>>> 122c79312751c4138117f75cce7ee486509c7734

@@ -1,11 +1,9 @@
 package proyect.Servicios;
 
 
-<<<<<<< HEAD
-import java.util.List;
-=======
+
 //import java.util.List;
->>>>>>> 122c79312751c4138117f75cce7ee486509c7734
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -33,12 +31,11 @@ public class CursoServicio {
 
 	@Autowired
 	private NotificacionServicio notificacionServicio;
-<<<<<<< HEAD
+
 	
 	@Autowired(required = true)
 	private JavaMailSender mailSender;
-=======
->>>>>>> 122c79312751c4138117f75cce7ee486509c7734
+
 
 	@Transactional
 	public void crearCurso(String nombreUsuario, String titulo, Boolean altaBaja, Double precioPorHora,
@@ -144,8 +141,7 @@ public class CursoServicio {
 			throw new ErrorServicio("Se ha producido un error en la solicitud.");
 		}
 	}
-<<<<<<< HEAD
-=======
+
 
 
 //	public List<Curso> FiltrarCursos(String PalabraClave, String lenguajes) {
@@ -166,27 +162,8 @@ public class CursoServicio {
 //
 //	}
 
->>>>>>> 122c79312751c4138117f75cce7ee486509c7734
 
 
-	public List<Curso> FiltrarCursos(String PalabraClave, String lenguajes) {
-		List<Curso> listaCurso;
-		if (PalabraClave.isEmpty() || PalabraClave == null && lenguajes == null) {
-			listaCurso = cursoRepositorio.findAll();
-
-		} else if (lenguajes == null) {
-
-			listaCurso = cursoRepositorio.existsByClave(PalabraClave);
-
-		} else if (PalabraClave == null || PalabraClave.isEmpty()) {
-			listaCurso = cursoRepositorio.existsByLenguajes(lenguajes);
-		} else {
-			listaCurso = cursoRepositorio.existsByAmbas(lenguajes, PalabraClave);
-
-		}
-		return listaCurso;
-
-	}
 
 	
 }
