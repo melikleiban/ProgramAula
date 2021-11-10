@@ -4,7 +4,6 @@ jQuery('document').ready(function($){
     menu = $('.navigation ul');
 
     menuBtn.click(function() {
-
         if(menu.hasClass('show')) {
             menu.removeClass('show');
         } else {
