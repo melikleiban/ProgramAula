@@ -1,15 +1,18 @@
 package proyect.Servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class NotificacionServicio {
 	
-	@Autowired
+	
+	@Autowired(required = true)
 	private JavaMailSender mailSender;
 	
 	@Async
@@ -22,4 +25,5 @@ public class NotificacionServicio {
 		
 		mailSender.send(mensaje);
 	}
-}
+	
+	}
