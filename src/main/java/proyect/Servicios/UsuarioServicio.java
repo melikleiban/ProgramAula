@@ -214,5 +214,6 @@ public class UsuarioServicio implements UserDetailsService {
 		
 		return registroExitoso;
 	}
+	
 
 }
