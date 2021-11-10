@@ -59,7 +59,7 @@ public class UsuarioServicio implements UserDetailsService {
 
 		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
-		} else {
+		} else { 
 			usuario.setRol(Rol.ALUMNO);
 		}
 
