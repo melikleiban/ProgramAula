@@ -281,9 +281,7 @@ p {
 	height: 2em;
 	width: 150px;
 	text-align: center;
-	pointer-events:none;
 }
-
 .lista-cursos-finalizados,
 .lista-cursos-actuales{
 	background-color: rgb(124, 115, 255, .5); ;
