@@ -1,0 +1,50 @@
+div{
+    justify-content:space-evenly;
+}
+body{
+    background: rgb(124,115,255);
+    background: radial-gradient(circle, rgba(124,115,255,1) 0%, rgba(49,241,255,1) 100%);
+}
+
+
+.imagenProfesor{
+    width: max-content;
+    justify-content:space-around;
+    padding-left: 35%;
+    padding-top: 10%;
+}
+.imagenAlumno{
+    width: max-content;
+    justify-content:space-around;
+    padding-left: 40%;
+    padding-top: 10%;
+}
+h2{
+    padding-left: 10%;
+}
+img{
+    border-radius: 5px;
+}
+
+.boton{
+    
+    color: black; 
+    border: 2px solid #008CBA;    
+    border-radius: 4px;   
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.boton:hover{
+    background-color: #21618C; 
+    color: white;
+}
+
+.card{
+    text-align: center;
+}
