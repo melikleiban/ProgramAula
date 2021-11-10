@@ -1,19 +1,22 @@
+body{
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+    background: linear-gradient(45deg, #7c73ff, #31f1ff);
+}
+
 a{
-    text-decoration: none;
-    color: silver;
-    font-weight: bold;
-    font-size: 25px;
-    font-family: 'Girassol', cursive;
+    text-decoration: none !important;
+    color: white !important;
+    
 }
     a:hover{
-        color: goldenrod;
+        color: rgb(95, 5, 148)!important;
         text-decoration: none;
         font-weight: bold;
-        font-family: 'Girassol', cursive;
     }
 
     #inicia{
-        color: silver;
+        color: white;
         font-weight: bold;
         font-family: Arial, Helvetica, sans-serif;
         font-size: large;
@@ -23,21 +26,27 @@ a{
     }
 
     #inicia:hover{
-        color: goldenrod;
+        color: rgb(95,5,148);
     }
 
 h1{
-    color:silver;
+    color:white;
     font-family: 'Aclonica', sans-serif;
-    font-size: 60px;
+    font-size: 30px !important;
       text-indent: -100px;
 }
 
 #contenedor_redes{
-    background-color: black;
+    background-color: #7c73ff;
     display: flex;
     margin-bottom: 10px;
-    padding-left: 65%;
+}
+
+#contenedor_redes2{
+    background-color: #7c73ff;
+    display: flex;
+    margin-bottom: 10px;
+    padding-left: 55%;
 }
 
     .redes{
@@ -46,6 +55,7 @@ h1{
         margin-left: 20px;
         margin-top: 5px;
         margin-bottom: 5px;
+        padding-top: 10px;
     }
 
     .fa-facebook:hover{
@@ -69,19 +79,20 @@ h1{
     }
 
 #contenedor_logo{
-    background-color: black;
+    background: linear-gradient(45deg, #7c73ff, #31f1ff);
     display: flex;
 }
 
     #logo{
-        padding: 20px;
-        width: fit-content;
+        padding-left: 10px;
+        padding-top: 12px;
+        position: absolute;
     }
 
     #nombre_logo{
-        padding-left: 30%;
-        padding-top: 70px;
-        width: fit-content;
+        padding-left: 20%;
+        padding-top: 10px;
+        position: absolute;
     }
 
 .carteles{
@@ -89,7 +100,7 @@ h1{
     width: 100%;
     display: flex;
     justify-content:space-around;
-    background-color: black;
+    background: linear-gradient(45deg, #7c73ff, #31f1ff);
     text-decoration: none;
 }
 
@@ -99,6 +110,13 @@ h1{
         margin-top: 10px;
         text-decoration: none;
         color: white;
+        font-weight: bold;
+        font-size: 25px;
+        font-family: 'Girassol', cursive;
+        text-decoration: none;
+    }
+    .cartel1:hover{
+        font-family: 'Girassol', cursive;
     }
 
 .slider_p{
@@ -141,9 +159,9 @@ h1{
     width: 95%;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 65px;
+    padding-top: 100px;
     padding-bottom: 10px;
-    text-align:center;
+    text-align:right;
     font-size: 25px;
 }
 
@@ -154,30 +172,32 @@ h1{
   }
 
     .fotitos{
-        width: 70%;
-        margin-left: 10px;
+        /*width: 70%;
+        margin-left: 10px;*/
+        width: 100%;
+        position: relative;
     }
         .miSlide{
             width: 100%;
             height: 386px;
         }
 
-    #texto_hist{
-        background-color: white;
-        color: black;
-        width: 30%;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 60px;
-        padding-bottom: 10px;
-        text-align:center;
-        font-size: 25px;
-    }
+        .tex{
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center !important;
+            bottom: 0;
+            color: white;
+            font-size: larger;
+            display: flex;
+            width: 100%;
+            padding: 22px;
+        }
 
+    
     #textito{
         font-size: 25px;
-        color: red;
-        font-family: 'Times New Roman', Times, serif;
+        color: red !important;
         font-style: normal;
         text-decoration: none;
     }
@@ -186,34 +206,12 @@ h1{
         color: gold;
     }
 
-footer{
-    background-color: black;
-}
-
-    .horario{
-        color:silver;
-        width: fit-content;
-        margin-left: 35%;
+    .footer {
+        background: #7c73ff;
+        color: white;
+        padding: 0.1rem 0;
+        text-align: center;
         margin-top: 20px;
-        font-family: 'Times New Roman', Times, serif;
-        font-size: large;
-    }
-
-    #reserva{
-        margin: 30px;
-        margin-left: 10%;
-        justify-content: right;
-        background: linear-gradient(to right, #00c6ff, #0072ff);
-        border-radius: 35px;
-        border: black;
-        font-family: 'Times New Roman', Times, serif;
-        font-weight: bold;
-        font-size: 15px;
-        padding: 10px;
-    }
-
-    #reserva:hover{
-        background: linear-gradient(to right, #0575e6, #021b79);
     }
 
     .miSlider_p{
@@ -232,12 +230,15 @@ footer{
         position: absolute;
         left: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.849);
+        background-color: rgba(0, 0, 0, 0.479);
         width: 100%;
         text-align: center;
         color: silver;
         font-size: larger;
     }
+
+    
+
     .buscador{
     margin-top: 20px;
     width: 100%;

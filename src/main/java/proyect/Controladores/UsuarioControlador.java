@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,8 +84,29 @@ public class UsuarioControlador {
 
 	}
 	
+	@GetMapping("/perfilalumno/{id}")
+	public String perfilAlumno(ModelMap modelo, @PathVariable("id")String id) {
+		
+		return "perfilAlumno.html";
+	}
 	
+	@PostMapping("/perfilalumno/{id}")
+	public String perfilAlumno() {
+		
+		return "perfilAlumno.html";
+	}
 	
+	@GetMapping("/perfilprofesor/{id}")
+	public String perfilProfesor(ModelMap modelo, @PathVariable("id")String id) {
+	
+		return "perfilProfesor.html";
+	}
+	
+	@PostMapping("/perfilprofesor/{id}")
+	public String perfilProfesor() {
+	
+		return "perfilProfesor.html";
+	}
 	
 	
 	@GetMapping("/login")
@@ -95,6 +117,11 @@ public class UsuarioControlador {
 	@GetMapping("/logout")
 	public String logout() {
 		return "logout.html";
+	}
+	
+	@GetMapping("/terminos")
+	public String terminos() {
+		return "terminos.html";
 	}
 	
 	
