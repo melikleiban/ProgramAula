@@ -18,8 +18,16 @@ public class MainControlador {
 		return "login.html";
 	}
 	
+	@GetMapping("/terminos")
+	public String terminos() {
+		return "terminos.html";
+	}
+	
+
+	}	
+	
 
 	
 
 
-}
+
