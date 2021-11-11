@@ -119,10 +119,6 @@ public class UsuarioControlador {
 		return "logout.html";
 	}
 	
-	@GetMapping("/terminos")
-	public String terminos() {
-		return "terminos.html";
-	}
 	
 	
 
