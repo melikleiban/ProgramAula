@@ -16,7 +16,7 @@ import proyect.Servicios.UsuarioServicio;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@Order(1000)                                                        
+@Order(99)                                                        
 public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
