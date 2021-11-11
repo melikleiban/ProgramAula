@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 target/classes/static/img/icono-alumna.png
 target/classes/static/img/icono-alumna-sin-circulo.png
 target/classes/static/img/icono-profesora.png
 target/classes/static/img/icono-profesor-hombre.png
 =======
+=======
+>>>>>>> 5f1471f5d777ced10b18ecbacc2be58f2dfc1413
 *#
 *.iml
 *.ipr
@@ -45,5 +48,9 @@ target
 .flattened-pom.xml
 secrets.yml
 .gradletasknamecache
+<<<<<<< HEAD
 .sts4-cache
 >>>>>>> 7f7f7091f1c59b9286206cb12306e5f3799549bb
+=======
+.sts4-cache
+>>>>>>> 5f1471f5d777ced10b18ecbacc2be58f2dfc1413

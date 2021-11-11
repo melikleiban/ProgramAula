@@ -1,7 +1,7 @@
 package proyect.Servicios;
 
 
-import java.util.List;
+//import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -135,24 +135,23 @@ public class CursoServicio {
 	}
 
 
-	public List<Curso> FiltrarCursos(String PalabraClave, String lenguajes) {
-		List<Curso> listaCurso;
-		if (PalabraClave.isEmpty() || PalabraClave == null && lenguajes == null) {
-			listaCurso = cursoRepositorio.findAll();
+//	public List<Curso> FiltrarCursos(String PalabraClave, String lenguajes) {
+//		List<Curso> listaCurso;
+//		if (PalabraClave.isEmpty() || PalabraClave == null && lenguajes == null) {
+//			listaCurso = cursoRepositorio.findAll();
+//
+//		} else if (lenguajes == null) {
+//
+//			listaCurso = cursoRepositorio.existsByClave(PalabraClave);
+//
+//		} else if (PalabraClave == null || PalabraClave.isEmpty()) {
+//			listaCurso = cursoRepositorio.existsByLenguajes(lenguajes);
+//		} else {
+//			listaCurso = cursoRepositorio.existsByAmbas(lenguajes, PalabraClave);			
+//		}
+//		return listaCurso;
+//
+//	}
 
-		} else if (lenguajes == null) {
 
-			listaCurso = cursoRepositorio.existsByClave(PalabraClave);
-
-		} else if (PalabraClave == null || PalabraClave.isEmpty()) {
-			listaCurso = cursoRepositorio.existsByLenguajes(lenguajes);
-		} else {
-			listaCurso = cursoRepositorio.existsByAmbas(lenguajes, PalabraClave);
-
-		}
-		return listaCurso;
-
-	}
-
-	
 }

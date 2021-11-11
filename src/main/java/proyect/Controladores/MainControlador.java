@@ -13,7 +13,7 @@ public class MainControlador {
 		return "index.html";
 	}
 	
-	@GetMapping("/login.html")
+	@GetMapping("/login")
 	public String login() {
 		return "login.html";
 	}
