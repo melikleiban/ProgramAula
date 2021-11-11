@@ -21,12 +21,51 @@
         <div class="redes"><a href="#"><i class="fab fa-twitter" style="font-size:24px;color:white"></i></a></div>
         <div class="redes"><a href="#"><i class="fab fa-youtube" style="font-size:24px;color:white"></i></a></div>
         <div class="redes"><a href="#"><i class="fab fa-whatsapp" style="font-size:24px;color:white"></i></a></div>
+<<<<<<< HEAD
+        <!-- <div class="no-logueado" th:if="${usuario.logueado == false}">
+          <a id="inicia" href="login.html">Iniciar Sesion</a>
+          <a id="inicia" href="registro-alumno-profesor.html">Registrate</a>  
+        </div> -->
+
+        <div class="logueado" th:if = "${usuario.logueado==true}">
+          <div class="dropdown text-start">
+              <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="http://127.0.0.1:5500/static/img/avatar.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
+              
+              <div th:switch=${usuario.rol} >
+                  <li th:case=${alumno}><a class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></li>
+                  <!-- <li th:case=${profesor}><a class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></li> -->
+              </div>
+               
+                  <!-- <li><a class="dropdown-item" href="#" id="opciones">Configuraciones</a></li> -->
+               
+                
+                
+                <li><hr class="dropdown-divider" id="opciones"></li>
+                
+                <li><a class="dropdown-item" href="index.html" id="opciones">Cerrar sesión</a></li>
+              </ul>
+            </div>
+  
+          </div>
+    </div>
+
+        
+=======
         <a id="inicia" href="login.html">Iniciar Sesion</a>
         <a id="inicia" href="registro-alumno-profesor.html">Registrate</a>
+>>>>>>> 945cf14994c6b490bf2bcc3ea7c7745d916d8634
     </div>
   </div>
+  
+  
 
     
+<<<<<<< HEAD
+
+=======
 <!--
     <div class="carteles">
         <p class="cartel1"><a href="index.html">Inicio</a></p>
@@ -36,6 +75,7 @@
         <p class="cartel1"><a href="registro-alumno-profesor.html">Registrate</a></p>
     </div>
 -->
+>>>>>>> 945cf14994c6b490bf2bcc3ea7c7745d916d8634
     <div class="buscador">
       <div class="input-group mb-3" style="position: absolute; padding:50px;margin-top: 60px;">
         <div class="input-group-prepend">
@@ -168,5 +208,8 @@
       <p><a href="terminos">Terminos y condiciones</a></p>
   </div>
 </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
