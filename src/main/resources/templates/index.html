@@ -26,7 +26,7 @@
           <a id="inicia" href="registro-alumno-profesor.html">Registrate</a>  
         </div> -->
 
-        <div class="logueado" th:if = "${usuario.logueado==true}">
+        <!-- <div class="logueado" th:if = "${usuario.logueado==true}"> 
           <div class="dropdown text-start">
               <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="http://127.0.0.1:5500/static/img/avatar.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
@@ -36,6 +36,7 @@
               <div th:switch=${usuario.rol} >
                   <li th:case=${alumno}><a class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></li>
                   <!-- <li th:case=${profesor}><a class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></li> -->
+              -->
               </div>
                
                   <!-- <li><a class="dropdown-item" href="#" id="opciones">Configuraciones</a></li> -->
