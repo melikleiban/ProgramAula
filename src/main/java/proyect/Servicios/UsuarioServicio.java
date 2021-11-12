@@ -69,7 +69,7 @@ public class UsuarioServicio implements UserDetailsService {
 			e.printStackTrace();;
 		}
 		
-		notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
+		//notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 	}
 
 
