@@ -1,0 +1,433 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    line-height: 1.4;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    color: #404040;
+    font-family: "Arial", Segoe UI, Tahoma, sans-serifl, Helvetica Neue, Helvetica;
+}
+
+
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#7c73ff, transparent);
+    margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 17rem;
+    background: linear-gradient(45deg, #7c73ff, #31f1ff);
+    border-radius: 0 0 20px 20px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 25px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada i {
+    margin-right: 1rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #FFFFFF;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: -40px;
+    left: calc(50% - 90px);
+    z-index: 1;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+    width: 70%;
+    position: relative;
+    max-width: 750px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .texto {
+    color: #848484;
+    font-size: 0.95em;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer,
+.seccion-perfil-usuario .perfil-usuario-bio,
+.seccion-perfil-usuario .perfil-usuario-cursos {
+	flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .lista-cursos{
+    margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .lista-cursos{
+    width: 100%;
+    list-style: none;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .lista-cursos li{
+    padding: 5px 0;
+}
+
+.seccion-perfil-usuario .lista-datos {
+    width: 100%;
+    list-style: none;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .lista-datos li {
+    padding: 5px 0;
+}
+
+
+h1 {
+    font-size: 2rem;
+    line-height: 1.3em;
+}
+
+p {
+    margin-bottom: 1.6em;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.pie {
+    width: 100%;
+    height: 3em;
+    margin: 0 auto;
+    padding: 0 10rem;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pie p {
+	margin-bottom: 0;
+}
+
+.header {
+    background-color: #7c73ff;
+    color: white;
+    padding: 0.5rem 0;
+    padding-right: 4rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.logo-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    letter-spacing: 4px;
+    font-size: 1.8em;
+    padding-left: 5rem;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navigation ul li {
+    display: inline-block;
+}
+
+.navigation ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0.4s linear;
+    border-radius: 5px;
+}
+
+.navigation ul li a:hover {
+    background: #7c73ff;
+}
+
+.footer {
+    background: #7c73ff;
+    color: white;
+    padding: 0.1rem 0;
+    text-align: left;
+    margin-top: 6rem;
+}
+
+.lista-datos i {
+	padding-left: 2rem;
+}
+
+#edit1, #edit2, #edit3 {
+	padding-left: 0.05rem;
+	padding-right: 2rem;
+}
+
+#icon-email{
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+}
+
+.lista-datos{
+	padding-top: 1.5rem;
+}
+
+.perfil-usuario-footer input {
+	background-color: rgb(124, 115, 255, .5); ;
+	color: rgb(0, 0, 0);
+	padding: 2px; 
+	border: 2px solid rgb(64, 0, 128, .5); 
+	border-radius: 5px;
+	width: 15rem;
+	height: 2em;
+	width: 150px;
+	text-align: center;
+}
+.lista-cursos-finalizados,
+.lista-cursos-actuales{
+	background-color: rgb(124, 115, 255, .5); ;
+	color: rgb(0, 0, 0);
+	padding: 2px; 
+	padding-top: 0.5rem;
+	border: 2px solid rgb(64, 0, 128, .5); 
+	border-radius: 5px;
+	text-align: center;
+	margin: 0 15%;
+}
+
+.lista-cursos-finalizados {
+	text-align: center;
+	padding: 10 0;
+}
+
+.lista-cursos i{
+	padding-top: 1.5rem;
+	padding-bottom: 0.8rem;
+	font-size: large;
+}
+
+.lista-cursos ul li{
+	list-style-position: inside;
+}
+
+.lista-datos button{
+	border: none;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+@media (max-width: 750px) {
+    .seccion-perfil-usuario .lista-datos .lista-cursos{
+        width: 100%;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-portada,
+    .seccion-perfil-usuario .perfil-usuario-body {
+        width: 95%;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+    }
+
+    .navigation {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .navigation ul {
+        display: none;
+    }
+
+    .navigation ul.show {
+        display: block;
+    }
+
+    .navigation ul li {
+        display: block;
+    }
+    
+    .navigation ul li a {
+        display: block;
+        padding: 0.5rem 0;
+        transition: all 0.4s linear;
+        border-radius: 5px;
+    }
+    
+    .navigation ul li a:hover {
+        background: #3163cf;
+    }
+    
+    .logo {
+	    letter-spacing: 4px;
+	    font-size: 1.5em;
+	    margin-left: 0;
+    }
+    
+    .header{
+		padding: 0;
+		padding-top: 1rem;
+	}
+	
+	.navigation ul li a {
+        display: block;
+        padding: 0.5rem 1rem;
+        transition: all 0.4s linear;
+        border-radius: 5px;
+    }
+	
+	.lista-cursos-finalizados,
+	.lista-cursos-actuales{
+		background-color: rgb(124, 115, 255, .5); ;
+		color: rgb(0, 0, 0);
+		padding: 1px; 
+		border: 2px solid rgb(64, 0, 128, .5); 
+		border-radius: 5px;
+		text-align: center;
+		margin: 0 10%;
+		font-size: 0.8em;
+	}
+	
+	#icon-phone, #icon-email{
+		padding-top: 1rem;
+	}
+	
+	#inputEmail{
+		width: 9.5rem;
+		
+	}
+	
+	#inputTelefono{
+		width: 8.5rem;
+
+	}
+	
+	.lista-datos{
+		padding-top: 0.5rem;
+	}
+	
+	.perfil-usuario-footer input {
+		background-color: rgb(124, 115, 255, .5); ;
+		color: rgb(0, 0, 0);
+		padding: 2px; 
+		border: 2px solid rgb(64, 0, 128, .5); 
+		border-radius: 5px;
+		width: 8rem;
+		height: 2em;
+		text-align: center;
+		pointer-events:none;
+	}
+	
+	.pie {
+	    width: 100%;
+	    height: 3em;
+	    margin: 0 auto;
+	    padding: 0 2rem;   
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    flex-wrap: wrap;
+	    font-size: 0.8em;
+	}
+}
