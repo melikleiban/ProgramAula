@@ -68,20 +68,34 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
+			@RequestParam(required = false) String contrasenia,
+			@RequestParam(required = false) String descripcion) throws ErrorServicio {
 		
 		System.out.println("Entra al controller");
+		System.out.println(nombreUsuario);
+		System.out.println(nombreCompleto);
+		System.out.println(email);
+		System.out.println(telefono);
+		System.out.println(localidad);
+		System.out.println(descripcion);
+		System.out.println(contrasenia);
+		System.out.println();
+		
+		
+	
+		
+		
 		try {
 			
 			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, false);
 			modelo.put("exito", "registro exitoso");
-			return "redirect:/";
+			
+			return "inicio.html";
 			
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());
-				return "registro-alumno-profesor.html";		
+				return "inicio.html";		
 		}
 
 	}

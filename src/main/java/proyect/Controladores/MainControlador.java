@@ -29,16 +29,10 @@ public class MainControlador {
 	}
 	
 
-<<<<<<< HEAD
-	}	
-=======
-	@GetMapping("/terminos")
-	public String terminos() {
-		return "terminos.html";
-	}
-	
 
->>>>>>> 1e4641252e66075886a63cea9c0286f896c1eaeb
+}	
+
+
 	
 
 	
