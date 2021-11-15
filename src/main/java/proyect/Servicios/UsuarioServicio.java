@@ -40,10 +40,13 @@ public class UsuarioServicio implements UserDetailsService {
 			String telefono,
 			String localidad,
 			String contrasenia,
-			String descripcion,
+			//String descripcion,
 			Boolean rol) throws ErrorServicio {	
+		System.out.println("Entra al servicio");
 
-		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
+		//validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
+		
+		System.out.println("Pasa la validacion");
 
 		Usuario usuario = new Usuario();
 		usuario.setNombreUsuario(nombreUsuario);
@@ -51,25 +54,34 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
-		usuario.setDescripcion(descripcion);
+		//usuario.setDescripcion(descripcion);
 		usuario.setAltaBaja(true);
+		
+		System.out.println("Pasa los setters");
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
+		
+		System.out.println("Pasa la encriptacion");
 
 		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
 		} else {
 			usuario.setRol(Rol.ALUMNO);
 		}
+		
+		System.out.println("Pasa el seteo de roles");
 
 		try {
+			
 			usuarioRepositorio.save(usuario);
+			System.out.println("Guarda el usuario");
 		} catch( Exception e ) {
-			e.printStackTrace();;
+			e.printStackTrace();
+			System.out.println("Entra al catch en servicio");
 		}
 		
-		notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
+		//notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 	}
 
 
