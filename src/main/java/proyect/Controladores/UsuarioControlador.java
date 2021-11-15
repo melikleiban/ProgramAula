@@ -49,7 +49,7 @@ public class UsuarioControlador {
 			return "redirect:/";
 			
 		}catch(Exception e){
-			modelo.put("error", e.getMessage());
+			modelo.put("error", e.getMessage());			
 				return "registro-alumno-profesor.html";		
 		}
 
@@ -70,6 +70,8 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String localidad,
 			@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
+		
+		System.out.println("Entra al controller");
 		try {
 			
 			
@@ -129,10 +131,6 @@ public class UsuarioControlador {
 		return "logout.html";
 	}
 	
-	@GetMapping("/terminos")
-	public String terminos() {
-		return "terminos.html";
-	}
 	
 	
 

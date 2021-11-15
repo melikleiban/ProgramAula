@@ -254,9 +254,6 @@ h1{
   position: relative;
     }
     /* <img src="imagenes/banner.png"> */
-.no-logueado{
-    margin-top: 14px;
-}
 .logueado{
     color: #31f1ff;   
     margin-left:180px ;
