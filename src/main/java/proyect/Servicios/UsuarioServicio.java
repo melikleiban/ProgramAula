@@ -53,7 +53,9 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setLocalidad(localidad);
 		usuario.setDescripcion(descripcion);
 		usuario.setAltaBaja(true);
-
+		
+		System.out.println("Holaaaaa");
+		
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 

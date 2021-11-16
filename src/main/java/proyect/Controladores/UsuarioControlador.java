@@ -40,18 +40,18 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
 			@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
+			@RequestParam(required = false) String contrasenia) throws ErrorServicio{
 		
-		try {
+		//try {
 			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, true);
 			modelo.put("exito", "registro exitoso");
 			return "redirect:/";
 			
-		}catch(Exception e){
-			modelo.put("error", e.getMessage());
-				return "registro-alumno-profesor.html";		
-		}
+//		}catch(Exception e){
+//			modelo.put("error", e.getMessage());
+//				return "registro-alumno-profesor.html";		
+//		}
 
 	}
 	 
