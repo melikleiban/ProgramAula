@@ -1,5 +1,6 @@
 package proyect.Controladores;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +16,34 @@ public class MainControlador {
 		return "index.html";
 	}
 	
+
 	@GetMapping("/login")
+<<<<<<< HEAD
 	public String login(@RequestParam(required = false) String error, ModelMap modelo) {		
 		if(error!=null) {
 			modelo.put("error", "Contrasenia incorrecta");
+=======
+	public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap modelo) {
+
+		//	HAY QUE CONECTARLO CON EL HTML.  VER EN VIDEO 6 MINUTO 8	
+	if(error != null) {
+		modelo.put("error", "Nombre de usuario o clave incorrectos");
 		}
-		return "login.html";
+
+	
+	//	HAY QUE CONECTARLO CON EL HTML.  VER EN VIDEO 6 MINUTO 14.33
+	if(error != null) {
+		modelo.put("logout", "Ha salido correctamente");
+>>>>>>> ca690033ad93b391e60849d57ade3642610b122c
+		}
+	return "login.html";
+	}
+	
+	
+	@PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
+	@GetMapping("/inicio")
+	public String inicio() {
+		return "inicio.html";
 	}
 	
 	@GetMapping("/terminos")

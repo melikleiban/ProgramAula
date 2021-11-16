@@ -138,8 +138,13 @@
   <span class="alert alert-success" th:if="${exito != null}" th:text="${exito}"></span>
   <div class="container">
 	<main class="form-signin" style="padding-top: 7%">
+<<<<<<< HEAD
   <form id="formulario" action="usuario/logearse" method="post">
     <!--<img class="mb-4 rounded-3" src="../img/imgLogin.png" alt="" weight="90px" height="90px">-->
+=======
+  <form id="formulario" action="/logincheck" method="POST">
+    <!--<img class="mb-4 rounded-3" src="../static/img/imgLogin.png" alt="" weight="90px" height="90px">-->
+>>>>>>> ca690033ad93b391e60849d57ade3642610b122c
     <!--<img class="mb-4 rounded-3" src="https://lottiefiles.com/79638-avatar-icon" alt="" weight="90px" height="90px">-->
     <iframe src="https://embed.lottiefiles.com/animation/79638"></iframe>
     
@@ -148,15 +153,19 @@
     
     
     <h1 class="h3 mb-3 fw-normal"> Iniciar sesión </h1>
-
+	
     <div class="form-floating">
+<<<<<<< HEAD
     
     
       <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
     
     
+=======
+      <input type="text" class="form-control" id="usuario" name="nombreUsuario" placeholder="Usuario">
+>>>>>>> ca690033ad93b391e60849d57ade3642610b122c
       <label for="floatingInput"> Usuario </label>
-    </div>
+    </div> 
     <div class="form-floating">
 
 
@@ -169,6 +178,8 @@
     <button class="w-100 btn btn-lg btn-primary" type="submit" style="background-color: #41464b91; border-color: #41464b91;"> Ingresar </button>
     <!-- <p class="mt-5 mb-3 text-muted">&copy; Equipo 6 &#128526 - 2021 </p>-->
 
+	
+	
   </form>
   </main>
   </div>

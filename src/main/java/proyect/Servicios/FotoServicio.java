@@ -36,13 +36,13 @@ public class FotoServicio {
 	}
 	
 	@Transactional
-	public Foto actualizarFoto(String id, MultipartFile archivo) throws ErrorServicio {
+	public Foto actualizarFoto(String idFoto, MultipartFile archivo) throws ErrorServicio {
 		if (archivo != null) {
 			try {
 				Foto foto = new Foto();
 
-				if(id != null) {
-					Optional<Foto> fotoActual = fotoRepositorio.findById(id);
+				if(idFoto != null) {
+					Optional<Foto> fotoActual = fotoRepositorio.findById(idFoto);
 					if (fotoActual.isPresent()) {
 						foto = fotoActual.get();	
 					}

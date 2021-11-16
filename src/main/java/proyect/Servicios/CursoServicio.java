@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proyect.Configuraciones.ConfiguracionEmail;
 import proyect.Entidades.Curso;
 import proyect.Entidades.Usuario;
 import proyect.Enums.Lenguajes;
@@ -27,8 +28,8 @@ public class CursoServicio {
 	private UsuarioRepositorio usuarioRepositorio;
 
 	@Autowired
-	private NotificacionServicio notificacionServicio;
-
+	private ConfiguracionEmail configuracionEmail;
+	
 	@Transactional
 	public void crearCurso(String nombreUsuario, String titulo, Boolean altaBaja, Double precioPorHora,
 			String nivelDificultad, String descripcion, Lenguajes lenguajes) throws ErrorServicio {
@@ -91,10 +92,10 @@ public class CursoServicio {
 		Optional<Usuario> result = Optional.ofNullable(usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario));
 		if (result.isPresent() && result.get().getRol() == Rol.ALUMNO) {
 			Optional<Curso> resultCurso = cursoRepositorio.findById(idCurso);
-			notificacionServicio.enviar(
-					"El usuario " + nombreUsuario + " de nombre " + result.get().getNombreCompleto()
-							+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + ".",
-					"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
+			configuracionEmail.emailSender("El usuario " + nombreUsuario + " de nombre " + result.get().getNombreCompleto()
+					+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + ".",
+			"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
+
 		}
 	}
 

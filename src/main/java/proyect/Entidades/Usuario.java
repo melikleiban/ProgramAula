@@ -38,7 +38,7 @@ public class Usuario {
 	private String localidad;
 	//private String descripcion;
 	private Boolean altaBaja;
-	private Boolean login;
+	
 
 	@OneToOne
 	private Foto foto;
