@@ -79,6 +79,7 @@
 <body>
 
 
+<<<<<<< HEAD
 
 	<div class="header">
 		<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -231,6 +232,128 @@
 	<script src="form-validation.js"></script>
 
 
+=======
+    <div class="header">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <div class="logo">
+                <img class="d-block mx-auto mb-4" src="/img/logoChiquito.png" alt="ProgramAula" width="57" height="57"> 
+            </div>
+            
+            <span class="fs-4"><h2>ProgramAula</h2></span>
+          </a>
+          <span>
+              <img src="/img/icono-profesora.png" alt="profesora">
+          </span>
+        </header>
+    </div>
+   
+
+
+    <div class="form">
+
+
+        <form class="needs-validation" novalidate action="usuario/registro" method="post">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">Nombre y Apellido</label>
+                
+                
+                <input type="text" class="form-control" id="firstName" placeholder="Jose Villenas" value="" required>
+                
+                
+                <div class="invalid-feedback">
+                    Ingrese un nombre válido.
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+
+
+                <input type="email" class="form-control" id="email" placeholder="Josevillenas@ejemplo.com">
+
+
+                <div class="invalid-feedback">
+                    Imgrese un email válido.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                
+                
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            
+            
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
+            
+            
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            
+            
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Teléfono</label>
+
+
+                <input type="email" class="form-control" id="email" placeholder="341358975">
+
+
+                <div class="invalid-feedback">
+                    Ingrese un número de teléfono válido.
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="country" class="form-label">País</label>
+
+
+                <select class="form-select" id="country" required>
+
+                    <option>Argentina</option>
+                    <option>Uruguay</option>
+                    <option>Chile</option>
+                </select>
+
+
+                <div class="invalid-feedback">
+                    Ingrese un país válido.
+                </div>
+
+            </div>
+            
+
+
+
+
+            <hr class="my-8">
+            <button class="boton" type="submit">Registrarme</button>
+        </form>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2021 ProgramAula</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+
+
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="form-validation.js"></script>
+
+
+
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
 </body>
 
 </html>

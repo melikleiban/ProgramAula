@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/resources/templates/inicio.html
     <link rel="stylesheet" href="/css/styles.css"/>
+========
+    <link rel="stylesheet" href="../css/styles.css"/>
+>>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571:target/classes/templates/index.html
+=======
+    <link rel="stylesheet" href="/css/styles.css"/>
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
 
     <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
@@ -16,7 +24,15 @@
 <body>
   <div id="contenedor_redes">
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/resources/templates/inicio.html
       <div id="logo"><a href="/"><img src="/img/logoChiquito.png" alt="Logito"></a></div>
+========
+      <div id="logo"><a href="/"><img src="../img/logoChiquito.png" alt="Logito"></a></div>
+>>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571:target/classes/templates/index.html
+=======
+      <div id="logo"><a href="/"><img src="/img/logoChiquito.png" alt="Logito"></a></div>
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
 
       <div id="nombre_logo"><h1>ProgramAula</h1></div>
     <div id="contenedor_redes2">
@@ -26,26 +42,81 @@
         <div class="redes"><a href="#"><i class="fab fa-youtube" style="font-size:24px;color:white"></i></a></div>
         <div class="redes"><a href="#"><i class="fab fa-whatsapp" style="font-size:24px;color:white"></i></a></div>
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/resources/templates/inicio.html
         <div class="logueado"> 
           <div class="dropdown text-start">
               <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <!--Acá habría que ver como conectar la foto que carga la persona a este link-->
+=======
+        <!--<a id="inicia" href="/login">Iniciar Sesion</a>
+				<a id="inicia" href="usuario/registro">Registrate</a>--> 
+        <!--  
+         <div class="no-logueado" th:if="${usuario.logueado == false}">
+          <a id="inicia" href="login.html">Iniciar Sesion</a>
+          <a id="inicia" href="registro-alumno-profesor.html">Registrate</a>  
+        </div> 
+        -->
+        <div class="logueado"> <!--th:if = "${usuario.logueado==true}">--> 
+          <div class="dropdown text-start">
+              <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
                 <img src="/img/avatar.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
               
+<<<<<<< HEAD
               
                   <li th:if ='${usuario.rol = ALUMNO}'><a class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></li>
                   <li th:if ='${usuario.rol = PROFESOR}'><a class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></li>
               
                
               <li><a class="dropdown-item" href="#" id="opciones">Configuraciones</a></li>
+========
+        <a id="inicia" href="/login">Iniciar Sesion</a>
+        <a id="inicia" href="usuario/registro">Registrate</a>
+
+        <!-- <div class="no-logueado" th:if="${usuario.logueado == false}">
+          <a id="inicia" href="login.html">Iniciar Sesion</a>
+          <a id="inicia" href="registro-alumno-profesor.html">Registrate</a>  
+        </div> -->
+
+        <!-- <div class="logueado" th:if = "${usuario.logueado==true}"> 
+          <div class="dropdown text-start">
+              <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="http://127.0.0.1:5500/static/img/avatar.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
+              
+              <div th:switch=${usuario.rol} >
+                  <li th:case=${alumno}><a class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></li>
+                  <!-- <li th:case=${profesor}><a class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></li> -->
+            
+              </div>
+               
+                  <!-- <li><a class="dropdown-item" href="#" id="opciones">Configuraciones</a></li> -->
+>>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571:target/classes/templates/index.html
+=======
+                <li>
+                  <span  th:if="${nombreCompleto == false}"><a  class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></span>
+                  <span  th:unless="${nombreCompleto == false}"><a  class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></span> 
+                </li>              
+                
+                
+              
+               
+              <li><a class="dropdown-item" href="#" id="opciones">Configuraciones</a></li>
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
                
                 
                 
                 <li><hr class="dropdown-divider" id="opciones"></li>
                 
+<<<<<<< HEAD
                 <li><a class="dropdown-item" href="index.html" id="opciones">Cerrar sesión</a></li>
+=======
+                <li><a class="dropdown-item" href="/" id="opciones">Cerrar sesión</a></li>
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
               </ul>
             </div>
   
@@ -84,10 +155,23 @@
       -->
       <div class="fotitos">
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/resources/templates/inicio.html
+=======
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
         <img class="miSlide" src="/img/java.jpg">
         <img class="miSlide" src="/img/python.png">
         <img class="miSlide" src="/img/javascript.jpg">
         <img class="miSlide" src="/img/aviso1.png">
+<<<<<<< HEAD
+========
+        <img class="miSlide" src="../img/java.jpg">
+        <img class="miSlide" src="../img/python.png">
+        <img class="miSlide" src="../img/javascript.jpg">
+        <img class="miSlide" src="../img/aviso1.png">
+>>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571:target/classes/templates/index.html
+=======
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
 
         <div class="tex"><p style="margin-left: auto; margin-right: auto;">ProgramAula te ofrece los mejores cursos de programación. Busca el lenguaje que quieras aprender <a id ="textito" href="productos.html">aca</a></p></div>
       </div>
@@ -113,10 +197,23 @@
       <div class="slider_p">
         <div class="profes">
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/resources/templates/inicio.html
+=======
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
           <div class="miSlider_p"><img class="miSlide_p" src="/img/cara2.jpg"><p class="textite">Pepito Garcia</p></div>
           <div class="miSlider_p"><img class="miSlide_p" src="/img/cara3.jpg"><p class="textite">Ricardo Fort</p></div>
           <div class="miSlider_p"><img class="miSlide_p" src="/img/cara4.jpg"><p class="textite">Juana Gomez</p></div>
           <div class="miSlider_p"><img class="miSlide_p" src="/img/cara1.jpg"><p class="textite">Luisa Oreo</p></div>
+<<<<<<< HEAD
+========
+          <div class="miSlider_p"><img class="miSlide_p" src="../img/cara2.jpg"><p class="textite">Pepito Garcia</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../img/cara3.jpg"><p class="textite">Ricardo Fort</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../img/cara4.jpg"><p class="textite">Juana Gomez</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../img/cara1.jpg"><p class="textite">Luisa Oreo</p></div>
+>>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571:target/classes/templates/index.html
+=======
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
         </div>
         <div class="profes2">
           <div class="miSlider_p2"><img class="miSlide_p2" src="/img/cara1.jpg"><p class="textite">Mariela Perez</p></div>
@@ -125,10 +222,23 @@
           <div class="miSlider_p2"><img class="miSlide_p2" src="/img/cara3.jpg"><p class="textite">Franco Meta</p></div>
         </div>
         <div class="profes3">
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/resources/templates/inicio.html
+=======
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
           <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara2.jpg"><p class="textite">Juan Perez</p></div>
           <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara1.jpg"><p class="textite">Mirtha Legrand</p></div>
           <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara3.jpg"><p class="textite">Jorge Lanata</p></div>
           <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara4.jpg"><p class="textite">Susana Gimenez</p></div>
+<<<<<<< HEAD
+========
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../img/cara2.jpg"><p class="textite">Juan Perez</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../img/cara1.jpg"><p class="textite">Mirtha Legrand</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../img/cara3.jpg"><p class="textite">Jorge Lanata</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../img/cara4.jpg"><p class="textite">Susana Gimenez</p></div>
+>>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571:target/classes/templates/index.html
+=======
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
 
         </div>
       </div>

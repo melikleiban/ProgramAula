@@ -41,7 +41,11 @@ public class UsuarioServicio implements UserDetailsService {
 			String localidad,
 			String contrasenia,
 			//String descripcion,
+<<<<<<< HEAD
 			Boolean rol) throws ErrorServicio {			
+=======
+			Boolean rol) throws ErrorServicio {	
+>>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 		
@@ -80,7 +84,9 @@ public class UsuarioServicio implements UserDetailsService {
 	}
 
 
-	
+	public Usuario verificarLog(String nombreUsuario, String contrasenia) {
+		
+	}
 	
 	
 	@Transactional
@@ -100,7 +106,7 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
-		usuario.setDescripcion(descripcion);
+//		usuario.setDescripcion(descripcion);
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);

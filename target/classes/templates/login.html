@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
-=======
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
->>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -129,13 +124,7 @@
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-<<<<<<< HEAD
         <img class="bi me-2 rounded-3" src="../img/logoChiquito.png" alt="" weight="30px" height="30px">
-=======
-
-        <img class="bi me-2 rounded-3" src="/img/logoChiquito.png" alt="" weight="30px" height="30px">
-
->>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
         <span class="fs-4">ProgramAula</span>
       </a>
 
@@ -144,18 +133,13 @@
       </ul>
     </header>
   </div>
-  <span class="alert alert-success" th:if="${exito != null}" th:text="${exito}"></span>
+
   <div class="container">
 	<main class="form-signin" style="padding-top: 7%">
   <form id="formulario" action="usuario/logearse" method="post">
     <!--<img class="mb-4 rounded-3" src="../img/imgLogin.png" alt="" weight="90px" height="90px">-->
     <!--<img class="mb-4 rounded-3" src="https://lottiefiles.com/79638-avatar-icon" alt="" weight="90px" height="90px">-->
     <iframe src="https://embed.lottiefiles.com/animation/79638"></iframe>
-    
-    
-    
-    
-    
     <h1 class="h3 mb-3 fw-normal"> Iniciar sesión </h1>
 
     <div class="form-floating">
@@ -188,7 +172,7 @@
     <div class="col-md-4 d-flex align-items-center" style="margin-left: 1em; color: white;">
       <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1" style="margin-left: 2em;">
         
-        <img class="bi me-2 rounded-3" src="/img/logoChiquito.png" alt="" weight="30px" height="30px">
+        <img class="bi me-2 rounded-3" src="../img/logoChiquito.png" alt="" weight="30px" height="30px">
       </a>
       <span class="" style="margin-left: 2em; color: #333333;">&copy; Equipo 6 <span class="message" id="open" style="font-size: 1.2em; font-family: 'Press Start 2P';">&#128526</span> - 2021</span>
       <span class="secret mesage centrar" id="close" style="position:absolute; top: 0; left: 0; ">  -Virginia Carrizo Bello<br>-Meli Kleiban<br>-Pamela de Guardia<br>-Jose Villena<br>-Diego Bayard<br>-Sol Piqueras<br>-Augusto De Prinzio<br>-Alejandro Meljem<br>-Agustin Avila </span>
@@ -196,6 +180,6 @@
     <p style="margin-right: 2em; color: #333333;"><small><a href="terminos" style="color: #333333;">Terminos y condiciones</a></small> </p>
   </footer>
   </div>
-  <script src="/scripts/secretmsg.js"></script>
+  <script src="../scripts/secretmsg.js"></script>
   </body>
 </html>
