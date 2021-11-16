@@ -18,13 +18,14 @@ public class MainControlador {
 	
 
 	@GetMapping("/login")
-<<<<<<< HEAD
+
 	public String login(@RequestParam(required = false) String error, ModelMap modelo) {
 		if(error!=null) {
 			modelo.put("error", "Contrasenia incorrecta");
 		}
 		return "login.html";
-=======
+	}
+
 	public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap modelo) {
 
 		//	HAY QUE CONECTARLO CON EL HTML.  VER EN VIDEO 6 MINUTO 8	
@@ -47,11 +48,7 @@ public class MainControlador {
 		return "inicio.html";
 	}
 	
-	@GetMapping("/terminos")
-	public String terminos() {
-		return "terminos.html";
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
-	}
+	
 	
 	@GetMapping("/terminos")
 	public String terminos() {

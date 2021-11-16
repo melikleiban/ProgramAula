@@ -41,35 +41,32 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-<<<<<<< HEAD
+
 			@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio{
-=======
-			//@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia
 			//@RequestParam(required = false) String contrasenia2
-			) throws ErrorServicio {
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
+			
+
 		
-		//try {
+		try {
 			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
 			modelo.put("exito", "registro exitoso");
 			return "inicio.html";
 			
-<<<<<<< HEAD
+
 //		}catch(Exception e){
 //			modelo.put("error", e.getMessage());
 //				return "registro-alumno-profesor.html";		
 //		}
-=======
+
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());			
 				return "registro-profesor.html";		
-		}
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
+		}}
 
-	}
+
+	
 	 
 	@GetMapping("/registro/alumno")
 	public String registroAlumno() {
@@ -98,7 +95,6 @@ public class UsuarioControlador {
 			modelo.put("error", e.getMessage());
 				return "registro-alumno.html";		
 		}
-
 	}
 	
 	

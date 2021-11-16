@@ -55,14 +55,14 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
 		usuario.setAltaBaja(true);
-<<<<<<< HEAD
+
 		
 		System.out.println("Holaaaaa");
 		
-=======
 
 
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
+
+
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
