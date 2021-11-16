@@ -115,15 +115,21 @@ public class UsuarioControlador {
 		return "login.html";
 	}
 	
+	@PostMapping("/logearse")
+	public String logearse(@RequestParam String usuario, @RequestParam String contrasenia) {
+		System.out.println("Usuario: " + usuario);
+		System.out.println("Clave: " + contrasenia);
+		return "index.html";
+	}
+	
+	
+	
+	
 	@GetMapping("/logout")
 	public String logout() {
 		return "logout.html";
 	}
 	
-	@GetMapping("/terminos")
-	public String terminos() {
-		return "terminos.html";
-	}
 	
 		
 	

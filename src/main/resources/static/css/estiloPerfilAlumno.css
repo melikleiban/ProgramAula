@@ -184,13 +184,10 @@ p {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-<<<<<<< HEAD
-=======
 }
 
 .pie p {
 	margin-bottom: 0;
->>>>>>> 945cf14994c6b490bf2bcc3ea7c7745d916d8634
 }
 
 .header {
