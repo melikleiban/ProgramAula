@@ -41,12 +41,8 @@ public class UsuarioServicio implements UserDetailsService {
 			String localidad,
 			String contrasenia,
 			//String descripcion,
-<<<<<<< HEAD
 			Boolean rol) throws ErrorServicio {			
-=======
-			Boolean rol) throws ErrorServicio {	
->>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
-
+			
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 		
 		
@@ -84,11 +80,7 @@ public class UsuarioServicio implements UserDetailsService {
 	}
 
 
-	public Usuario verificarLog(String nombreUsuario, String contrasenia) {
-		
-	}
-	
-	
+
 	@Transactional
 	public void modificar(String nombreUsuario, 
 			String nombreCompleto,

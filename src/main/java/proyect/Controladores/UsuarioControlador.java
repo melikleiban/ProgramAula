@@ -41,7 +41,7 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-<<<<<<< HEAD
+
 			//@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
 					
@@ -54,7 +54,7 @@ public class UsuarioControlador {
 			modelo.put("error", "error");
 			System.out.println("Entra al catch");
 				return "registro-alumno-profesor.html";		
-=======
+
 		//	@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
 		
@@ -71,7 +71,7 @@ public class UsuarioControlador {
 			modelo.put("email", email);
 			modelo.put("telefono", telefono);
 				return "registro-profesor.html";		
->>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
+
 		}
 
 	}
@@ -89,7 +89,7 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-<<<<<<< HEAD
+
 			//@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
 				
@@ -101,7 +101,7 @@ public class UsuarioControlador {
 		}catch(Exception e){
 			modelo.put("error", "error");
 				return "registro-alumno-profesor.html";		
-=======
+
 			@RequestParam(required = false) String contrasenia
 			) throws ErrorServicio {
 		
@@ -134,7 +134,7 @@ public class UsuarioControlador {
 			modelo.put("email", email);
 			modelo.put("telefono", telefono);
 				return "registro-alumno.html";			
->>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
+
 		}
 
 	}

@@ -29,14 +29,7 @@ public class MainControlador {
 	}
 }
 
-<<<<<<< HEAD
-	
 
-=======
-
-}	
-
->>>>>>> b912ee693bd67bc1d0762fa7d5bad10532c83571
 
 	
 
