@@ -41,13 +41,11 @@ public class UsuarioServicio implements UserDetailsService {
 			String localidad,
 			String contrasenia,
 			//String descripcion,
-			Boolean rol) throws ErrorServicio {	
-		System.out.println("Entra al servicio");
+			Boolean rol) throws ErrorServicio {			
 
-		//validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
+		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 		
-		System.out.println("Pasa la validacion");
-
+		
 		Usuario usuario = new Usuario();
 		usuario.setNombreUsuario(nombreUsuario);
 		usuario.setNombreCompleto(nombreCompleto);
@@ -57,20 +55,17 @@ public class UsuarioServicio implements UserDetailsService {
 		//usuario.setDescripcion(descripcion);
 		usuario.setAltaBaja(true);
 		
-		System.out.println("Pasa los setters");
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 		
-		System.out.println("Pasa la encriptacion");
-
+		
 		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
 		} else {
 			usuario.setRol(Rol.ALUMNO);
 		}
 		
-		System.out.println("Pasa el seteo de roles");
 
 		try {
 			
@@ -227,5 +222,9 @@ public class UsuarioServicio implements UserDetailsService {
 		return registroExitoso;
 	}
 	
-
+	public Usuario buscarPorNombreUsuario(String nombreUsuario) {
+		
+		Usuario us = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
+		return us;
+	}
 }

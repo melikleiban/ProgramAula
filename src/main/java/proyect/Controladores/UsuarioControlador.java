@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import proyect.Entidades.Usuario;
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
 import proyect.Servicios.UsuarioServicio;
@@ -48,7 +50,7 @@ public class UsuarioControlador {
 			return "redirect:/";
 			
 		}catch(Exception e){
-			modelo.put("error", e.getMessage());
+			modelo.put("error", "error");
 			System.out.println("Entra al catch");
 				return "registro-alumno-profesor.html";		
 		}
@@ -77,7 +79,7 @@ public class UsuarioControlador {
 			return "redirect:/";
 			
 		}catch(Exception e){
-			modelo.put("error", e.getMessage());
+			modelo.put("error", "error");
 				return "registro-alumno-profesor.html";		
 		}
 
@@ -123,10 +125,7 @@ public class UsuarioControlador {
 		return "terminos.html";
 	}
 	
-	
-
-	
-	
+		
 	
 	
 	

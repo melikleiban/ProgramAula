@@ -26,24 +26,17 @@
         <div class="redes"><a href="#"><i class="fab fa-youtube" style="font-size:24px;color:white"></i></a></div>
         <div class="redes"><a href="#"><i class="fab fa-whatsapp" style="font-size:24px;color:white"></i></a></div>
 
-        <!--<a id="inicia" href="/login">Iniciar Sesion</a>
-				<a id="inicia" href="usuario/registro">Registrate</a>--> 
-        <!--  
-         <div class="no-logueado" th:if="${usuario.logueado == false}">
-          <a id="inicia" href="login.html">Iniciar Sesion</a>
-          <a id="inicia" href="registro-alumno-profesor.html">Registrate</a>  
-        </div> 
-        -->
-        <div class="logueado"> <!--th:if = "${usuario.logueado==true}">--> 
+        <div class="logueado"> 
           <div class="dropdown text-start">
               <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <!--Acá habría que ver como conectar la foto que carga la persona a este link-->
                 <img src="/img/avatar.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
               
               
-                  <li><a class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></li>
-                  <li><a class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></li>
+                  <li th:if ='${usuario.rol = ALUMNO}'><a class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></li>
+                  <li th:if ='${usuario.rol = PROFESOR}'><a class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></li>
               
                
               <li><a class="dropdown-item" href="#" id="opciones">Configuraciones</a></li>
