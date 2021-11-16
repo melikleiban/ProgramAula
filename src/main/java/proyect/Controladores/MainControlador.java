@@ -16,7 +16,7 @@ public class MainControlador {
 	}
 	
 	@GetMapping("/login")
-	public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+	public String login(@RequestParam(required = false) String error, ModelMap modelo) {		
 		if(error!=null) {
 			modelo.put("error", "Contrasenia incorrecta");
 		}
@@ -27,18 +27,11 @@ public class MainControlador {
 	public String terminos() {
 		return "terminos.html";
 	}
+}
+
 	
 
-<<<<<<< HEAD
-	}	
-=======
-	@GetMapping("/terminos")
-	public String terminos() {
-		return "terminos.html";
-	}
-	
 
->>>>>>> 1e4641252e66075886a63cea9c0286f896c1eaeb
 	
 
 	
