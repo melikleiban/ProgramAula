@@ -40,36 +40,43 @@ public class UsuarioServicio implements UserDetailsService {
 			String telefono,
 			String localidad,
 			String contrasenia,
-			String descripcion,
-			Boolean rol) throws ErrorServicio {	
+			//String descripcion,
+			Boolean rol) throws ErrorServicio {			
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
-
+		
+		
 		Usuario usuario = new Usuario();
 		usuario.setNombreUsuario(nombreUsuario);
 		usuario.setNombreCompleto(nombreCompleto);
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
-		usuario.setDescripcion(descripcion);
+		//usuario.setDescripcion(descripcion);
 		usuario.setAltaBaja(true);
+		
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
-
+		
+		
 		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
 		} else {
 			usuario.setRol(Rol.ALUMNO);
 		}
+		
 
 		try {
+			
 			usuarioRepositorio.save(usuario);
+			System.out.println("Guarda el usuario");
 		} catch( Exception e ) {
-			e.printStackTrace();;
+			e.printStackTrace();
+			System.out.println("Entra al catch en servicio");
 		}
 		
-		notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
+		//notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 	}
 
 
@@ -215,5 +222,9 @@ public class UsuarioServicio implements UserDetailsService {
 		return registroExitoso;
 	}
 	
-
+	public Usuario buscarPorNombreUsuario(String nombreUsuario) {
+		
+		Usuario us = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
+		return us;
+	}
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import proyect.Entidades.Usuario;
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
 import proyect.Servicios.UsuarioServicio;
@@ -39,17 +41,17 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			@RequestParam(required = false) String descripcion,
+			//@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
-		
-		try {
-			
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, true);
-			modelo.put("exito", "registro exitoso");
+					
+		try {			
+			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
+			modelo.put("exito", "registro exitoso");			
 			return "redirect:/";
 			
 		}catch(Exception e){
-			modelo.put("error", e.getMessage());
+			modelo.put("error", "error");
+			System.out.println("Entra al catch");
 				return "registro-alumno-profesor.html";		
 		}
 
@@ -68,17 +70,16 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			@RequestParam(required = false) String descripcion,
+			//@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
-		try {
-			
-			
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, false);
+				
+		try {					
+			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, false);
 			modelo.put("exito", "registro exitoso");
 			return "redirect:/";
 			
 		}catch(Exception e){
-			modelo.put("error", e.getMessage());
+			modelo.put("error", "error");
 				return "registro-alumno-profesor.html";		
 		}
 
@@ -114,20 +115,23 @@ public class UsuarioControlador {
 		return "login.html";
 	}
 	
+	@PostMapping("/logearse")
+	public String logearse(@RequestParam String usuario, @RequestParam String contrasenia) {
+		System.out.println("Usuario: " + usuario);
+		System.out.println("Clave: " + contrasenia);
+		return "index.html";
+	}
+	
+	
+	
+	
 	@GetMapping("/logout")
 	public String logout() {
 		return "logout.html";
 	}
 	
-	@GetMapping("/terminos")
-	public String terminos() {
-		return "terminos.html";
-	}
 	
-	
-
-	
-	
+		
 	
 	
 	
