@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
 import proyect.Servicios.UsuarioServicio;
@@ -39,18 +41,20 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
+			//@RequestParam(required = false) String descripcion,
+			@RequestParam(required = false) String contrasenia
+			//@RequestParam(required = false) String contrasenia2
+			) throws ErrorServicio {
 		
 		try {
 			
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, true);
+			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
 			modelo.put("exito", "registro exitoso");
-			return "redirect:/";
+			return "inicio.html";
 			
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());			
-				return "registro-alumno-profesor.html";		
+				return "registro-profesor.html";		
 		}
 
 	}
@@ -59,32 +63,32 @@ public class UsuarioControlador {
 	public String registroAlumno() {
 		return "registro-alumno.html";
 	}
-	
-	
+		
 	@PostMapping("/registro/alumno")
-	public String registro(ModelMap modelo,
+	public String registroAlumno(ModelMap modelo,
 			@RequestParam(required = false) String nombreUsuario,
 			@RequestParam(required = false) String nombreCompleto,
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
+			//@RequestParam(required = false) String descripcion,
+			@RequestParam(required = false) String contrasenia,
+			@RequestParam(required = false) String contrasenia2) throws ErrorServicio {
 		
-		System.out.println("Entra al controller");
 		try {
 			
 			
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, false);
+			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, false);
 			modelo.put("exito", "registro exitoso");
-			return "redirect:/";
+			return "inicio.html";
 			
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());
-				return "registro-alumno-profesor.html";		
+				return "registro-alumno.html";		
 		}
 
 	}
+	
 	
 	@GetMapping("/perfilalumno/{id}")
 	public String perfilAlumno(ModelMap modelo, @PathVariable("id")String id) {
@@ -93,11 +97,40 @@ public class UsuarioControlador {
 	}
 	
 	@PostMapping("/perfilalumno/{id}")
-	public String perfilAlumno() {
+	public String subirFoto(ModelMap modelo, MultipartFile archivo, @PathVariable("id")String id) throws ErrorServicio {
+		
+		try {
+			usuarioServicio.subirFoto(archivo, id);
+		} catch (ErrorServicio ex) {
+			modelo.put("error", ex.getMessage());
+			
+		}
 		
 		return "perfilAlumno.html";
+		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	@GetMapping("/perfilprofesor/{id}")
 	public String perfilProfesor(ModelMap modelo, @PathVariable("id")String id) {
 	
@@ -111,15 +144,14 @@ public class UsuarioControlador {
 	}
 	
 	
-	@GetMapping("/login")
-	public String login() {
-		return "login.html";
-	}
+
+//	
+//	EN EL METODO DE USUARIOSERVICIO LOADUSERBYUSERNAME ESE PERMISO. VIDEO 7MINUTO 2.18
 	
-	@GetMapping("/logout")
-	public String logout() {
-		return "logout.html";
-	}
+	
+	
+	
+
 	
 	
 	
