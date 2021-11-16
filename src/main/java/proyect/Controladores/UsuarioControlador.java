@@ -41,9 +41,7 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			//@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia
-			//@RequestParam(required = false) String contrasenia2
 			) throws ErrorServicio {
 		
 		try {
@@ -71,9 +69,8 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			//@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia,
-			@RequestParam(required = false) String contrasenia2) throws ErrorServicio {
+			@RequestParam(required = false) String contrasenia
+			) throws ErrorServicio {
 		
 		try {
 			
@@ -107,7 +104,7 @@ public class UsuarioControlador {
 			String nombreUsuario, 
 			String nombreCompleto,
 			String email,
-			String telefono,
+			String telefono,	
 			String localidad,
 			String contrasenia,
 			String descripcion,
