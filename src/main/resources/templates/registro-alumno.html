@@ -79,15 +79,15 @@
     </div>
    
 
-
+    
     <div class="form">
-
+	<span class="alert alert-danger" th:if="${error != null}" th:text="${error}" style="padding:0.5em"></span>
 
         <form class="needs-validation" novalidate th:action="@{/usuario/registro/alumno}" method ="POST" id="formulario">
             <div class="mb-3">
                 <label for="firstName" class="form-label">Nombre y Apellido</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Jose Villenas" value="" required name="nombreCompleto">
-                <div class="invalid-feedback">
+                <input type="text" class="form-control" id="firstName" placeholder="Jose Villenas" value="" required name="nombreCompleto" th:value="${nombreCompleto}">
+                <div class="invalid-feedback">s
                     Ingrese un nombre válido.
                 </div>
 
@@ -95,7 +95,7 @@
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Josevillenas@ejemplo.com" name="email">
+                <input type="email" class="form-control" id="email" placeholder="Josevillenas@ejemplo.com" name="email" th:value="${email}">
                 <div class="invalid-feedback">
                     Imgrese un email válido.
                 </div>
@@ -103,7 +103,7 @@
             
             <div class="mb-3">
                 <label for="firstName" class="form-label">Nombre de usuario</label>
-                <input type="text" class="form-control" id="usuario" placeholder="JoseV96" value="" name="nombreUsuario" required>
+                <input type="text" class="form-control" id="usuario" placeholder="JoseV96" value="" name="nombreUsuario" required th:value="${nombreUsuario}">
                 <div class="invalid-feedback">
                     Ingrese un nombre válido.
                 </div>
@@ -121,7 +121,7 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Teléfono</label>
-                <input type="tel" class="form-control" id="tel" placeholder="341358975" name="telefono">
+                <input type="tel" class="form-control" id="tel" placeholder="341358975" name="telefono" th:value="${telefono}">
                 <div class="invalid-feedback">
                     Ingrese un número de teléfono válido.
                 </div>

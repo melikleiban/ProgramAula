@@ -41,9 +41,12 @@
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
               
-              
-                  <li><a class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></li>
-                  <li><a class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></li>
+                <li>
+                  <span  th:if="${nombreCompleto == false}"><a  class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></span>
+                  <span  th:unless="${nombreCompleto == false}"><a  class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></span> 
+                </li>              
+                
+                
               
                
               <li><a class="dropdown-item" href="#" id="opciones">Configuraciones</a></li>
@@ -52,7 +55,7 @@
                 
                 <li><hr class="dropdown-divider" id="opciones"></li>
                 
-                <li><a class="dropdown-item" href="index.html" id="opciones">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="/" id="opciones">Cerrar sesión</a></li>
               </ul>
             </div>
   

@@ -39,18 +39,22 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			@RequestParam(required = false) String descripcion,
+		//	@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
 		
 		try {
 			
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, true);
-			modelo.put("exito", "registro exitoso");
-			return "redirect:/";
+			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,true);
+			modelo.put("exito", "Registro exitoso!!!");
+			return "redirect:/login.html";
 			
 		}catch(Exception e){
-			modelo.put("error", e.getMessage());			
-				return "registro-alumno-profesor.html";		
+			modelo.put("error", "Error al Registrarse!!!");	
+			modelo.put("nombreUsuario", nombreUsuario);
+			modelo.put("nombreCompleto", nombreCompleto);
+			modelo.put("email", email);
+			modelo.put("telefono", telefono);
+				return "registro-profesor.html";		
 		}
 
 	}
@@ -68,8 +72,8 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			@RequestParam(required = false) String contrasenia,
-			@RequestParam(required = false) String descripcion) throws ErrorServicio {
+			@RequestParam(required = false) String contrasenia
+			) throws ErrorServicio {
 		
 		System.out.println("Entra al controller");
 		System.out.println(nombreUsuario);
@@ -77,7 +81,7 @@ public class UsuarioControlador {
 		System.out.println(email);
 		System.out.println(telefono);
 		System.out.println(localidad);
-		System.out.println(descripcion);
+		//System.out.println(descripcion);
 		System.out.println(contrasenia);
 		System.out.println();
 		
@@ -88,17 +92,25 @@ public class UsuarioControlador {
 		try {
 			
 			
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,descripcion, false);
-			modelo.put("exito", "registro exitoso");
-			
-			return "inicio.html";
+			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, false);
+			modelo.put("exito", "Registro exitoso!!!");
+			modelo.addAttribute(nombreCompleto, nombreCompleto);
+			return "login.html";
 			
 		}catch(Exception e){
-			modelo.put("error", e.getMessage());
-				return "inicio.html";		
+			modelo.put("error", "Error al Registrarse!!!");
+			modelo.put("nombreUsuario", nombreUsuario);
+			modelo.put("nombreCompleto", nombreCompleto);
+			modelo.put("email", email);
+			modelo.put("telefono", telefono);
+				return "registro-alumno.html";			
 		}
 
 	}
+	
+
+	
+	
 	
 	@GetMapping("/perfilalumno/{id}")
 	public String perfilAlumno(ModelMap modelo, @PathVariable("id")String id) {
@@ -134,6 +146,7 @@ public class UsuarioControlador {
 	public String logearse(@RequestParam String usuario, @RequestParam String contrasenia) {
 		System.out.println("Usuario: " + usuario);
 		System.out.println("Clave: " + contrasenia);
+		
 		return "index.html";
 	}
 	
