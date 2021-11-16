@@ -96,11 +96,29 @@ public class UsuarioControlador {
 		return "perfilAlumno.html";
 	}
 	
-	@PostMapping("/perfilalumno/{id}")
-	public String subirFoto(ModelMap modelo, MultipartFile archivo, @PathVariable("id")String id) throws ErrorServicio {
+	@GetMapping("/perfilalumno/editar/{id}")
+	public String perfilAlumnoEditar(ModelMap modelo, @PathVariable("id")String id) {
+		
+		return "perfilAlumnoEditar.html";
+	}
+	
+	@PostMapping("/perfilalumno/editar/{id}")
+	public String subirFoto(ModelMap modelo,
+			String nombreUsuario, 
+			String nombreCompleto,
+			String email,
+			String telefono,
+			String localidad,
+			String contrasenia,
+			String descripcion,
+			MultipartFile archivo, 
+			@PathVariable("id")String id) throws ErrorServicio {
 		
 		try {
-			usuarioServicio.subirFoto(archivo, id);
+			
+			usuarioServicio.modificar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, descripcion, archivo);
+		
+			
 		} catch (ErrorServicio ex) {
 			modelo.put("error", ex.getMessage());
 			

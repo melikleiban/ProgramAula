@@ -2,9 +2,6 @@ package proyect.Servicios;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -47,8 +44,6 @@ public class UsuarioServicio implements UserDetailsService {
 			String telefono,
 			String localidad,
 			String contrasenia,
-			//String contrasenia2,
-			//String descripcion,
 			Boolean rol) throws ErrorServicio {	
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
@@ -59,8 +54,8 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
-		//usuario.setDescripcion(descripcion);
 		usuario.setAltaBaja(true);
+
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
@@ -80,16 +75,8 @@ public class UsuarioServicio implements UserDetailsService {
 			e.printStackTrace();;
 		}
 		
-
-		
-		
-
 	}
 
-
-	
-	
-	
 	@Transactional
 	public void modificar(String nombreUsuario, 
 			String nombreCompleto,
@@ -97,11 +84,10 @@ public class UsuarioServicio implements UserDetailsService {
 			String telefono,
 			String localidad,
 			String contrasenia,
-			String contrasenia2,
 			String descripcion,
-			Boolean esProfesor) throws ErrorServicio {	
+			MultipartFile foto) throws ErrorServicio {	
 
-		//validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, contrasenia2);
+		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 
 		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
 		usuario.setNombreCompleto(nombreCompleto);
@@ -110,6 +96,11 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setLocalidad(localidad);
 		usuario.setDescripcion(descripcion);
 
+		String idFoto = usuario.getFoto().getId();
+		Foto nuevaFoto = fotoServicio.actualizarFoto(idFoto, foto);
+		usuario.setFoto(nuevaFoto);
+		
+		
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
@@ -121,19 +112,6 @@ public class UsuarioServicio implements UserDetailsService {
 		
 	}
 
-	@Transactional
-	public void subirFoto(MultipartFile foto, String id) throws ErrorServicio {
-		
-		Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-		
-		if(respuesta!=null) {
-		
-			Usuario usuario = respuesta.get();
-			Foto nuevaFoto = fotoServicio.guardarFoto(foto);
-			usuario.setFoto(nuevaFoto);
-		
-			usuarioRepositorio.save(usuario);}
-	}
 	
 	public void desactivarCuenta(String nombreUsuario) {
 		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
@@ -148,7 +126,6 @@ public class UsuarioServicio implements UserDetailsService {
 			String telefono,
 			String localidad,
 			String contrasenia
-			//String contrasenia2
 			)throws ErrorServicio{
 
 		if(nombreUsuario==null || nombreUsuario.isEmpty()) {
@@ -189,9 +166,9 @@ public class UsuarioServicio implements UserDetailsService {
 
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
 		
-		Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
 		
 		if (usuario == null) {
 			
@@ -204,6 +181,10 @@ public class UsuarioServicio implements UserDetailsService {
 			GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+ usuario.getRol());
 						
 			permisos.add(p1);
+			
+			GrantedAuthority p2 = new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
+			
+			permisos.add(p2);
 			
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 			
