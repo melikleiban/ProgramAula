@@ -31,20 +31,11 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.headers().frameOptions().sameOrigin().and()
-		.authorizeRequests()
-		.antMatchers("/css/*","/js/*","/img/*")
-		.permitAll()
-		.and().formLogin()
-		.loginPage("/login")
-		.loginProcessingUrl("/logincheck")
-		.usernameParameter("username")
-		.passwordParameter("password")
-		.defaultSuccessUrl("/")
-		.permitAll()
-		.and().logout()
-		.logoutUrl("/logout")
-		.logoutSuccessUrl("/")
-		.permitAll();
+		http.authorizeRequests().antMatchers("/css/*", "/js/*", "/img/*", "/*").permitAll().and().formLogin()
+		///ver video 6 minuto 3.15. ese logincheck tiene q estar en el html
+				.loginPage("/login").loginProcessingUrl("/logincheck").usernameParameter("email")
+				.passwordParameter("clave").defaultSuccessUrl("/").failureUrl("/login?error=error")
+				.permitAll().and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll().and().csrf()
+				.disable();
 	}
 }

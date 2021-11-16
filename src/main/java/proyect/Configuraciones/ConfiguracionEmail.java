@@ -6,8 +6,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ConfiguracionEmail {
+	
 
 	@Bean
     public JavaMailSender getJavaMailSender() 
@@ -17,7 +20,7 @@ public class ConfiguracionEmail {
         mailSender.setPort(25);
           
         mailSender.setUsername("programaula2021@gmail.com");
-        mailSender.setPassword("ProgramAula2021");
+        mailSender.setPassword("yhrqdkqmzqxpgwbz");
           
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
@@ -28,13 +31,15 @@ public class ConfiguracionEmail {
         return mailSender;
     }
      
-    @Bean
-    public SimpleMailMessage emailTemplate()
+    public void emailSender(String cuerpo, String titulo, String mail)
     {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("somebody@gmail.com");
-        message.setFrom("admin@gmail.com");
-        message.setText("FATAL - Application crash. Save your job !!");
-        return message;
+        message.setTo(mail);
+        message.setFrom("noreply@programaula.com");
+        message.setSubject(titulo);
+        message.setText(cuerpo);
+        
+        getJavaMailSender().send(message);
     }
+    
 }
