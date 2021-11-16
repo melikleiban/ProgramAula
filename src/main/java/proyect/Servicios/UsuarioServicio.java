@@ -176,11 +176,11 @@ public class UsuarioServicio implements UserDetailsService {
 		
 		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
 		
-		if (usuario == null) {
-			
-			return null;
-			
-		}
+//		if (usuario == null) {
+//			
+//			return null;
+//			
+//		}
 			
 			List<GrantedAuthority> permisos = new ArrayList<>();
 
@@ -198,7 +198,7 @@ public class UsuarioServicio implements UserDetailsService {
 			
 			session.setAttribute("usuariosession", usuario);
 			
-			return new User(usuario.getEmail(), usuario.getContrasenia(), permisos);
+			return new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
 				
 
 			
