@@ -257,7 +257,11 @@ p {
 	padding-left: 2rem;
 }
 
-#edit1, #edit2, #edit3 {
+#edit0{
+	
+}
+
+#edit1, #edit2, #edit3, #edit4 {
 	padding-left: 0.05rem;
 	padding-right: 2rem;
 }
