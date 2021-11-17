@@ -1,6 +1,7 @@
 package proyect.Servicios;
 
 
+import java.util.List;
 //import java.util.List;
 import java.util.Optional;
 
@@ -134,6 +135,11 @@ public class CursoServicio {
 			throw new ErrorServicio("Se ha producido un error en la solicitud.");
 		}
 	}
+	
+	public List<Curso> listarCurso(){
+		List<Curso> cursos=cursoRepositorio.findAll();
+		return cursos;
+	}
 
 
 //	public List<Curso> FiltrarCursos(String PalabraClave, String lenguajes) {
@@ -151,7 +157,6 @@ public class CursoServicio {
 //			listaCurso = cursoRepositorio.existsByAmbas(lenguajes, PalabraClave);			
 //		}
 //		return listaCurso;
-//
 //	}
 
 
