@@ -56,13 +56,19 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setLocalidad(localidad);
 		usuario.setAltaBaja(true);
 
+		
+		System.out.println("Holaaaaa");
+		
+
+
+
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
 		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
-		} else {
+		} else { 
 			usuario.setRol(Rol.ALUMNO);
 		}
 
