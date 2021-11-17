@@ -18,7 +18,7 @@ public class CursoControlador {
 
 		@GetMapping("/busqueda")
 		public String busqueda(ModelMap modelo) {
-			modelo.put("cursos", cursoSer.listarCurso());
+			modelo.addAttribute("cursos", cursoSer.listarCurso());
 			return "busqueda.html";
 		}
 		
