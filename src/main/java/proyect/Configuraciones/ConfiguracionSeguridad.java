@@ -32,9 +32,9 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/css/*", "/js/*", "/img/*", "/*").permitAll().and().formLogin()
-				.loginPage("/login").loginProcessingUrl("/logincheck").usernameParameter("email")
-				.passwordParameter("clave").defaultSuccessUrl("/loginsuccess").failureUrl("/login?error=error")
+				.loginPage("/login").loginProcessingUrl("/logincheck").usernameParameter("nombreUsuario")
+				.passwordParameter("clave").defaultSuccessUrl("/").failureUrl("/login?error=error")
 				.permitAll().and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll().and().csrf()
 				.disable();
 	}
-}
+}    

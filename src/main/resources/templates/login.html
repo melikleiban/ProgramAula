@@ -143,7 +143,7 @@
   <span class="alert alert-success" th:if="${exito != null}" th:text="${exito}"></span>
   <div class="container">
 	<main class="form-signin" style="padding-top: 7%">
-  <form id="formulario" action="usuario/logearse" method="post">
+  <form id="formulario" action="/logincheck" method="post">
     <!--<img class="mb-4 rounded-3" src="../img/imgLogin.png" alt="" weight="90px" height="90px">-->
     <!--<img class="mb-4 rounded-3" src="https://lottiefiles.com/79638-avatar-icon" alt="" weight="90px" height="90px">-->
     <iframe src="https://embed.lottiefiles.com/animation/79638"></iframe>
@@ -157,7 +157,7 @@
     <div class="form-floating">
     
     
-      <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
+      <input type="text" class="form-control" id="usuario" name="nombreUsuario" placeholder="Usuario">
     
     
       <label for="floatingInput"> Usuario </label>
@@ -165,7 +165,7 @@
     <div class="form-floating">
 
 
-      <input type="password" class="form-control" id="clave" name="contrasenia" placeholder="Password">
+      <input type="password" class="form-control" id="clave" name="clave" placeholder="Password">
 
 
       <label for="floatingPassword">Password</label>

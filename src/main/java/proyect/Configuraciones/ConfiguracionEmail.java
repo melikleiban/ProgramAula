@@ -14,7 +14,7 @@ public class ConfiguracionEmail {
     {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(25);
+        mailSender.setPort(587);
           
         mailSender.setUsername("programaula2021@gmail.com");
         mailSender.setPassword("ProgramAula2021");

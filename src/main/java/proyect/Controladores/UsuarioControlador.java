@@ -1,5 +1,7 @@
 package proyect.Controladores;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -138,17 +140,22 @@ public class UsuarioControlador {
 	
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(HttpSession session) {
+		session.setAttribute("usuario", "usuario");
 		return "login.html";
 	}
-	
-	@PostMapping("/logearse")
-	public String logearse(@RequestParam String usuario, @RequestParam String contrasenia) {
-		System.out.println("Usuario: " + usuario);
-		System.out.println("Clave: " + contrasenia);
-		
-		return "index.html";
+	@PostMapping("/login")
+	public String loginn(HttpSession session) {
+		session.setAttribute("usuario", "usuario");
+		return "login.html";
 	}
+//	@PostMapping("/logearse")
+//	public String logearse(@RequestParam String usuario, @RequestParam String contrasenia) {
+//		System.out.println("Usuario: " + usuario);
+//		System.out.println("Clave: " + contrasenia);
+//		
+//		return "index.html";
+//	}
 	
 	
 	
