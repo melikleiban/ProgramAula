@@ -48,7 +48,7 @@ public class UsuarioControlador {
 			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
 			modelo.put("exito", "registro exitoso");
-			return "inicio.html";
+			return "index.html";
 			
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());			
@@ -77,7 +77,7 @@ public class UsuarioControlador {
 			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, false);
 			modelo.put("exito", "registro exitoso");
-			return "inicio.html";
+			return "index.html";
 			
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());

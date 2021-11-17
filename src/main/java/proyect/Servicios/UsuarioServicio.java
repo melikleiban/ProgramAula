@@ -170,11 +170,11 @@ public class UsuarioServicio implements UserDetailsService {
 		
 		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
 		
-//		if (usuario == null) {
-//			
-//			return null;
-//			
-//		}
+		if (usuario == null) {
+			
+			return null;
+			
+		}
 			
 			List<GrantedAuthority> permisos = new ArrayList<>();
 
