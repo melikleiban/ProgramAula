@@ -12,4 +12,10 @@ public class CursoControlador {
 	public String busqueda() {
 		return "busqueda.html";
 	}
+	
+	
+	
+	
+	
+	
 }

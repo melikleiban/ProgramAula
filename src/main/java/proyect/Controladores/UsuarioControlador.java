@@ -99,7 +99,7 @@ public class UsuarioControlador {
 		return "perfilAlumnoEditar.html";
 	}
 	
-	@PostMapping("/perfilalumno/editar/{id}")
+	@PostMapping("/perfilalumno/editar")
 	public String subirFoto(ModelMap modelo,
 			String nombreUsuario, 
 			String nombreCompleto,
@@ -110,6 +110,7 @@ public class UsuarioControlador {
 			String descripcion,
 			MultipartFile archivo, 
 			@PathVariable("id")String id) throws ErrorServicio {
+		
 		
 		try {
 			
