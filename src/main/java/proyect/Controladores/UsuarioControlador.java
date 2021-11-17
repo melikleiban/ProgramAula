@@ -8,13 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-<<<<<<< HEAD
 
 import proyect.Entidades.Usuario;
-=======
 import org.springframework.web.multipart.MultipartFile;
 
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
 import proyect.Servicios.UsuarioServicio;
@@ -45,55 +42,19 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String nombreCompleto,
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
-			@RequestParam(required = false) String localidad,
-<<<<<<< HEAD
-
-			//@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
-					
-		try {			
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
-			modelo.put("exito", "registro exitoso");			
-			return "redirect:/";
-			
-		}catch(Exception e){
-			modelo.put("error", "error");
-			System.out.println("Entra al catch");
-				return "registro-alumno-profesor.html";		
-
-		//	@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
-		
-		try {
-			
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,true);
-			modelo.put("exito", "Registro exitoso!!!");
-			return "redirect:/login.html";
-			
-		}catch(Exception e){
-			modelo.put("error", "Error al Registrarse!!!");	
-			modelo.put("nombreUsuario", nombreUsuario);
-			modelo.put("nombreCompleto", nombreCompleto);
-			modelo.put("email", email);
-			modelo.put("telefono", telefono);
-				return "registro-profesor.html";		
-
-=======
-			//@RequestParam(required = false) String descripcion,
+			@RequestParam(required = false) String localidad,			
 			@RequestParam(required = false) String contrasenia
-			//@RequestParam(required = false) String contrasenia2
 			) throws ErrorServicio {
 		
 		try {
 			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
 			modelo.put("exito", "registro exitoso");
-			return "inicio.html";
+			return "index.html";
 			
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());			
 				return "registro-profesor.html";		
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 		}
 
 	}
@@ -110,48 +71,13 @@ public class UsuarioControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-<<<<<<< HEAD
-
-			//@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio {
-				
-		try {					
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, false);
-			modelo.put("exito", "registro exitoso");
-			return "redirect:/";
-			
-		}catch(Exception e){
-			modelo.put("error", "error");
-				return "registro-alumno-profesor.html";		
-
-			@RequestParam(required = false) String contrasenia
-			) throws ErrorServicio {
 		
-		System.out.println("Entra al controller");
-		System.out.println(nombreUsuario);
-		System.out.println(nombreCompleto);
-		System.out.println(email);
-		System.out.println(telefono);
-		System.out.println(localidad);
-		//System.out.println(descripcion);
-		System.out.println(contrasenia);
-		System.out.println();
-		
-		
-	
-		
-		
-=======
-			//@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String contrasenia,
-			@RequestParam(required = false) String contrasenia2) throws ErrorServicio {
-		
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 		try {
 			
 			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, false);
-<<<<<<< HEAD
+
 			modelo.put("exito", "Registro exitoso!!!");
 			modelo.addAttribute(nombreCompleto, nombreCompleto);
 			return "login.html";
@@ -163,31 +89,16 @@ public class UsuarioControlador {
 			modelo.put("email", email);
 			modelo.put("telefono", telefono);
 				return "registro-alumno.html";			
-
-=======
-			modelo.put("exito", "registro exitoso");
-			return "inicio.html";
-			
-		}catch(Exception e){
-			modelo.put("error", e.getMessage());
-				return "registro-alumno.html";		
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 		}
-
 	}
 	
-<<<<<<< HEAD
-
-	
-	
-=======
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
-	
-	@GetMapping("/perfilalumno/{id}")
-	public String perfilAlumno(ModelMap modelo, @PathVariable("id")String id) {
+	@GetMapping("/perfilalumno")
+	public String perfilAlumno() {
 		
 		return "perfilAlumno.html";
 	}
+	
+
 	
 	@GetMapping("/perfilalumno/editar/{id}")
 	public String perfilAlumnoEditar(ModelMap modelo, @PathVariable("id")String id) {
@@ -222,24 +133,7 @@ public class UsuarioControlador {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 
 	@GetMapping("/perfilprofesor/{id}")
@@ -253,27 +147,6 @@ public class UsuarioControlador {
 	
 		return "perfilProfesor.html";
 	}
-	
-	
-
-//	
-//	EN EL METODO DE USUARIOSERVICIO LOADUSERBYUSERNAME ESE PERMISO. VIDEO 7MINUTO 2.18
-	
-<<<<<<< HEAD
-	@PostMapping("/logearse")
-	public String logearse(@RequestParam String usuario, @RequestParam String contrasenia) {
-		System.out.println("Usuario: " + usuario);
-		System.out.println("Clave: " + contrasenia);
-		
-		return "index.html";
-	}
-=======
-	
-	
-	
-
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
-	
 	
 	
 	

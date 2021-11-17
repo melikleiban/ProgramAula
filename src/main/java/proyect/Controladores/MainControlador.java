@@ -18,11 +18,6 @@ public class MainControlador {
 	
 
 	@GetMapping("/login")
-<<<<<<< HEAD
-	public String login(@RequestParam(required = false) String error, ModelMap modelo) {		
-		if(error!=null) {
-			modelo.put("error", "Contrasenia incorrecta");
-=======
 	public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap modelo) {
 
 		//	HAY QUE CONECTARLO CON EL HTML.  VER EN VIDEO 6 MINUTO 8	
@@ -34,7 +29,6 @@ public class MainControlador {
 	//	HAY QUE CONECTARLO CON EL HTML.  VER EN VIDEO 6 MINUTO 14.33
 	if(error != null) {
 		modelo.put("logout", "Ha salido correctamente");
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 		}
 	return "login.html";
 	}

@@ -44,14 +44,8 @@ public class UsuarioServicio implements UserDetailsService {
 			String telefono,
 			String localidad,
 			String contrasenia,
-<<<<<<< HEAD
-			//String descripcion,
-			Boolean rol) throws ErrorServicio {			
-			
-=======
 			Boolean rol) throws ErrorServicio {	
 
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 		
 		
@@ -61,10 +55,6 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
-<<<<<<< HEAD
-		//usuario.setDescripcion(descripcion);
-=======
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 		usuario.setAltaBaja(true);
 		
 
@@ -83,13 +73,9 @@ public class UsuarioServicio implements UserDetailsService {
 		try {
 			
 			usuarioRepositorio.save(usuario);
-<<<<<<< HEAD
-			System.out.println("Guarda el usuario");
-=======
 			
-			configuracionEmail.emailSender(registroExitosoMensaje(email,contrasenia,nombreCompleto), "Registro ProgramAula", email);
+			//configuracionEmail.emailSender(registroExitosoMensaje(email,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 			
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 		} catch( Exception e ) {
 			e.printStackTrace();
 			System.out.println("Entra al catch en servicio");
@@ -97,11 +83,6 @@ public class UsuarioServicio implements UserDetailsService {
 		
 	}
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> ca690033ad93b391e60849d57ade3642610b122c
 	@Transactional
 	public void modificar(String nombreUsuario, 
 			String nombreCompleto,
