@@ -25,4 +25,8 @@ public interface CursoRepositorio extends JpaRepository<Curso, String>{
 
 	@Query("SELECT a FROM Curso a WHERE a.lenguajes= :b AND a.descripcion LIKE %:clave%")
 	public List<Curso> existsByAmbas (@Param("b")String lenguajes, @Param("clave")String clave);
+	
+	@Query("SELECT profesor_id= :p FROM Curso")
+	public List<Curso> existsByProfesor (@Param("p")String profesorId);
+
 }
