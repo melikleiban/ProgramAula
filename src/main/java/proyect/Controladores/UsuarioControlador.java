@@ -62,10 +62,10 @@ public class UsuarioControlador {
 		
 	}
 
-	@GetMapping("/perfilprofesor")
+	@GetMapping("/perfildocente")
 	public String perfilProfesor() {
 	
-		return "perfilProfesor.html";
+		return "perfilDocente.html";
 	}
 	
 	@PostMapping("/perfilprofesor/editar")
@@ -88,7 +88,7 @@ public class UsuarioControlador {
 				modelo.put("error", ex.getMessage());
 			}
 	
-		return "perfilProfesor.html";
+		return "perfilDocente.html";
 	}
 
 //	
