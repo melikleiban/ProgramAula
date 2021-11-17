@@ -26,6 +26,7 @@ public interface CursoRepositorio extends JpaRepository<Curso, String>{
 	@Query("SELECT a FROM Curso a WHERE a.lenguajes= :b AND a.descripcion LIKE %:clave%")
 	public List<Curso> existsByAmbas (@Param("b")String lenguajes, @Param("clave")String clave);
 	
+<<<<<<< HEAD
 //	@Query("SELECT c FROM Curso c INNER JOIN Usuario u ON c.profesor_id = u.id WHERE c.profesor_id = :p")
 //	public List<Curso> existsByProfesor (@Param("p")String profesorId);
 
@@ -35,4 +36,9 @@ public interface CursoRepositorio extends JpaRepository<Curso, String>{
 	
 //	SELECT Nombre, Nombre_curso FROM Profesores INNER JOIN Cursos ON 
 //	Profesores.Id = Cursos.Id_profesor;
+=======
+	@Query("SELECT profesor_id= :p FROM Curso")
+	public List<Curso> existsByProfesor (@Param("p")String profesorId);
+
+>>>>>>> 7ba6b28c18883c04c07a7effe827718941d375ca
 }
