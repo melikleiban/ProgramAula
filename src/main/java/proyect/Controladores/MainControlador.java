@@ -61,14 +61,12 @@ public class MainControlador {
 	public String terminos() {
 		return "terminos.html";
 	}
-<<<<<<< HEAD
-}
 
 
 
-	
-=======
->>>>>>> origin/Pamela
+
+
+
 
 
 	@GetMapping("usuario/registro")
@@ -128,5 +126,6 @@ public class MainControlador {
 				return "registro-alumno.html";		
 		}
 	}
+}
 
 
