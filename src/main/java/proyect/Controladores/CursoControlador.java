@@ -1,15 +1,28 @@
 package proyect.Controladores;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/")
-public class CursoControlador {
+import proyect.Servicios.CursoServicio;
 
-	@GetMapping("/busqueda")
-	public String busqueda() {
-		return "busqueda.html";
-	}
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+@RequestMapping
+public class CursoControlador {
+	
+	@Autowired
+	private CursoServicio cursoSer; 
+
+
+		@GetMapping("/busqueda")
+		public String busqueda(ModelMap modelo) {
+			modelo.addAttribute("cursos", cursoSer.listarCurso());
+			return "busqueda.html";
+		}
+		
+		
+		
 }

@@ -58,6 +58,12 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setAltaBaja(true);
 		
 
+		
+		System.out.println("Holaaaaa");
+		
+
+
+
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
@@ -65,7 +71,7 @@ public class UsuarioServicio implements UserDetailsService {
 		
 		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
-		} else {
+		} else { 
 			usuario.setRol(Rol.ALUMNO);
 		}
 		
@@ -197,7 +203,7 @@ public class UsuarioServicio implements UserDetailsService {
 			
 			session.setAttribute("usuariosession", usuario);
 			
-			return new User(usuario.getEmail(), usuario.getContrasenia(), permisos);
+			return new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
 				
 
 			
