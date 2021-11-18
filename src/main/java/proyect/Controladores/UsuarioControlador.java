@@ -118,35 +118,23 @@ public class UsuarioControlador {
 			MultipartFile archivo, 
 			@PathVariable("id")String id) throws ErrorServicio {
 		
-		try {
-			
-			usuarioServicio.modificar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, descripcion, archivo);
-		
+		try {			
+			usuarioServicio.modificar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, descripcion, archivo);		
 			
 		} catch (ErrorServicio ex) {
 			modelo.put("error", ex.getMessage());
 			
-		}
-		
-		return "perfilAlumno.html";
-		
+		}		
+		return "perfilAlumno.html";		
 	}
-	
 	
 
-	
 
-	@GetMapping("/perfilprofesor/{id}")
-	public String perfilProfesor(ModelMap modelo, @PathVariable("id")String id) {
-	
-		return "perfilProfesor.html";
+	@GetMapping("/perfilDocente")
+	public String perfilProfesor() {	
+		return "perfilDocente.html";
 	}
 	
-	@PostMapping("/perfilprofesor/{id}")
-	public String perfilProfesor() {
-	
-		return "perfilProfesor.html";
-	}
 	
 	
 	

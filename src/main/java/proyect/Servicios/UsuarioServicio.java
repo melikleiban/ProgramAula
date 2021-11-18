@@ -100,7 +100,6 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
-//		usuario.setDescripcion(descripcion);
 
 		String idFoto = usuario.getFoto().getId();
 		Foto nuevaFoto = fotoServicio.actualizarFoto(idFoto, foto);
