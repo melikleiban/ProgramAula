@@ -3,6 +3,7 @@ package proyect.Servicios;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import proyect.Entidades.Foto;
 import proyect.Entidades.Usuario;
@@ -73,9 +76,7 @@ public class UsuarioServicio implements UserDetailsService {
 	}
 
 
-	public Usuario verificarLog(String nombreUsuario, String contrasenia) {
-		
-	}
+	
 	
 	
 	@Transactional
@@ -183,7 +184,11 @@ public class UsuarioServicio implements UserDetailsService {
 			permisos.add(p2);
 
 			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
-
+			
+			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			HttpSession session = attr.getRequest().getSession(true);
+			session.setAttribute("usuariosession", usuario);
+			
 			return user;
 		}
 		if (usuario != null && usuario.getRol() == Rol.ALUMNO) {
@@ -195,7 +200,11 @@ public class UsuarioServicio implements UserDetailsService {
 			permisos.add(p2);
 
 			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
-
+			
+			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			HttpSession session = attr.getRequest().getSession(true);
+			session.setAttribute("usuariosession", usuario);
+			
 			return user;
 
 		} else {

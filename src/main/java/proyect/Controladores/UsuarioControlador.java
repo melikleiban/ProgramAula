@@ -1,6 +1,6 @@
 package proyect.Controladores;
 
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +48,7 @@ public class UsuarioControlador {
 			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,true);
 			modelo.put("exito", "Registro exitoso!!!");
-			return "redirect:/login.html";
+			return "login.html";
 			
 		}catch(Exception e){
 			modelo.put("error", "Error al Registrarse!!!");	
@@ -140,15 +140,16 @@ public class UsuarioControlador {
 	
 	
 	@GetMapping("/login")
-	public String login(HttpSession session) {
-		session.setAttribute("usuario", "usuario");
+	public String login(@RequestParam(required = false) String error,@RequestParam(required = false) String logout, ModelMap modelo) {
+		
+		modelo.put("error", "Nombre de Usuario o clave Incorrectos");
+		
+		
+		modelo.put("logout", "Nombre de Usuario o clave Incorrectos");
+		
 		return "login.html";
 	}
-	@PostMapping("/login")
-	public String loginn(HttpSession session) {
-		session.setAttribute("usuario", "usuario");
-		return "login.html";
-	}
+	
 //	@PostMapping("/logearse")
 //	public String logearse(@RequestParam String usuario, @RequestParam String contrasenia) {
 //		System.out.println("Usuario: " + usuario);
