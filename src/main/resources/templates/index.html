@@ -42,7 +42,7 @@
                   <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilDocente}" id="opciones">Mi perfil</a></li> 
                   <li><hr class="dropdown-divider" id="opciones"></li> 
                   <!--  Habria que poner los servicios para que se cierre la sesion -->               
-                  <li><a class="dropdown-item" href="index.html" id="opciones">Cerrar sesión</a></li>
+                  <li><a class="dropdown-item" href="/logout" id="opciones">Cerrar sesión</a></li>
               </ul>
              </div>          
           </div>
