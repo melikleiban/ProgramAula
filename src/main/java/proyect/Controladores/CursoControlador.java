@@ -16,18 +16,7 @@ public class CursoControlador {
 	@Autowired
 	private CursoServicio cursoSer; 
 
-<<<<<<< HEAD
-	@GetMapping("/busqueda")
-	public String busqueda() {
-		return "busqueda.html";
-	}
-	
-	
-	
-	
-	
-	
-=======
+
 		@GetMapping("/busqueda")
 		public String busqueda(ModelMap modelo) {
 			modelo.addAttribute("cursos", cursoSer.listarCurso());
@@ -36,7 +25,6 @@ public class CursoControlador {
 		
 		
 		
->>>>>>> 7ba6b28c18883c04c07a7effe827718941d375ca
 }
 
 	
