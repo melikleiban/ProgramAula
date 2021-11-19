@@ -27,14 +27,6 @@ public class MainControlador {
 	
 
 	@GetMapping("/login")
-
-	public String login(@RequestParam(required = false) String error, ModelMap modelo) {
-		if(error!=null) {
-			modelo.put("error", "Contrasenia incorrecta");
-		}
-		return "login.html";
-	}
-
 	public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap modelo) {
 
 		//	HAY QUE CONECTARLO CON EL HTML.  VER EN VIDEO 6 MINUTO 8	
@@ -43,7 +35,7 @@ public class MainControlador {
 		}
 	
 	//	HAY QUE CONECTARLO CON EL HTML.  VER EN VIDEO 6 MINUTO 14.33
-	if(error != null) {
+	if(logout != null) {
 		modelo.put("logout", "Ha salido correctamente");
 		}
 	return "login.html";
@@ -84,7 +76,7 @@ public class MainControlador {
 			@RequestParam(required = false) String localidad,
 			@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia) throws ErrorServicio{
-			//@RequestParam(required = false) String contrasenia2
+
 		try {	
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
 			modelo.put("exito", "registro exitoso");

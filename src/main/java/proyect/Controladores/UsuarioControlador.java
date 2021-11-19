@@ -91,6 +91,12 @@ public class UsuarioControlador {
 		}
 		return "perfilAlumno.html";
 	}
+	
+	@GetMapping("/perfilprofesor")
+	public String perfilProfesor() {
+		
+		return "perfilProfesor.html";
+	}
 
 	@GetMapping("/perfilprofesor/editar")
 	public String perfilProfesorEditar(@RequestParam String id, ModelMap modelo) {

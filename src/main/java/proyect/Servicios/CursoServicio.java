@@ -4,7 +4,6 @@ package proyect.Servicios;
 import java.util.List;
 //import java.util.List;
 import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +47,11 @@ public class CursoServicio {
 				curso.setNivelDificultad(nivelDificultad);
 				curso.setDescripcion(descripcion);
 				curso.setLenguajes(lenguajes);
-
+				
+				usuario.get().getListaCursos().add(curso);
+				
+				usuarioRepositorio.save(usuario.get());
+				
 				cursoRepositorio.save(curso);
 			}
 		} catch (Exception e) {
@@ -56,50 +59,50 @@ public class CursoServicio {
 		}
 	}
 
+	public List<Curso> cursosProfesor(String idProfesor) {
+	
+		Optional<Usuario> respuesta = usuarioRepositorio.findById(idProfesor);
+		if(respuesta.isPresent()) {
+			Usuario usuario = respuesta.get();
+			List<Curso> listaCursos = usuario.getListaCursos();
+		
+			return listaCursos;
+		}
+		return null;
+	}
+		
+	
 	@Transactional
 	public void bajaCurso(String idCurso) throws ErrorServicio {
 		Optional<Curso> respuesta = cursoRepositorio.findById(idCurso);
 		if (respuesta.isPresent()) {
 			Curso curso = respuesta.get();
 			curso.setAltaBaja(false);
-
+			
 			cursoRepositorio.save(curso);
 		} else {
 			throw new ErrorServicio("No existe el curso buscado.");
 		}
 	}
 
-	public void validar(String titulo, Double precioPorHora, String nivelDificultad, String descripcion)
-			throws ErrorServicio {
+	
 
-		if (titulo == null || titulo.isEmpty()) {
-			throw new ErrorServicio("Debe ingresar un título.");
-		}
-		if (precioPorHora == null) {
-			throw new ErrorServicio("Debe ingresar un precio por hora.");
-		}
-
-		if (nivelDificultad == null || nivelDificultad.isEmpty()) {
-			throw new ErrorServicio("Debe ingresar un nivel de dificultad.");
-		}
-
-		if (descripcion == null || descripcion.isEmpty()) {
-			throw new ErrorServicio("Debe ingresar una descripción.");
-		}
-
-	}
-
-	public void alertaProfesor(String nombreUsuario, String idCurso) {
-		Optional<Usuario> result = Optional.ofNullable(usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario));
+	public void alertaProfesor(String idAlumno, String idCurso) {
+		Optional<Usuario> result = usuarioRepositorio.findById(idAlumno);
+		
 		if (result.isPresent() && result.get().getRol() == Rol.ALUMNO) {
+		
 			Optional<Curso> resultCurso = cursoRepositorio.findById(idCurso);
-			configuracionEmail.emailSender("El usuario " + nombreUsuario + " de nombre " + result.get().getNombreCompleto()
+			
+			configuracionEmail.emailSender("El usuario " + result.get().getNombreUsuario() + " de nombre " + result.get().getNombreCompleto()
 					+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + ".",
 			"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
 
 		}
 	}
 
+	
+	
 	@Transactional
 	public void cargarAlumno(String idCurso, String nombreUsuario) throws ErrorServicio {
 		Optional<Curso> resultCurso = cursoRepositorio.findById(idCurso);
@@ -141,7 +144,27 @@ public class CursoServicio {
 		return cursos;
 	}
 
+	public void validar(String titulo, Double precioPorHora, String nivelDificultad, String descripcion)
+			throws ErrorServicio {
 
+		if (titulo == null || titulo.isEmpty()) {
+			throw new ErrorServicio("Debe ingresar un título.");
+		}
+		if (precioPorHora == null) {
+			throw new ErrorServicio("Debe ingresar un precio por hora.");
+		}
+
+		if (nivelDificultad == null || nivelDificultad.isEmpty()) {
+			throw new ErrorServicio("Debe ingresar un nivel de dificultad.");
+		}
+
+		if (descripcion == null || descripcion.isEmpty()) {
+			throw new ErrorServicio("Debe ingresar una descripción.");
+		}
+
+	}
+
+	
 //	public List<Curso> FiltrarCursos(String PalabraClave, String lenguajes) {
 //		List<Curso> listaCurso;
 //		if (PalabraClave.isEmpty() || PalabraClave == null && lenguajes == null) {
