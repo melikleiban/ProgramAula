@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" type="text/css" href="/css/estiloPerfilAlumno.css"/>
+	
+	
+    <link rel="stylesheet" type="text/css" href="../static/css/estiloPerfilDocente.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/estilo-cursos-profesor.css"/>
 </head>
 <body>
     <header class="header">
@@ -37,7 +39,7 @@
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Nombre Alumno</h3>
+                <h3 class="titulo">Nombre Profesor</h3>
                 <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
@@ -50,21 +52,76 @@
             </div>
             <div class="perfil-usuario-cursos">
                 <div class="lista-cursos">
-               	 <i class="fas fa-award"> Cursos Finalizados: </i> 
-                    <div class="lista-cursos-finalizados">
-                    	<ul>
-                    		<li>aaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
-                    		<li>aaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
-                    		<li>aaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
-                    	</ul>
-                    </div>
-                    <i class="fas fa-atlas"> Cursos Actuales: </i> 
-                    <div class="lista-cursos-actuales">
-                    	<ul>
-                    		<li>bbbbbbbbbbbbbbbbbbbbbbbbbbb</li>
-                    		<li>bbbbbbbbbbbbbbbbbbbbbbbbbbb</li>
-                    		<li>bbbbbbbbbbbbbbbbbbbbbbbbbbb</li>
-                    	</ul>
+             <i class="fas fa-award"> Cursos: </i> 
+		<div class="datagrid">
+			<table>
+				<thead>
+					<tr>
+						<th>Título</th>
+						<th>Descripción</th>
+						<th>Dificultad</th>
+						<th>Precio/hora</th>
+						<th>Valoraciones</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="6">
+							<div id="paging">
+								<ul>
+									<li><a href="#"><span>Añadir</span></a></li>
+									<li><a href="#" class="active"><span>1</span></a></li>
+									<li><a href="#"><span>2</span></a></li>>
+								</ul>
+							</div>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td><button type="button" name="eliminar" class="btn btn-outline-danger"></i> Eliminar </button></td>
+					</tr>
+					<tr class="alt">
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td><button type="button" name="eliminar" class="btn btn-outline-danger"></i> Eliminar </button></td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td><button type="button" name="eliminar" class="btn btn-outline-danger"></i> Eliminar </button></td>
+					</tr>
+					<tr class="alt">
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td><button type="button" name="eliminar" class="btn btn-outline-danger"></i> Eliminar </button></td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+						<td><button type="button" name="eliminar" class="btn btn-outline-danger"></i> Eliminar </button></td>
+					</tr>
+				</tbody>
+			</table >
+		</div>
+		</div>
                     </div>
                 </div>
             </div>
@@ -72,7 +129,7 @@
     </section>
     <footer class="footer">            
         <div class="container pie">
-            <p>© Equipo 6 - 2021 ProgramAula</p>
+            <p>Â© Equipo 6 - 2021 ProgramAula</p>
             <a href="terminos.html"><p>Terminos y condiciones</p>
         </div>
     </footer>
