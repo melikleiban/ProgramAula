@@ -12,14 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
 
-
-
-=======
 import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.RequestParam;
->>>>>>> origin/copíadevelop-2.0
+
+
 import org.springframework.web.multipart.MultipartFile;
 
 import proyect.Entidades.Usuario;
@@ -47,19 +43,11 @@ public class UsuarioControlador {
 		
 		return "perfilAlumno.html";
 	}
-<<<<<<< HEAD
-	
 
-	
-
-	@GetMapping("/perfilalumno/editar")
-	public String perfilAlumnoEditar() {
-
-=======
 
 	@GetMapping("/perfilalumno/editar")
 	public String perfilAlumnoEditar(@RequestParam String id, ModelMap modelo) {
->>>>>>> origin/copíadevelop-2.0
+
 		
 		try {
 			Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
@@ -111,13 +99,7 @@ public class UsuarioControlador {
 		return "perfilAlumno.html";
 	}
 
-<<<<<<< HEAD
 
-	@GetMapping("/perfildocente")
-	public String perfilProfesor() {
-	
-		return "perfilDocente.html";
-=======
 	@GetMapping("/perfilprofesor/editar")
 	public String perfilProfesorEditar(@RequestParam String id, ModelMap modelo) {
 		
@@ -133,7 +115,7 @@ public class UsuarioControlador {
 			modelo.put("error", e.getMessage());
 		}
 		return "perfilProfesorEditar.html";
->>>>>>> origin/copíadevelop-2.0
+
 	}
 	
 
@@ -185,11 +167,4 @@ public class UsuarioControlador {
 		}
 		return "perfilProfesor.html";
 	}
-	
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/copíadevelop-2.0
-
 }
