@@ -39,7 +39,7 @@
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
   					<!-- Habrtia que ca,mbiar los href de abajo para que lleven el id  -->
                   <li th:if="${session.usuariosession.rol.name()}  == ALUMNO"><a class="dropdown-item" th:href="@{/usuario/perfilalumno}" id="opciones">Mi perfil</a></li>
-                  <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilDocente}" id="opciones">Mi perfil</a></li> 
+                  <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilprofesor}" id="opciones">Mi perfil</a></li> 
                   <li><hr class="dropdown-divider" id="opciones"></li> 
                   <!--  Habria que poner los servicios para que se cierre la sesion -->               
                   <li><a class="dropdown-item" href="/logout" id="opciones">Cerrar sesión</a></li>

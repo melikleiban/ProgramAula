@@ -43,7 +43,7 @@ public class MainControlador {
 		}
 	
 	//	HAY QUE CONECTARLO CON EL HTML.  VER EN VIDEO 6 MINUTO 14.33
-	if(error != null) {
+	if(logout != null) {
 		modelo.put("logout", "Ha salido correctamente");
 		}
 	return "login.html";
