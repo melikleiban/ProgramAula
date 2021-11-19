@@ -98,6 +98,12 @@ public class UsuarioControlador {
 		}
 		return "perfilAlumno.html";
 	}
+	
+	@GetMapping("/perfilprofesor")
+	public String perfilProfesor() {
+		
+		return "perfilProfesor.html";
+	}
 
 
 	@GetMapping("/perfilprofesor/editar")

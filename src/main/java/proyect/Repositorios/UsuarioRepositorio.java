@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import proyect.Entidades.Curso;
 import proyect.Entidades.Usuario;
 
 @Repository
@@ -21,4 +22,9 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, String>{
 
 	@Query("SELECT u FROM Usuario u WHERE u.email = :email")
 	public Usuario buscarPorEmail(@Param("email") String email);
+	
+	@Query("SELECT profesor_id= :p FROM Curso")
+	public List<Curso> existsByProfesor (@Param("p")String profesorId);
+	
+	
 }
