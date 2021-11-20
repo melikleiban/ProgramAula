@@ -47,7 +47,8 @@ public class UsuarioServicio implements UserDetailsService {
 			Boolean rol) throws ErrorServicio {	
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
-
+		
+		
 		Usuario usuario = new Usuario();
 		usuario.setNombreUsuario(nombreUsuario);
 		usuario.setNombreCompleto(nombreCompleto);
@@ -55,6 +56,7 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
 		usuario.setAltaBaja(true);
+		
 
 		
 		System.out.println("Holaaaaa");
@@ -65,20 +67,24 @@ public class UsuarioServicio implements UserDetailsService {
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
-
+		
+		
 		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
 		} else { 
 			usuario.setRol(Rol.ALUMNO);
 		}
+		
 
 		try {
+			
 			usuarioRepositorio.save(usuario);
 			
-			configuracionEmail.emailSender(registroExitosoMensaje(email,contrasenia,nombreCompleto), "Registro ProgramAula", email);
+			//configuracionEmail.emailSender(registroExitosoMensaje(email,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 			
 		} catch( Exception e ) {
-			e.printStackTrace();;
+			e.printStackTrace();
+			System.out.println("Entra al catch en servicio");
 		}
 		
 	}
@@ -100,7 +106,6 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
-		usuario.setDescripcion(descripcion);
 
 		String idFoto = usuario.getFoto().getId();
 		Foto nuevaFoto = fotoServicio.actualizarFoto(idFoto, foto);
@@ -258,5 +263,9 @@ public class UsuarioServicio implements UserDetailsService {
 		return registroExitoso;
 	}
 	
-
+	public Usuario buscarPorNombreUsuario(String nombreUsuario) {
+		
+		Usuario us = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
+		return us;
+	}
 }

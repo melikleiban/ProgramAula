@@ -51,3 +51,15 @@ tr{
     text-align: center;
     margin-top: 20px;
 }
+
+.modal-header{
+    background: #7c73ff;
+}
+
+.modal-body{
+    background:linear-gradient(45deg, #7c73ff, #31f1ff);
+}
+
+.modal-footer{
+    background: #7c73ff;
+}
