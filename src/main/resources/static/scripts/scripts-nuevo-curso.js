@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+			document.getElementById("formulario").addEventListener('submit', validarFormulario);
+			});
+
 function validarFormulario(evento) {
 			evento.preventDefault();
 
@@ -8,7 +12,7 @@ function validarFormulario(evento) {
 			}
 			var descripcion = document.getElementById('descripcion').value;
 			if(descripcion.length != 0 && descripcion.length <= 500){
-				alert('La descripción no debe estar vacia ni tener más de 500 caracteres')
+				alert('La descripción no debe estar vacia ni tener más de 500 caracteres');
 				return;
 			}
 			var precio = document.getElementById('precio').value;

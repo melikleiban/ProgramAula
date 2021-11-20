@@ -100,5 +100,19 @@ body {
 	padding-top: 0.5rem;
 }
 
+button{
+	text-decoration: none; 
+	display: inline-block;  
+	padding: 2px 8px; 
+	margin: 1px;
+	color: rgb(0, 0, 0);
+	border: 1px solid #652299;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c73ff), color-stop(1, #31f1ff));
+	background:-moz-linear-gradient(center top, #7c73ff 5%, #31f1ff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8510EB', endColorstr='#68C0F2');
+	background-color:#8510EB; 
+	border-radius: 0.4em;
+	width: 100%;
+}
 
     

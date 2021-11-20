@@ -1,83 +1,71 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="/css/estiloPerfilAlumno.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/estiloPerfilAlumno.css" />
 </head>
-<body>
-    <header class="header">
-        <div class="container logo-nav-container">
-            <a href="#" class="logo"><img src="/img/logoChiquito.png"> ProgramAula</a>
-            <span class="menu-icon"><i class="fas fa-bars"></i></span>
-            <nav class="navigation">
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-                    <li><a href="#"><i class="fas fa-bell"></i> Notificaciones</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <section class="seccion-perfil-usuario">
-        <div class="perfil-usuario-header">
-            <div class="perfil-usuario-portada">
-                <div class="perfil-usuario-avatar">
-                    <img src="/img/avatar.jpg" alt="img-avatar">
-                    <button type="button" class="boton-avatar">
-									<i class="far fa-image"></i>
-					</button>
-                </div>
-            </div>
-        </div>
-        <div class="perfil-usuario-body">
-            <div class="perfil-usuario-bio">
-                <h3 class="titulo">Nombre Alumno</h3>
-                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="perfil-usuario-footer">
-                <div class="lista-datos">
-                    <i class="fas fa-map-marked-alt" id="icon-address"></i> Dirección: <input type="text" class="form-control" id="inputDireccion" placeholder="Calle falsa 123" readonly=true>    <i class="fas fa-edit" id="edit1"></i>          
-                    <i class="icono fas fa-phone-alt" id="icon-phone"></i> Teléfono: <input type="text" class="form-control" id="inputTelefono" placeholder="555123456" readonly=true>    <i class="fas fa-edit" id="edit2"></i>
-                    <i class="fas fa-mail-bulk" id="icon-email"></i> Email: <input type="email" class="form-control" id="inputEmail" placeholder="ejemplo@noexiste.com" readonly=true>    <i class="fas fa-edit" id="edit3"></i>
-                </div>
-            </div>
-            <div class="perfil-usuario-cursos">
-                <div class="lista-cursos">
-               	 <i class="fas fa-award"> Cursos Finalizados: </i> 
-                    <div class="lista-cursos-finalizados">
-                    	<ul>
-                    		<li>aaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
-                    		<li>aaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
-                    		<li>aaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
-                    	</ul>
-                    </div>
-                    <i class="fas fa-atlas"> Cursos Actuales: </i> 
-                    <div class="lista-cursos-actuales">
-                    	<ul>
-                    		<li>bbbbbbbbbbbbbbbbbbbbbbbbbbb</li>
-                    		<li>bbbbbbbbbbbbbbbbbbbbbbbbbbb</li>
-                    		<li>bbbbbbbbbbbbbbbbbbbbbbbbbbb</li>
-                    	</ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer class="footer">            
-        <div class="container pie">
-            <p>© Equipo 6 - 2021 ProgramAula</p>
-            <a href="terminos.html"><p>Terminos y condiciones</p>
-        </div>
-    </footer>
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<body>
+	<header class="header">
+		<div class="container logo-nav-container">
+			<a href="#" class="logo"><img src="/img/logoChiquito.png"> ProgramAula</a>
+			<span class="menu-icon"><i class="fas fa-bars"></i></span>
+			<nav class="navigation">
+				<ul>
+					<li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+					<li><a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<section class="seccion-perfil-usuario">
+		<div class="perfil-usuario-header">
+			<div class="perfil-usuario-portada">
+				<div class="perfil-usuario-avatar">
+					<img src="/img/avatar.jpg" alt="img-avatar">
+				</div>
+			</div>
+		</div>
+		<div class="perfil-usuario-body">
+			<div class="perfil-usuario-bio">
+				<h3 class="titulo">Nombre Alumno</h3>
+				<p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+			<div class="perfil-usuario-footer">
+				<ul class="lista-datos">
+					<li><i class="icono fas fa-map-signs"></i> Direccion de usuario: <input type="text"
+							class="form-control" id="inputDireccion" placeholder="Calle falsa 123" readonly=true></li>
+					<li><i class="icono fas fa-phone-alt"></i> Telefono: <input type="text" class="form-control"
+							id="inputTelefono" placeholder="555123456" readonly=true></li>
+					<li><i class="icono fas fa-briefcase"></i> Trabaja en: <input type="email" class="form-control"
+							id="inputEmail" placeholder="ejemplo@noexiste.com" readonly=true></li>
+					<li><i class="icono fas fa-building"></i> Cargo</li>
+				</ul>
+				<ul class="lista-datos">
+					<li><i class="icono fas fa-map-marker-alt"></i> Ubicacion.</li>
+					<li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento.</li>
+					<li><i class="icono fas fa-user-check"></i> Registro.</li>
+					<li><i class="icono fas fa-share-alt"></i> Redes sociales.</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="container pie">
+			<p>© Equipo 6 - 2021 ProgramAula</p>
+			<a href="terminos.html">
+				<p>Terminos y condiciones</p>
+		</div>
+	</footer>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="/scripts/scriptsPerfiles.js"></script>
 </body>
+
 </html>
