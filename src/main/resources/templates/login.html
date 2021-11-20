@@ -56,6 +56,10 @@
 			body {
   			height: 100%;
         font-family: 'Ubuntu', sans-serif;
+        /*background: linear-gradient(10deg, #7c73ff, #31f1ff);*/
+        background: #1c92d2;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to top, #f2fcfe, #1c92d2);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 			}
 
 			body {
@@ -99,7 +103,7 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         
-        <img class="bi me-2 rounded-3" src="../static/img/logo.png" alt="" weight="30px" height="30px">
+        <img class="bi me-2 rounded-3" src="/img/logo.png" alt="" weight="30px" height="30px">
         <span class="fs-4">ProgramAula</span>
       </a>
 
@@ -111,39 +115,41 @@
 
   <div class="container">
 	<main class="form-signin" style="padding-top: 7%">
-  <form id="formulario">
+  <form id="formulario" action="/logincheck" method="POST">
     <!--<img class="mb-4 rounded-3" src="../static/img/imgLogin.png" alt="" weight="90px" height="90px">-->
     <!--<img class="mb-4 rounded-3" src="https://lottiefiles.com/79638-avatar-icon" alt="" weight="90px" height="90px">-->
     <iframe src="https://embed.lottiefiles.com/animation/79638"></iframe>
     <h1 class="h3 mb-3 fw-normal"> Iniciar sesión </h1>
-
+	
     <div class="form-floating">
-      <input type="email" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
+      <input type="text" class="form-control" id="usuario" name="nombreUsuario" placeholder="Usuario">
       <label for="floatingInput"> Usuario </label>
-    </div>
+    </div> 
     <div class="form-floating">
       <input type="password" class="form-control" id="clave" name="clave" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit"> Ingresar </button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" style="background-color: #41464b91; border-color: #41464b91;"> Ingresar </button>
     <!-- <p class="mt-5 mb-3 text-muted">&copy; Equipo 6 &#128526 - 2021 </p>-->
 
+	
+	
   </form>
   </main>
   </div>
 
 
-  <div class="container" style="margin-left: auto; padding-top: 14%;">
-  <footer class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #f5f5f5;width: 100%;">
-    <div class="col-md-4 d-flex align-items-center" style="margin-left: 1em;">
+  <div class="container" style="margin-left: auto; padding-top: 14%; ">
+  <footer class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4" style="width: 100%; background: transparent;">
+    <div class="col-md-4 d-flex align-items-center" style="margin-left: 1em; color: white;">
       <a href="index.html" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1" style="margin-left: 2em;">
         
         <img class="bi me-2 rounded-3" src="../static/img/logo.png" alt="" weight="30px" height="30px">
       </a>
-      <span class="text-muted" style="margin-left: 2em;">&copy; Equipo 6 &#128526 - 2021</span>
+      <span class="" style="margin-left: 2em; color: #333333;">&copy; Equipo 6 &#128526 - 2021</span>
     </div>
-    <p style="margin-right: 2em;"><small><a href="terminos.html">Terminos y condiciones</a></small> </p>
+    <p style="margin-right: 2em; color: #333333;"><small><a href="terminos.html" style="color: #333333;">Terminos y condiciones</a></small> </p>
   </footer>
   </div>
   </body>

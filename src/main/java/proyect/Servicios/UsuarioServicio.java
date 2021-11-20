@@ -2,7 +2,7 @@ package proyect.Servicios;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
+
+import proyect.Configuraciones.ConfiguracionEmail;
 import proyect.Entidades.Foto;
 import proyect.Entidades.Usuario;
 import proyect.Enums.Rol;
@@ -31,7 +35,7 @@ public class UsuarioServicio implements UserDetailsService {
 	private FotoServicio fotoServicio;
 	
 	@Autowired
-	private NotificacionServicio notificacionServicio;
+	private ConfiguracionEmail configuracionEmail;
 	
 	@Transactional
 	public void registro(String nombreUsuario, 
@@ -40,8 +44,7 @@ public class UsuarioServicio implements UserDetailsService {
 			String telefono,
 			String localidad,
 			String contrasenia,
-			String descripcion,
-			Boolean esProfesor) throws ErrorServicio {	
+			Boolean rol) throws ErrorServicio {	
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 
@@ -51,29 +54,33 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
-		usuario.setDescripcion(descripcion);
 		usuario.setAltaBaja(true);
+
+		
+		System.out.println("Holaaaaa");
+		
+
+
+
 
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
-		//Foto nuevaFoto = fotoServicio.guardarFoto(foto);
-
-		//usuario.setFoto(nuevaFoto);
-
-		if(esProfesor == true) {
+		if(rol == true) {
 			usuario.setRol(Rol.PROFESOR);
-		} else {
+		} else { 
 			usuario.setRol(Rol.ALUMNO);
 		}
 
 		try {
 			usuarioRepositorio.save(usuario);
+			
+			configuracionEmail.emailSender(registroExitosoMensaje(email,contrasenia,nombreCompleto), "Registro ProgramAula", email);
+			
 		} catch( Exception e ) {
 			e.printStackTrace();;
 		}
 		
-		notificacionServicio.enviar(registroExitosoMensaje(nombreUsuario,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 	}
 
 	@Transactional
@@ -84,7 +91,7 @@ public class UsuarioServicio implements UserDetailsService {
 			String localidad,
 			String contrasenia,
 			String descripcion,
-			Boolean esProfesor) throws ErrorServicio {	
+			MultipartFile foto) throws ErrorServicio {	
 
 		validar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia);
 
@@ -95,6 +102,11 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setLocalidad(localidad);
 		usuario.setDescripcion(descripcion);
 
+		String idFoto = usuario.getFoto().getId();
+		Foto nuevaFoto = fotoServicio.actualizarFoto(idFoto, foto);
+		usuario.setFoto(nuevaFoto);
+		
+		
 		String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
 		usuario.setContrasenia(contraEncriptada);
 
@@ -106,17 +118,6 @@ public class UsuarioServicio implements UserDetailsService {
 		
 	}
 
-	@Transactional
-	public void subirFoto(MultipartFile foto, String nombreUsuario) throws ErrorServicio {
-		
-		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
-		
-		Foto nuevaFoto = fotoServicio.guardarFoto(foto);
-
-		usuario.setFoto(nuevaFoto);
-		
-		usuarioRepositorio.save(usuario);
-	}
 	
 	public void desactivarCuenta(String nombreUsuario) {
 		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
@@ -130,7 +131,8 @@ public class UsuarioServicio implements UserDetailsService {
 			String email,
 			String telefono,
 			String localidad,
-			String contrasenia)throws ErrorServicio{
+			String contrasenia
+			)throws ErrorServicio{
 
 		if(nombreUsuario==null || nombreUsuario.isEmpty()) {
 			throw new ErrorServicio ("El nombre de usuario no puede ser nulo/vacío.");
@@ -171,48 +173,90 @@ public class UsuarioServicio implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
+		
 		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
-		if (usuario != null && usuario.getRol() == Rol.PROFESOR) {
-			List<GrantedAuthority> permisos = new ArrayList<>();
-
-			GrantedAuthority p1 = new SimpleGrantedAuthority("MODULO_CURSOS");
-			permisos.add(p1);
-			GrantedAuthority p2 = new SimpleGrantedAuthority("MODULO_FOTO");
-			permisos.add(p2);
-
-			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
-
-			return user;
-		}
-		if (usuario != null && usuario.getRol() == Rol.ALUMNO) {
-			List<GrantedAuthority> permisos = new ArrayList<>();
-
-			GrantedAuthority p1 = new SimpleGrantedAuthority("MODULO_CURSOS");
-			permisos.add(p1);
-			GrantedAuthority p2 = new SimpleGrantedAuthority("MODULO_FOTO");
-			permisos.add(p2);
-
-			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
-
-			return user;
-
-		} else {
+		
+		if (usuario == null) {
+			
 			return null;
+			
 		}
-	}
+			
+			List<GrantedAuthority> permisos = new ArrayList<>();
+
+			GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+ usuario.getRol());
+						
+			permisos.add(p1);
+			
+			GrantedAuthority p2 = new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
+			
+			permisos.add(p2);
+			
+			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			
+			HttpSession session = attr.getRequest().getSession(true);
+			
+			session.setAttribute("usuariosession", usuario);
+			
+			return new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
+				
+
+			
+			} 
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		if (usuario != null && usuario.getRol() == Rol.PROFESOR) {
+//			List<GrantedAuthority> permisos = new ArrayList<>();
+//
+//			GrantedAuthority p1 = new SimpleGrantedAuthority("MODULO_CURSOS");
+//			permisos.add(p1);
+//			GrantedAuthority p2 = new SimpleGrantedAuthority("MODULO_FOTO");
+//			permisos.add(p2);
+//
+//			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
+//
+//			return user;
+//		}
+//		if (usuario != null && usuario.getRol() == Rol.ALUMNO) {
+//			List<GrantedAuthority> permisos = new ArrayList<>();
+//
+//			
+//			GrantedAuthority p1 = new SimpleGrantedAuthority("MODULO_CURSOS");
+//			permisos.add(p1);
+//			GrantedAuthority p2 = new SimpleGrantedAuthority("MODULO_FOTO");
+//			permisos.add(p2);
+//
+//			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
+//
+//			return user;
+
+		
+	
 	
 	public String registroExitosoMensaje(String nombreUsuario, String contrasenia, String nombreCompleto) {
 		
 		String registroExitoso = 
-		"Bienvenido a ProgramAula " + nombreCompleto + "!"
+		"Bienvenido a ProgramAula " + nombreCompleto + "! "
+		+ System.lineSeparator()
 		+"Su nombre de usuario es: " + nombreUsuario
+		+ System.lineSeparator()
 		+"Su contraseña es: " + contrasenia
-		+"Esperamos que pueda sacar provecho y enriquecer sus conocimientos con"
+		+ System.lineSeparator()
+		+"Esperamos que pueda sacar provecho y enriquecer sus conocimientos con "
 		+"otros usuarios de la web."
-		+ ""
+		+ System.lineSeparator()
 		+ "Si usted no se registró, por favor, desestime este mensaje.";
 		
 		return registroExitoso;
 	}
+	
 
 }
