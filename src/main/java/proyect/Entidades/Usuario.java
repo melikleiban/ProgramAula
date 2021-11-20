@@ -36,7 +36,7 @@ public class Usuario {
 	private String email;
 	private String telefono;
 	private String localidad;
-	private String descripcion;
+	//private String descripcion;
 	private Boolean altaBaja;
 	
 
@@ -52,4 +52,9 @@ public class Usuario {
 	@OneToMany
 	private List<Curso> listaCursos;
 
+	
+
+	
+	
+	
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,46 +22,36 @@
         <div class="redes"><a href="#"><i class="fab fa-youtube" style="font-size:24px;color:white"></i></a></div>
         <div class="redes"><a href="#"><i class="fab fa-whatsapp" style="font-size:24px;color:white"></i></a></div>
 
-        <a id="inicia" href="/login">Iniciar Sesion</a>
-        <a id="inicia" href="/usuario/registro">Registrate</a>
-=======
-        <!-- <div class="no-logueado" th:if="${usuario.logueado == false}">
-          <a id="inicia" href="login.html">Iniciar Sesion</a>
-          <a id="inicia" href="registro-alumno-profesor.html">Registrate</a>  
-        </div> -->
+	</div>
+        <div class="no-logueado" th:if="${session.usuariosession} == null">
+          <a id="inicia" href="/login">Iniciar Sesion</a>
+          <a id="inicia" href="/usuario/registro">Registrate</a>  
+        </div>
 
-        <!-- <div class="logueado" th:if = "${usuario.logueado==true}"> 
+        <div class="logueado" th:if = "${session.usuariosession} != null"> 
+      
+
           <div class="dropdown text-start">
               <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="http://127.0.0.1:5500/static/img/avatar.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+              <!--  Habria que ver como cambiar esta imagen -->
+                <img th:src="${session.usuariosession.foto}" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
-              
-              <div th:switch=${usuario.rol} >
-                  <li th:case=${alumno}><a class="dropdown-item" href="perfilAlumno.html" id="opciones">Mi perfil</a></li>
-                  <!-- <li th:case=${profesor}><a class="dropdown-item" href="perfilProfesor.html" id="opciones">Mi perfil</a></li> -->
-              -->
-              </div>
-               
-                  <!-- <li><a class="dropdown-item" href="#" id="opciones">Configuraciones</a></li> -->
-               
-                
-                
-                <li><hr class="dropdown-divider" id="opciones"></li>
-                
-                <li><a class="dropdown-item" href="index.html" id="opciones">Cerrar sesión</a></li>
+  					<!-- Habrtia que ca,mbiar los href de abajo para que lleven el id  -->
+                  <li th:if="${session.usuariosession.rol.name()}  == ALUMNO"><a class="dropdown-item" th:href="@{/usuario/perfilalumno}" id="opciones">Mi perfil</a></li>
+                  <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilprofesor}" id="opciones">Mi perfil</a></li> 
+                  <li><hr class="dropdown-divider" id="opciones"></li> 
+                  <!--  Habria que poner los servicios para que se cierre la sesion -->               
+                  <li><a class="dropdown-item" href="/logout" id="opciones">Cerrar sesión</a></li>
               </ul>
-            </div>
-  
+             </div>          
           </div>
-    </div>
+      </div>
+	
+	
+	
 
-        
 
-    </div>
-  </div>
-  
-  
 
     
     <div class="buscador">
@@ -89,10 +79,17 @@
       </div>
       -->
       <div class="fotitos">
+
+        <img class="miSlide" src="../img/java.jpg">
+        <img class="miSlide" src="../img/python.png">
+        <img class="miSlide" src="../img/javascript.jpg">
+        <img class="miSlide" src="../img/aviso1.png">
+
         <img class="miSlide" src="/img/java.jpg">
         <img class="miSlide" src="/img/python.png">
         <img class="miSlide" src="/img/javascript.jpg">
         <img class="miSlide" src="/img/aviso1.png">
+
         <div class="tex"><p style="margin-left: auto; margin-right: auto;">ProgramAula te ofrece los mejores cursos de programación. Busca el lenguaje que quieras aprender <a id ="textito" href="productos.html">aca</a></p></div>
       </div>
     </div>
@@ -116,6 +113,8 @@
 
       <div class="slider_p">
         <div class="profes">
+         
+
           <div class="miSlider_p"><img class="miSlide_p" src="/img/cara2.jpg"><p class="textite">Pepito Garcia</p></div>
           <div class="miSlider_p"><img class="miSlide_p" src="/img/cara3.jpg"><p class="textite">Ricardo Fort</p></div>
           <div class="miSlider_p"><img class="miSlide_p" src="/img/cara4.jpg"><p class="textite">Juana Gomez</p></div>
@@ -132,6 +131,7 @@
           <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara1.jpg"><p class="textite">Mirtha Legrand</p></div>
           <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara3.jpg"><p class="textite">Jorge Lanata</p></div>
           <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara4.jpg"><p class="textite">Susana Gimenez</p></div>
+
         </div>
       </div>
 
@@ -193,7 +193,9 @@
       <p>© Derechos reservados</p>
   <div class="container pie">
       <p>© Equipo 6 😎 - 2021</p>
-      <p><a href="terminos">Terminos y condiciones</a></p>
+
+      <p><a href="/terminos">Terminos y condiciones</a></p>
+
   </div>
 </footer>
 
