@@ -20,6 +20,7 @@ import proyect.Entidades.Usuario;
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
 import proyect.Repositorios.UsuarioRepositorio;
+import proyect.Servicios.CursoServicio;
 import proyect.Servicios.UsuarioServicio;
 
 @Controller
@@ -29,6 +30,9 @@ public class UsuarioControlador {
 	
 	@Autowired
 	private UsuarioServicio usuarioServicio;
+	
+	@Autowired
+	private CursoServicio cursoServicio;
 	
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio;
@@ -93,10 +97,24 @@ public class UsuarioControlador {
 	}
 	
 	@GetMapping("/perfilprofesor")
-	public String perfilProfesor() {
+	public String perfilProfesor(ModelMap modelo, String idProfesor) {
 		
-		return "perfilProfesor.html";
+
+		return "perfilDocente.html";
 	}
+	
+	@GetMapping("/perfilprofesor?param={id}")
+	public String perfilProfesorCursos(ModelMap modelo, String id) {
+		
+		System.out.println(id);
+		modelo.addAttribute("cursos",cursoServicio.cursosProfesor(id));
+		
+		return "perfilDocente.html";
+	}
+
+	
+	
+	
 
 	@GetMapping("/perfilprofesor/editar")
 	public String perfilProfesorEditar(@RequestParam String id, ModelMap modelo) {

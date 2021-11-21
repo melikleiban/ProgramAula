@@ -40,6 +40,7 @@ public class CursoServicio {
 
 				validar(titulo, precioPorHora, nivelDificultad, descripcion);
 
+				System.out.println(nombreUsuario+titulo+altaBaja+precioPorHora+nivelDificultad+descripcion+lenguajes);
 				Curso curso = new Curso();
 				curso.setTitulo(titulo);
 				curso.setAltaBaja(true);
@@ -48,11 +49,13 @@ public class CursoServicio {
 				curso.setDescripcion(descripcion);
 				curso.setLenguajes(lenguajes);
 				
+				cursoRepositorio.save(curso);
+				
 				usuario.get().getListaCursos().add(curso);
 				
 				usuarioRepositorio.save(usuario.get());
 				
-				cursoRepositorio.save(curso);
+
 			}
 		} catch (Exception e) {
 			System.err.print(e.getMessage());

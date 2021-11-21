@@ -56,34 +56,30 @@ public class CursoControlador {
 		
 		
 		
-		@GetMapping("/listado-cursos")
-		public String listadoCursos(ModelMap modelo, String idProfesor) {
-						
-			modelo.addAttribute("cursos",cursoSer.cursosProfesor(idProfesor));
-						
-			return "perfilDocente.html";
-		}
+
 		
-		@GetMapping("/listado-cursos-cargar")
+		@GetMapping("/usuario/nuevo-curso")
 		public String cargarCursos() {
 					
-			return "listado-cursos.html";
+			return "nuevo-curso.html";
 		}
 		
-		@PostMapping("/listado-cursos-cargar")
-		public String cargarCursos(ModelMap modelo, @RequestParam(required = false) String error, String nombreUsuario, String titulo, Boolean altaBaja, 
-				Double precioPorHora, String nivelDificultad, String descripcion, Lenguajes lenguajes) throws ErrorServicio {
+		@PostMapping("/usuario/nuevo-curso")
+		public String cargarCursos(ModelMap modelo, @RequestParam(required = false) String error, 
+				String nombreUsuario, String titulo, 
+				Double precioPorHora, String nivelDificultad, String descripcion, 
+				Lenguajes lenguajes) throws ErrorServicio {
 			
-			cursoSer.crearCurso(nombreUsuario, titulo, altaBaja, precioPorHora, nivelDificultad, descripcion, lenguajes);
+			cursoSer.crearCurso(nombreUsuario, titulo, true, precioPorHora, nivelDificultad, descripcion, lenguajes);
 			
-			if(error != null) {
-			
-				modelo.put("error", "El curso no se ha cargado correctamente");
-				
-			}else {
-			
-				modelo.put("exito", "El curso se ha cargado correctamente");
-			}
+//			if(error != null) {
+//			
+//				modelo.put("error", "El curso no se ha cargado correctamente");
+//				
+//			}else {
+//			
+//				modelo.put("exito", "El curso se ha cargado correctamente");
+//			}
 
 			
 			return "perfilDocente.html";

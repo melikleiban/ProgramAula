@@ -16,13 +16,13 @@
 <body>
 	<header class="header">
 		<div class="container logo-nav-container">
-			<a href="#" class="logo"><img src="/img/logoChiquito.png"> ProgramAula</a>
+			<a href="/" class="logo"><img src="/img/logoChiquito.png"> ProgramAula</a>
 			<span class="menu-icon"><i class="fas fa-bars"></i></span>
 			<nav class="navigation">
 				<ul>
-					<li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-					<li><a href="#"><i class="fas fa-user-circle"></i> Perfil</a></li>
-					<li><a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+					<li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+					<li><a href="/usuario/perfilprofesor"><i class="fas fa-user-circle"></i> Perfil</a></li>
+					<li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -35,7 +35,18 @@
 			
 				<div class="form">
 
-					<form class="needs-validation" id="formulario">
+					 <form class="needs-validation" novalidate id="formulario" th:action="@{/usuario/nuevo-curso}" method="POST">
+						
+						<p th:if="${error != null}" th:text="${error}"></p>
+
+						
+							<div class="mb-3">
+							<label for="usuario" class="form-label"></label>
+							<input type="hidden" class="form-control" id="nombreUsuario" value="" required name="nombreUsuario"
+								th:value="${session.usuariosession.nombreUsuario}">
+							<div class="invalid-feedback">s
+								</div>
+							
 						<div class="mb-3">
 							<label for="titulo" class="form-label">Título</label>
 							<input type="text" class="form-control" id="titulo" value="" required name="titulo"
@@ -49,15 +60,16 @@
 						<div class="mb-3">
 							<label for="descripción" class="form-label">Descripción</label>
 							<input type="text" class="form-control" id="descripcion" name="descripcion"
-								th:value="${descripción}">
+								th:value="${descripcion}">
 							<div class="invalid-feedback">
+							
 								Ingrese una descripción válida.
 							</div>
 						</div>
 
 						<div class="mb-3">
 							<label for="state" class="form-label">Dificultad</label>
-							<select class="form-select" id="dificultad" required name="dificultad">
+							<select class="form-select" id="dificultad" required name="nivelDificultad">
 								<option value="Seleccion">Seleccione una opción</option>
 								<option value="Basico">Básico</option>
 								<option value="Intermedio">Intermedio</option>
@@ -67,11 +79,28 @@
 								Ingrese una dificultad.
 							</div>
 
+						<div class="mb-3">
+							<!--<label for="state" class="form-label">Lenguaje</label>
+							<select class="form-select" id="lenguajes" required name="lenguajes">
+								<option value="Seleccion">Seleccione un lenguaje</option>
+								<option value="JAVA">Java</option>
+								<option value="JAVASCRIPT">JavaScript</option>
+								<option value="HTML">HTML</option>
+								<option value="CSS">CSS</option>
+								<option value="PYTHON">Python</option>
+								<option value="PHP">PHP</option>
+								<option value="OTROS">Otros</option>
+								
+								
+							</select>-->
+							<div class="invalid-feedback">
+								Ingrese una dificultad.
+							</div>
 						</div>
 
 						<div class="mb-3">
 							<label for="precio" class="form-label">Precio</label>
-							<input type="text" class="form-control" id="precio" name="precio"
+							<input type="text" class="form-control" id="precio" name="precioPorHora"
 								th:value="${precio}">
 							<div class="invalid-feedback">
 								Ingrese un precio válido.
@@ -80,6 +109,7 @@
 						
             				<button class="boton" type="submit">Añadir</button>
 					</form>
+					
 	</section>
 
 	<footer class="footer">

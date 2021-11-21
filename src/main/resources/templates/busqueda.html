@@ -49,10 +49,10 @@
             </thead>
             <tbody>
               <tr th:each="curso : ${cursos}">
-                <td th:text="${curso.nombre}"></td>
+                <td th:text="${curso.titulo}"></td>
                 <td th:text="${curso.profesor}"></td>
-                <td th:text="${curso.precio}"></td>
-                <td th:text="${curso.dificultad}"></td>
+                <td th:text="${curso.precioPorHora}"></td>
+                <td th:text="${curso.nivelDificultad}"></td>
               </tr>
             </tbody>
           </table>
@@ -289,7 +289,7 @@ $(document).ready(function(){ //filtra cada vez que se modifica el input
 <script>
     function pro(){ //para que filtre con lo traido desde el index
     $(document).ready(function(){
-        var value = getParameterByName('palabraClave').toLowerCase();
+        var value = getParameterByName('param').toLowerCase();
         $("#myTable tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
