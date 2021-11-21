@@ -25,7 +25,11 @@
 	</div>
         <div class="no-logueado" th:if="${session.usuariosession} == null">
           <a id="inicia" href="/login">Iniciar Sesion</a>
+<<<<<<< HEAD
           <a id="inicia" href="/usuario/registro">Registrate</a>  
+=======
+          <a id="inicia" href="/registro">Registrate</a>  
+>>>>>>> 7e028a0d76bd8ce95bd7b0c05f7749a031441c4d
         </div>
 
         <div class="logueado" th:if = "${session.usuariosession} != null"> 
@@ -39,10 +43,17 @@
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
   					<!-- Habrtia que ca,mbiar los href de abajo para que lleven el id  -->
                   <li th:if="${session.usuariosession.rol.name()}  == ALUMNO"><a class="dropdown-item" th:href="@{/usuario/perfilalumno}" id="opciones">Mi perfil</a></li>
+<<<<<<< HEAD
                   <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilprofesor}" id="opciones">Mi perfil</a></li> 
                   <li><hr class="dropdown-divider" id="opciones"></li> 
                   <!--  Habria que poner los servicios para que se cierre la sesion -->               
                   <li><a class="dropdown-item" href="/logout" id="opciones">Cerrar sesión</a></li>
+=======
+                  <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilDocente}" id="opciones">Mi perfil</a></li> 
+                  <li><hr class="dropdown-divider" id="opciones"></li> 
+                  <!--  Habria que poner los servicios para que se cierre la sesion -->               
+                  <li><a class="dropdown-item" href="index.html" id="opciones">Cerrar sesión</a></li>
+>>>>>>> 7e028a0d76bd8ce95bd7b0c05f7749a031441c4d
               </ul>
              </div>          
           </div>
