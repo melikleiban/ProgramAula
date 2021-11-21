@@ -143,6 +143,14 @@ public class CursoServicio {
 		List<Curso> cursos=cursoRepositorio.findAll();
 		return cursos;
 	}
+	
+	public List<Curso> listarCursoPorPalabraClave(String palabraClave){
+		List<Curso> cursos=cursoRepositorio.existsByClave(palabraClave);
+		return cursos;
+	}
+	
+	
+	
 
 	public void validar(String titulo, Double precioPorHora, String nivelDificultad, String descripcion)
 			throws ErrorServicio {

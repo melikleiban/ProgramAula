@@ -28,6 +28,18 @@ public class CursoControlador {
 			return "busqueda.html";
 		}
 		
+		@GetMapping("/busqueda?param={palabraClave}")
+		public String filtroBusqueda(ModelMap modelo, String palabraClave) {
+			modelo.addAttribute("cursos", cursoSer.listarCursoPorPalabraClave(palabraClave));
+			
+			return "busqueda.html";
+		}
+		
+		
+		
+		
+		
+		
 		@PostMapping("/busqueda-alerta")
 		public String busquedaAlerta(String idAlumno, String idCurso) {
 			
