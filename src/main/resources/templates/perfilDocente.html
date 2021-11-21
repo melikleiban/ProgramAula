@@ -79,7 +79,7 @@
 								<ul>
 									<li><a href="/usuario/nuevo-curso"><span>Añadir</span></a></li>
 									<li><a href="#" class="active"><span>1</span></a></li>
-									<li><a href="#"><span>2</span></a></li>>
+									<li><a href="#"><span>2</span></a></li>
 								</ul>
 							</div>
 					</tr>
@@ -94,8 +94,8 @@
         			location.href=ruta;
      				 }
    					 </script>
-   					 <p th:text="${session.usuariosession.id}"></p>
-				<tr th:each="curso : ${cursos}">	   
+   					 
+					<tr th:each="curso : ${cursos}">	   
     				<td th:text="${curso.titulo}"></td>
                		<td th:text="${curso.lenguajes}"></td>
                 	<td th:text="${curso.precioPorHora}"></td>

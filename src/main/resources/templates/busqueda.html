@@ -15,11 +15,16 @@
 </head>
 <body onload="trayendo()">
     <div class="input-group mb-3 busca">
-        <span style="width: fit-content;" class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-        <input id="myInput" type="text" class="form-control" placeholder="Buscar.." aria-label="Username" aria-describedby="basic-addon1">
-    </div>
+    	<form th:action="@{/busqueda/palabraClave}"  method="GET" id="formulario">
+    	
+    		<button style="width: fit-content;" class="input-group-text" id="basic-addon1" type="submit"><i class="fa fa-search"></i></button>
+      		<input id="myInput" type="text" class="form-control" placeholder="Buscar.." aria-label="Username" aria-describedby="basic-addon1" 
+      		name="palabraClave">
+    	</form>
+         </div>
 
     <script>
+    /*<![CDATA[*/
         /**
          * @param String name
          * @return String
@@ -32,27 +37,29 @@
         }
 
         function trayendo(){
-            document.getElementById('myInput').value = getParameterByName('param');
+            document.getElementById('myInput').value = getParameterByName('param');           	
             pro();
         }
+    /*]]>*/
     </script>
+
     
     <div class="tabla">
-        <table class="table">
+        <table class="table">														
             <thead>
               <tr>
                 <th scope="col">Curso</th>
-                <th scope="col">Profesor</th>
+                <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Dificultad</th>
               </tr>
             </thead>
             <tbody>
               <tr th:each="curso : ${cursos}">
-                <td th:text="${curso.titulo}"></td>
-                <td th:text="${curso.profesor}"></td>
-                <td th:text="${curso.precioPorHora}"></td>
-                <td th:text="${curso.nivelDificultad}"></td>
+                <td th:text="${curso.titulo}" id="titulo"></td>
+                <td th:text="${curso.descripcion}" id="descripcion"></td>
+                <td th:text="${curso.precioPorHora}" id="pph"></td>
+                <td th:text="${curso.nivelDificultad}" id="dificultad"></td>
               </tr>
             </tbody>
           </table>

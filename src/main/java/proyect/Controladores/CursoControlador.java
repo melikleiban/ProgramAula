@@ -11,6 +11,7 @@ import proyect.ErrorServicio.ErrorServicio;
 import proyect.Servicios.CursoServicio;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -28,8 +29,10 @@ public class CursoControlador {
 			return "busqueda.html";
 		}
 		
-		@GetMapping("/busqueda?param={palabraClave}")
-		public String filtroBusqueda(ModelMap modelo, String palabraClave) {
+		@GetMapping("/busqueda/palabraClave")
+		public String filtroBusqueda(ModelMap modelo, @RequestParam String palabraClave) {
+			
+			System.out.println(palabraClave);
 			modelo.addAttribute("cursos", cursoSer.listarCursoPorPalabraClave(palabraClave));
 			
 			return "busqueda.html";

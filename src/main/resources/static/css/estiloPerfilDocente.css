@@ -117,19 +117,6 @@ body {
 .seccion-perfil-usuario .perfil-usuario-footer,
 .seccion-perfil-usuario .perfil-usuario-bio,
 .seccion-perfil-usuario .perfil-usuario-cursos {
-<<<<<<< HEAD
-	flex-wrap: wrap;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    background-color: #fff;
-    border-radius: 15px;
-    width: 100%;
-}
-
-.seccion-perfil-usuario .perfil-usuario-footer {
-    margin-bottom: 1.25rem;
-    text-align: center;
-=======
 	flex-wrap: wrap !important;
     padding: 1.5rem 2rem !important;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2) !important;
@@ -141,7 +128,6 @@ body {
 .seccion-perfil-usuario .perfil-usuario-footer {
     margin-bottom: 1.25rem !important;
     text-align: center !important;
->>>>>>> 62886783585701d04951f14b415558aed5f7ecdf
 }
 
 
@@ -165,15 +151,6 @@ body {
 }
 
 .seccion-perfil-usuario .lista-datos {
-<<<<<<< HEAD
-    width: 100%;
-    list-style: none;
-    text-align: center;
-}
-
-.seccion-perfil-usuario .lista-datos li {
-    padding: 5px 0;
-=======
     width: 100% !important;
     list-style: none !important;
     text-align: left !important;
@@ -181,7 +158,6 @@ body {
 
 .seccion-perfil-usuario .lista-datos li {
     padding: 5px 0 !important;
->>>>>>> 62886783585701d04951f14b415558aed5f7ecdf
 }
 
 
@@ -278,11 +254,7 @@ p {
 }
 
 .lista-datos i {
-<<<<<<< HEAD
-	padding-left: 2rem;
-=======
 	padding-left: 2rem !important;
->>>>>>> 62886783585701d04951f14b415558aed5f7ecdf
 }
 
 #edit1, #edit2, #edit3 {
@@ -296,37 +268,6 @@ p {
 }
 
 .lista-datos{
-<<<<<<< HEAD
-	padding-top: 1.5rem;
-}
-
-.perfil-usuario-footer input {
-	background-color: rgb(124, 115, 255, .5); ;
-	color: rgb(0, 0, 0);
-	padding: 2px; 
-	border: 2px solid rgb(64, 0, 128, .5); 
-	border-radius: 5px;
-	width: 15rem;
-	height: 2em;
-	width: 150px;
-	text-align: center;
-}
-.lista-cursos-finalizados,
-.lista-cursos-actuales{
-	background-color: rgb(124, 115, 255, .5); ;
-	color: rgb(0, 0, 0);
-	padding: 2px; 
-	padding-top: 0.5rem;
-	border: 2px solid rgb(64, 0, 128, .5); 
-	border-radius: 5px;
-	text-align: center;
-	margin: 0 15%;
-}
-
-.lista-cursos-finalizados {
-	text-align: center;
-	padding: 10 0;
-=======
 	padding-top: 1.5rem !important;
 }
 
@@ -341,7 +282,6 @@ p {
 	height: 2em !important;
 	width: 150px !important;
 	text-align: center !important;
->>>>>>> 62886783585701d04951f14b415558aed5f7ecdf
 }
 
 .lista-cursos i{
@@ -355,15 +295,9 @@ p {
 }
 
 .lista-datos button{
-<<<<<<< HEAD
-	border: none;
-	text-decoration: none;
-	background-color: transparent;
-=======
 	border: none !important;
 	text-decoration: none !important;
 	background-color: transparent !important;
->>>>>>> 62886783585701d04951f14b415558aed5f7ecdf
 }
 
 @media (max-width: 750px) {
