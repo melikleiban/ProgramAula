@@ -86,14 +86,6 @@
 				</tfoot>
 				<tbody>
 		
-				   <script th:inline="javascript">
-      				function probando(){
-       				 var param_busqueda = "${session.usuariosession.id}";
-        			console.log(param_busqueda);
-        			var ruta="perfilDocente?param=" + param_busqueda;
-        			location.href=ruta;
-     				 }
-   					 </script>
    					 
 					<tr th:each="curso : ${cursos}">	   
     				<td th:text="${curso.titulo}"></td>
@@ -101,10 +93,15 @@
                 	<td th:text="${curso.precioPorHora}"></td>
                 	<td th:text="${curso.nivelDificultad}"></td>
                 	<td th:text="${curso.descripcion}"></td>
-					<td><button type="button" name="eliminar" class="btn btn-outline-danger"></i> Eliminar </button></td>
-					</tr>
-					<td><button onclick="probando()" type="button" name="listarCursos" class="btn btn-outline-danger"></i> Ver Cursos </button></td>
-
+					<td><button type="button" name="eliminar" class="btn btn-outline-danger"> Eliminar </button></td>
+					
+					<td>
+<!-- 						<form th:action="@{/usuario/perfilprofesor/__${session.usuariosession.id}__}" method="GET"> -->
+<!-- 							<button th: type="submit"  class="btn btn-outline-danger"> Ver Cursos </button> -->
+<!-- 							<input type="hidden" th:value ="${session.usuariosession.id}" name="profesor_id"></input>				 -->
+<!-- 						</form>						 -->
+					</td>
+					</tr>	
 			
 					</tbody>
 			</table >

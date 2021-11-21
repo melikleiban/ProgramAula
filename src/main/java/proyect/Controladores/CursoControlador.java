@@ -37,20 +37,12 @@ public class CursoControlador {
 			
 			return "busqueda.html";
 		}
-		
-		
-		
-		
-		
-		
-		@PostMapping("/busqueda-alerta")
-		public String busquedaAlerta(String idAlumno, String idCurso) {
 			
-			
-			
-			
-			cursoSer.alertaProfesor(idAlumno, idCurso);
 						
+		@PostMapping("/busqueda-alerta")
+		public String busquedaAlerta(String idAlumno, String idCurso) {				
+		
+			cursoSer.alertaProfesor(idAlumno, idCurso);								
 			
 			return "busqueda.html";
 		}
@@ -94,10 +86,6 @@ public class CursoControlador {
 			cursoSer.bajaCurso(idCurso);
 			
 			return "perfilDocente.html";
-		}
-		
-		
-		
-		
-		
+		}	
+						
 }

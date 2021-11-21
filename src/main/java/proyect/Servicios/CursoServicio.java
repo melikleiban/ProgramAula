@@ -48,12 +48,13 @@ public class CursoServicio {
 				curso.setNivelDificultad(nivelDificultad);
 				curso.setDescripcion(descripcion);
 				curso.setLenguajes(lenguajes);
-				
+				curso.setProfesor(usuario.get());
 				cursoRepositorio.save(curso);
-				
+								
 				usuario.get().getListaCursos().add(curso);
 				
 				usuarioRepositorio.save(usuario.get());
+				
 				
 
 			}
@@ -62,16 +63,23 @@ public class CursoServicio {
 		}
 	}
 
-	public List<Curso> cursosProfesor(String idProfesor) {
+	public List<Curso> cursosProfesor(String profesor_id) {
 	
-		Optional<Usuario> respuesta = usuarioRepositorio.findById(idProfesor);
-		if(respuesta.isPresent()) {
-			Usuario usuario = respuesta.get();
-			List<Curso> listaCursos = usuario.getListaCursos();
+		//Optional<Usuario> respuesta = usuarioRepositorio.findById(idProfesor);
 		
-			return listaCursos;
-		}
-		return null;
+		List <Curso> listaCursos = cursoRepositorio.findByProfesor(profesor_id);
+		
+		return listaCursos;
+		
+		
+//		
+//		if(respuesta.isPresent()) {
+//			Usuario usuario = respuesta.get();
+//			List<Curso> listaCursos = usuario.getListaCursos();
+//			System.out.println("Entra al if");
+//			return listaCursos;
+//		}
+//		return null;
 	}
 		
 	

@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
+import java.util.List;
+import proyect.Entidades.Curso;
 import proyect.Entidades.Usuario;
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
@@ -96,21 +100,23 @@ public class UsuarioControlador {
 		return "perfilAlumno.html";
 	}
 	
-	@GetMapping("/perfilprofesor")
-	public String perfilProfesor(ModelMap modelo, String idProfesor) {
+	@GetMapping("/perfilprofesor/{id}")
+	public String perfilProfesor(ModelMap modelo,@PathVariable ("id") String profesor_id ) {
 		
+		List <Curso> cursos = cursoServicio.cursosProfesor(profesor_id);
+		modelo.addAttribute("cursos", cursos);
 
 		return "perfilDocente.html";
 	}
 	
-	@GetMapping("/perfilprofesor?param={id}")
-	public String perfilProfesorCursos(ModelMap modelo, String id) {
-		
-		System.out.println(id);
-		modelo.addAttribute("cursos",cursoServicio.cursosProfesor(id));
-		
-		return "perfilDocente.html";
-	}
+//	@GetMapping("/perfilprofesor/cursos")
+//	public String perfilProfesorCursos(ModelMap modelo, @RequestParam ("id") String id) {
+//		
+//		System.out.println(id);
+//		modelo.addAttribute("cursos",cursoServicio.cursosProfesor(id));
+//		
+//		return "perfilDocente.html";
+//	}
 
 	
 	

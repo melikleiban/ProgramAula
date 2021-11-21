@@ -42,8 +42,7 @@
 						
 							<div class="mb-3">
 							<label for="usuario" class="form-label"></label>
-							<input type="hidden" class="form-control" id="nombreUsuario" value="" required name="nombreUsuario"
-								th:value="${session.usuariosession.nombreUsuario}">
+							<input type="hidden" class="form-control" id="nombreUsuario" required name="nombreUsuario" th:value="${session.usuariosession.nombreUsuario}">
 							<div class="invalid-feedback">s
 								</div>
 							
@@ -80,7 +79,7 @@
 							</div>
 
 						<div class="mb-3">
-							<!--<label for="state" class="form-label">Lenguaje</label>
+							<label for="state" class="form-label">Lenguaje</label>
 							<select class="form-select" id="lenguajes" required name="lenguajes">
 								<option value="Seleccion">Seleccione un lenguaje</option>
 								<option value="JAVA">Java</option>
@@ -92,7 +91,7 @@
 								<option value="OTROS">Otros</option>
 								
 								
-							</select>-->
+							</select>
 							<div class="invalid-feedback">
 								Ingrese una dificultad.
 							</div>

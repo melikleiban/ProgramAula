@@ -43,4 +43,5 @@ public class Curso {
 
 	@ManyToOne
 	private Usuario profesor;
+	
 }
