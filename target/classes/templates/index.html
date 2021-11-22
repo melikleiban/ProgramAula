@@ -14,33 +14,26 @@
     <title>ProgramAula</title>
 </head>
 <body>
-  <div id="contenedor_redes" style="padding-bottom: 1.5em;">
+	<div id="contenedor_redes" style="padding-bottom: 1.5em;">
 
       <div id="logo"><a href="/"><img src="../img/logoGrande.png" alt="Logito" width="50px"></a></div>
 
       <div id="nombre_logo" style="margin-top:1em;"><h1>ProgramAula</h1></div>
     	
-    	
-    	
-    	<div id="contenedor_redes2">     
-        	<div>
-          		<a th:if="${session.usuariosession == null}" id="inicia" href="/login" class="btn btn-info" style="margin-right:1em ; margin-top:1em;margin-left:5em;">Iniciar Sesion</a>
-          		<a th:if="${session.usuariosession == null}" id="inicia" href="usuario/registro"class="btn btn-info" style="margin-right:1em ; margin-top:1em;">Registrate</a>  
-        	</div>  
-        </div>
+      <div id="contenedor_redes2">     
+        <div>
+          	<a th:if="${session.usuariosession == null}" id="inicia" href="/login" class="btn btn-info" style="margin-right:1em ; margin-top:1em;margin-left:5em;">Iniciar Sesion</a>
+          	<a th:if="${session.usuariosession == null}" id="inicia" href="usuario/registro"class="btn btn-info" style="margin-right:1em ; margin-top:1em;">Registrate</a>  
+        </div>  
+      </div>
         
-        <span th:if="${session.usuariosession != null}">
-        	<a th:text="${'PERFIL ' + session.usuariosession.rol}" class="btn btn-info" href="/perfil" style="margin-top:1em;margin-left:10em;"></a>
-            <a class="btn btn-secondary" href="/logout" style="margin-right:1em ; margin-top:1em;">Cerrar sesión</a>
-        </span>
-                
-              
-            </div>
-  
- 
- 
-
-    
+      <span th:if="${session.usuariosession != null}">
+      	<a th:if="${session.usuariosession.rol.name() == 'ALUMNO'}" th:text="${session.usuariosession.rol.name()}" class="btn btn-info" th:href="@{usuario/perfilAlumno}" style="margin-top:1em;margin-left:10em;"></a>
+      	<a th:if="${session.usuariosession.rol.name() == 'PROFESOR'}" th:text="${session.usuariosession.rol.name()}" class="btn btn-info" th:href="@{usuario/perfilDocente}" style="margin-top:1em;margin-left:10em;"></a>
+        <a class="btn btn-secondary" href="/logout" style="margin-right:1em ; margin-top:1em;">Cerrar sesión</a>
+      </span>              
+	</div>
+      
     <div class="buscador">
       <div class="input-group mb-3" style="position: absolute; padding:50px;margin-top: 60px;">
         <div class="input-group-prepend">
@@ -148,7 +141,7 @@
             z[indicesp-1].style.display = "block";
             setTimeout(carousellp, 3000); //Cambia cada 3 segundos
           }
-      </script>
+    </script>
 
 
       <script>
