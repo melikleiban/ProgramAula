@@ -36,37 +36,13 @@
 		</form>
 	</div>
 
-	<script>
-    /*<![CDATA[*/
-        /**
-         * @param String name
-         * @return String
-         */
-        function getParameterByName(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
 
-        function trayendo(){
-            document.getElementById('myInput').value = getParameterByName('param');           	
-            pro();
-        }
-    /*]]>*/
-    </script>
 
-	<script>
-function mandandoformulario(){
-var idCurso = document.getElementById('curso').value;
-var ruta = "busqueda-alerta-profesor?param=" + idCurso;
-location.href = ruta;
-}
-</script>
-
-	<form id="formulario" th:action="@{/busqueda-alerta}" method="POST">
+	
 		<div class="tabla">
+		<form id="formulario" th:action="@{/busqueda-alerta}" method="POST">
 			<table class="table">
+			
 				<thead>
 					<tr>
 						<th scope="col">Curso</th>
@@ -81,23 +57,14 @@ location.href = ruta;
 						<td th:text="${curso.descripcion}" id="descripcion"></td>
 						<td th:text="${curso.precioPorHora}" id="pph"></td>
 						<td th:text="${curso.nivelDificultad}" id="dificultad"></td>
-
-
-						
-							<!-- button type="button">
-							<data-toggle="modal" th:attr="data-target='#modal' + ${iterStat.index}">
-								Contactar
-							</button> -->
-
+						<td><input type="hidden" th:value="${curso.idCurso}" id="identificadorCurso"></input></td>
 						<td>
 								<button type="button" class="btn btn-info btn-primary"
 									data-toggle="modal"
 									th:attr="data-target='#modal' + ${iterStat.index}">
 									Contactar</button>
 
-
-							<div class="modal fade" th:id="'modal' + ${iterStat.index}"
-								role="dialog">
+							<div class="modal fade" th:id="'modal' + ${iterStat.index}" role="dialog">			
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header justify-content-between">
@@ -105,21 +72,17 @@ location.href = ruta;
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
-
 											<div class="form-group">
-												<label for="exampleFormControlTextarea1">Deja tu
-													mensaje</label>
-												<textarea class="form-control"
+												<label for="exampleFormControlTextarea1">Deja tu mensaje</label>
+												<textarea class="form-control" 
 													id="exampleFormControlTextarea1" rows="3" name="mensaje"></textarea>
-
+													<input type="hidden" class="form-control" id="alumno" th:value=${session.usuariosession.id} name="idAlumno"></input>
+													
 											</div>
 											<div class="modal-footer">
-												<input type="hidden" th:value="${session.usuariosession.id}"
-													name="idAlumno" id="alumno"> </input> <input type="hidden"
-													th:value="${curso.idCurso}" name="idCurso" id="curso">
-												</input>
-												<button type="submit" style="margin: auto;"
-													class="btn btn-primary" data-dismiss="modal">Enviar</button>
+												
+												<button onclick = "obteniendoInfo()" style="margin: auto;"
+												class="btn btn-primary" data-dismiss="modal">Enviar</button>
 
 											</div>
 
@@ -128,17 +91,13 @@ location.href = ruta;
 									</div>
 								</div>
 							</div></td>
-
-
-
-
-
-					</tr>
+						</tr>
 				</tbody>
-			</table>
+		<table class="table">
+		</form>
 		</div>
-	</form>
-
+		
+		
 
 	<!--     <div class="tabla"> -->
 	<!--         <div class="tabla"> -->
@@ -191,7 +150,16 @@ location.href = ruta;
 	<!--               </table> -->
 	<!--         </div> -->
 	<!--     </div> -->
+	
+<form id="formularioOculto" th:action="@{/busqueda-alerta}" method="POST">
 
+<input type="hidden" class="form-control" id="formOculto" name="mensaje"></input>
+<input type="hidden" class="form-control" id="idAlumno" name="idAlumno"></input>
+<input type="hidden" class="form-control" id="idCurso" name="idCurso"></input>
+
+</form>
+		
+		
 	<footer class="footer">
 		<div class="container">
 			<p>© Derechos reservados</p>
@@ -206,6 +174,45 @@ location.href = ruta;
 </body>
 </html>
 
+<script>
+function obteniendoInfo(){
+var textodescrip = document.getElementById('exampleFormControlTextarea1').value;
+var idAlumnodescrip = document.getElementById('alumno').value;
+var idCursodescrip = document.getElementById('identificadorCurso').value;
+document.getElementById('formOculto').value=textodescrip;
+document.getElementById('idAlumno').value=idAlumnodescrip;
+document.getElementById('idCurso').value=idCursodescrip;
+document.getElementById('formularioOculto').submit();
+
+
+}</script>
+	<script>
+    /*<![CDATA[*/
+        /**
+         * @param String name
+         * @return String
+         */
+        function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function trayendo(){
+            document.getElementById('myInput').value = getParameterByName('param');           	
+            pro();
+        }
+    /*]]>*/
+    </script>
+
+	<script>
+function mandandoformulario(){
+var idCurso = document.getElementById('curso').value;
+var ruta = "busqueda-alerta-profesor?param=" + idCurso;
+location.href = ruta;
+}
+</script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

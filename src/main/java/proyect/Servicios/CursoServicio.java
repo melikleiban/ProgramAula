@@ -107,8 +107,10 @@ public class CursoServicio {
 		
 			Optional<Curso> resultCurso = cursoRepositorio.findById(idCurso);
 			
-			configuracionEmail.emailSender("El usuario " + result.get().getNombreUsuario() + " de nombre " + result.get().getNombreCompleto()
-					+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + "." + "\n" + "Mensaje: " +mensaje,
+			configuracionEmail.emailSender("El usuario " + result.get().getNombreUsuario() 
+					+ " de nombre " + result.get().getNombreCompleto()
+					+ " solicita acceso a su curso titulado: " + resultCurso.get().getTitulo() 
+					+ "." + "\n" + "Mensaje: " +mensaje,
 			"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
 			
 

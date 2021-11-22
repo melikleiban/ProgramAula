@@ -45,6 +45,7 @@ public class CursoControlador {
 			return "index.html";
 		}
 		
+		
 		@PostMapping("/busqueda-alerta")
 		public String busquedaAlerta(String idAlumno, String idCurso, String mensaje) {				
 			
