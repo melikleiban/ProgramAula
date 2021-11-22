@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css"/>
+
+    <link rel="stylesheet" href="../css/styles.css"/>
+
     <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -12,57 +14,10 @@
     <title>ProgramAula</title>
 </head>
 <body>
+	<div id="contenedor_redes" style="padding-bottom: 1.5em;">
 
-  <div id="contenedor_redes">
-      <div id="logo"><a href="index.html"><img src="/img/logoChiquito.png" alt="Logito"></a></div>
-      <div id="nombre_logo"><h1>ProgramAula</h1></div>
-    <div id="contenedor_redes2">
-        <div class="redes"><a href="https://www.facebook.com/virginia.bello2/"><i class="fab fa-facebook" style="font-size:24px;color:white"></i></a></div>
-        <div class="redes"><a href="https://www.facebook.com/diegobayard"><i class="fab fa-instagram" style="font-size:24px;color:white"></i></a></div>
-        <div class="redes"><a href="https://www.facebook.com/jose.villena.14"><i class="fab fa-twitter" style="font-size:24px;color:white"></i></a></div>
-        <div class="redes"><a href="https://www.facebook.com/pamela.deguardia"><i class="fab fa-youtube" style="font-size:24px;color:white"></i></a></div>
-        <div class="redes"><a href="https://www.facebook.com/oguiso"><i class="fab fa-whatsapp" style="font-size:24px;color:white"></i></a></div>
+      <div id="logo"><a href="/"><img src="../img/logoGrande.png" alt="Logito" width="50px"></a></div>
 
-	</div>
-        <div class="no-logueado" th:if="${session.usuariosession} == null">
-          <a id="inicia" href="/login">Iniciar Sesion</a>
-
-          <a id="inicia" href="/usuario/registro">Registrate</a>    
-
-        </div>
-
-        <div class="logueado" th:if = "${session.usuariosession} != null"> 
-      
-
-          <div class="dropdown text-start">
-              <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-              
-              
-              <!--  Habria que ver como cambiar esta imagen -->
-                <i class="fas fa-user"></i>
-              </a>
-              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
-  					<!-- Habrtia que ca,mbiar los href de abajo para que lleven el id  -->
-                  <li th:if="${session.usuariosession.rol.name()}  == ALUMNO"><a class="dropdown-item" th:href="@{/usuario/perfilalumno}" id="opciones">Mi perfil</a></li>
-
-                  <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilprofesor/__${session.usuariosession.id}__}" id="opciones">Mi perfil</a></li> 
-
-                  <li><hr class="dropdown-divider" id="opciones"></li> 
-                
-                               
-                  <li><a class="dropdown-item" href="/logout" id="opciones">Cerrar sesión</a></li>
-              </ul>
-             </div>          
-             
-          </div>
-      </div>
-	
-	
-	
-
-
-
-	<!-- 
       <div id="nombre_logo" style="margin-top:1em;"><h1>ProgramAula</h1></div>
     	
       <div id="contenedor_redes2">     
@@ -78,13 +33,13 @@
         <a class="btn btn-secondary" href="/logout" style="margin-right:1em ; margin-top:1em;">Cerrar sesión</a>
       </span>              
 	</div>
-     -->  
+      
     <div class="buscador">
       <div class="input-group mb-3" style="position: absolute; padding:50px;margin-top: 60px;">
         <div class="input-group-prepend">
-        </div>        
-        <button onclick="probando()" type="submit" class="btn btn-primary btn-lg btn-block">Buscar</button>
-      	<input id="myInput" type="text" class="form-control" placeholder="Buscar..." aria-label="Username" aria-describedby="basic-addon1" name="palabraClave">
+        </div>
+        <input id="myInput" type="text" class="form-control" placeholder="Buscar..." aria-label="Username" aria-describedby="basic-addon1">
+        <button onclick="probando()" type="button" class="btn btn-primary btn-lg btn-block">Buscar</button>
       </div>
     </div>
 
@@ -92,13 +47,17 @@
       function probando(){
         var param_busqueda = document.getElementById("myInput").value;
         console.log(param_busqueda);
-        var ruta="busqueda/palabraClave?palabraClave=" + param_busqueda;
+        var ruta="busqueda.html?param=" + param_busqueda;
         location.href=ruta;
       }
     </script>
 
     <div class="slider">
-     
+      <!--
+      <div id="texto_hist">
+        <p>ProgramAula te ofrece los mejores cursos de programación. Busca el lenguaje que quieras aprender <a id ="textito" href="productos.html">aca</a></p>
+      </div>
+      -->
       <div class="fotitos">
 
         <img class="miSlide" src="../img/java.jpg">
@@ -106,14 +65,7 @@
         <img class="miSlide" src="../img/javascript.jpg">
         <img class="miSlide" src="../img/aviso1.png">
 
-        <img class="miSlide" src="/img/java.jpg">
-        <img class="miSlide" src="/img/python.png">
-        <img class="miSlide" src="/img/javascript.jpg">
-        <img class="miSlide" src="/img/aviso1.png">
-
-        <div class="tex"><p style="margin-left: auto; margin-right: auto;">
-        ProgramAula te ofrece los mejores cursos de programación. Busca el lenguaje que quieras aprender 
-        <a id ="textito" href="busqueda">acá</a></p></div>
+        <div class="tex"><p style="margin-left: auto; margin-right: auto;">ProgramAula te ofrece los mejores cursos de programación. Busca el lenguaje que quieras aprender <a id ="textito" href="productos.html">aca</a></p></div>
       </div>
     </div>
 
@@ -136,24 +88,23 @@
 
       <div class="slider_p">
         <div class="profes">
-         
 
-          <div class="miSlider_p"><img class="miSlide_p" src="/img/cara2.jpg"><p class="textite">Pepito Garcia</p></div>
-          <div class="miSlider_p"><img class="miSlide_p" src="/img/cara3.jpg"><p class="textite">Ricardo Fort</p></div>
-          <div class="miSlider_p"><img class="miSlide_p" src="/img/cara4.jpg"><p class="textite">Juana Gomez</p></div>
-          <div class="miSlider_p"><img class="miSlide_p" src="/img/cara1.jpg"><p class="textite">Luisa Oreo</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../img/cara2.jpg"><p class="textite">Pepito Garcia</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../img/cara3.jpg"><p class="textite">Ricardo Fort</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../img/cara4.jpg"><p class="textite">Juana Gomez</p></div>
+          <div class="miSlider_p"><img class="miSlide_p" src="../img/cara1.jpg"><p class="textite">Luisa Oreo</p></div>
         </div>
         <div class="profes2">
-          <div class="miSlider_p2"><img class="miSlide_p2" src="/img/cara1.jpg"><p class="textite">Mariela Perez</p></div>
-          <div class="miSlider_p2"><img class="miSlide_p2" src="/img/cara2.jpg"><p class="textite">Jorge Lina</p></div>
-          <div class="miSlider_p2"><img class="miSlide_p2" src="/img/cara4.jpg"><p class="textite">Carla Lopez</p></div>
-          <div class="miSlider_p2"><img class="miSlide_p2" src="/img/cara3.jpg"><p class="textite">Franco Meta</p></div>
+          <div class="miSlider_p2"><img class="miSlide_p2" src="../img/cara1.jpg"><p class="textite">Mariela Perez</p></div>
+          <div class="miSlider_p2"><img class="miSlide_p2" src="../img/cara2.jpg"><p class="textite">Jorge Lina</p></div>
+          <div class="miSlider_p2"><img class="miSlide_p2" src="../img/cara4.jpg"><p class="textite">Carla Lopez</p></div>
+          <div class="miSlider_p2"><img class="miSlide_p2" src="../img/cara3.jpg"><p class="textite">Franco Meta</p></div>
         </div>
         <div class="profes3">
-          <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara2.jpg"><p class="textite">Juan Perez</p></div>
-          <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara1.jpg"><p class="textite">Mirtha Legrand</p></div>
-          <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara3.jpg"><p class="textite">Jorge Lanata</p></div>
-          <div class="miSlider_p3"><img class="miSlide_p3" src="/img/cara4.jpg"><p class="textite">Susana Gimenez</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../img/cara2.jpg"><p class="textite">Juan Perez</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../img/cara1.jpg"><p class="textite">Mirtha Legrand</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../img/cara3.jpg"><p class="textite">Jorge Lanata</p></div>
+          <div class="miSlider_p3"><img class="miSlide_p3" src="../img/cara4.jpg"><p class="textite">Susana Gimenez</p></div>
 
         </div>
       </div>

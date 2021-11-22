@@ -2,6 +2,8 @@ package proyect.Servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -38,7 +40,7 @@ public class UsuarioServicio implements UserDetailsService {
 	private ConfiguracionEmail configuracionEmail;
 	
 	@Transactional
-	public void registro(String nombreUsuario, 
+	public void registro(MultipartFile archivo, String nombreUsuario, 
 			String nombreCompleto,
 			String email,
 			String telefono,
@@ -57,7 +59,8 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setLocalidad(localidad);
 		usuario.setAltaBaja(true);
 		
-
+		Foto foto = fotoServicio.guardarFoto(archivo);
+		usuario.setFoto(foto);
 		
 
 		
@@ -87,6 +90,8 @@ public class UsuarioServicio implements UserDetailsService {
 		}
 		
 	}
+
+
 
 	@Transactional
 	public void modificar(String nombreUsuario, 
@@ -179,6 +184,7 @@ public class UsuarioServicio implements UserDetailsService {
 	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
 		
 		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
+
 		
 		if (usuario == null) {
 			
@@ -242,8 +248,10 @@ public class UsuarioServicio implements UserDetailsService {
 //
 //			return user;
 
+
 		
 	
+
 	
 	public String registroExitosoMensaje(String nombreUsuario, String contrasenia, String nombreCompleto) {
 		
@@ -267,4 +275,6 @@ public class UsuarioServicio implements UserDetailsService {
 		Usuario us = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
 		return us;
 	}
+	
+	
 }

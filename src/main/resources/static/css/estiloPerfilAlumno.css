@@ -79,7 +79,8 @@ body {
 
 
 .seccion-perfil-usuario .perfil-usuario-avatar img {
-    width: 100%;
+     width: 166px;
+    height: 166px;
     position: relative;
     border-radius: 50%;
 }

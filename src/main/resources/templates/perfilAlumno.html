@@ -32,28 +32,29 @@
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
 
-                    <img src="/img/avatar.jpg" alt="img-avatar">
-                    <button type="button" class="boton-avatar">
-									<i class="far fa-image"></i>
-					</button>
-
-                    
-
+                    <img th:if="${session.usuariosession.foto != null}" th:src="${'/foto/usuario?nombreUsuario=' + session.usuariosession.nombreUsuario}">
+                
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Nombre Alumno</h3>
-                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h3 class="titulo" th:text="${session.usuariosession.rol.name()}">Nombre Alumno</h3>
+                <p class="texto"></p>
             </div>
             <div class="perfil-usuario-footer">
-                <div class="lista-datos">
-                    <i class="fas fa-map-marked-alt" id="icon-address"></i> Dirección: <input type="text" class="form-control" id="inputDireccion" placeholder="Calle falsa 123" readonly=true><p th:text="${session.usuariosession.localidad}"></p>    <i class="fas fa-edit" id="edit1"></i>          
-                    <i class="icono fas fa-phone-alt" id="icon-phone"></i> Teléfono: <input type="text" class="form-control" id="inputTelefono" placeholder="555123456" readonly=true>    <i class="fas fa-edit" id="edit2"></i>
-                    <i class="fas fa-mail-bulk" id="icon-email"></i> Email: <input type="email" class="form-control" id="inputEmail" placeholder="ejemplo@noexiste.com" readonly=true>    <i class="fas fa-edit" id="edit3"></i>
-                </div>
+                <ul class="lista-datos">
+					<li><i class="icono fas fa-phone-alt"></i> Telefono: <input
+						type="text" class="form-control" id="inputTelefono" 
+						 th:placeholder="${session.usuariosession.telefono}" readonly=true></li>
+					<li><i class="icono fas fa-briefcase"></i> Email: <input
+						type="email" class="form-control" id="inputEmail"
+						th:placeholder="${session.usuariosession.email}" readonly=true></li>
+					<li><i class="icono fas fa-map-marker-alt"></i> Ubicacion: <input
+						type="" class="form-control"
+						th:placeholder="${session.usuariosession.localidad}" readonly=true></li>
+						
+				</ul>
             </div>
             
         </div>

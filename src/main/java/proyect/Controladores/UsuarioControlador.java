@@ -1,8 +1,10 @@
 package proyect.Controladores;
 
+
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import proyect.Entidades.Curso;
 import proyect.Entidades.Usuario;
+
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
 import proyect.Repositorios.CursoRepositorio;
@@ -54,6 +58,7 @@ public class UsuarioControlador {
 		try {
 			Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
 			
+
 			if(respuesta.isPresent()) {
 			Usuario usuario = respuesta.get();
 			modelo.addAttribute("perfilAlumnoEditar", usuario);
@@ -61,6 +66,7 @@ public class UsuarioControlador {
 			
 		}catch (Exception e){
 			modelo.put("error", e.getMessage());
+
 		}
 		return "perfilAlumnoEditar.html";
 	}
@@ -98,6 +104,7 @@ public class UsuarioControlador {
 			
 			modelo.put("error", ex.getMessage());
 		}
+
 		return "perfilAlumno.html";
 	}
 	
@@ -108,9 +115,17 @@ public class UsuarioControlador {
 		List <Curso> cursos = cursoServicio.cursosProfesor(profesor_id);
 		modelo.addAttribute("cursos", cursos);
 
+
 		return "perfilDocente.html";
 	}
+
 	
+	
+	
+	
+	
+	
+
 //	@GetMapping("/perfilprofesor/cursos")
 //	public String perfilProfesorCursos(ModelMap modelo, @RequestParam ("id") String id) {
 //		
@@ -140,6 +155,7 @@ public class UsuarioControlador {
 		}
 		return "perfilProfesorEditar.html";
 	}
+
 	
 	@PostMapping("/perfilprofesor/editar")
 	public String perfilProfesorEditar(ModelMap modelo,
