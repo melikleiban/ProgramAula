@@ -49,6 +49,7 @@ public class CursoServicio {
 				curso.setDescripcion(descripcion);
 				curso.setLenguajes(lenguajes);
 				curso.setProfesor(usuario.get());
+				curso.setId_profesor(usuario.get().getId());
 				cursoRepositorio.save(curso);
 								
 				usuario.get().getListaCursos().add(curso);
@@ -98,7 +99,7 @@ public class CursoServicio {
 
 	
 
-	public void alertaProfesor(String idAlumno, String idCurso) {
+	public void alertaProfesor(String idAlumno, String idCurso, String mensaje) {
 		Optional<Usuario> result = usuarioRepositorio.findById(idAlumno);
 		
 		if (result.isPresent() && result.get().getRol() == Rol.ALUMNO) {
@@ -106,7 +107,7 @@ public class CursoServicio {
 			Optional<Curso> resultCurso = cursoRepositorio.findById(idCurso);
 			
 			configuracionEmail.emailSender("El usuario " + result.get().getNombreUsuario() + " de nombre " + result.get().getNombreCompleto()
-					+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + ".",
+					+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + "." + "\n" + "Mensaje: " +mensaje,
 			"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
 
 		}

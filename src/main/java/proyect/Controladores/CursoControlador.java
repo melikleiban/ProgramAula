@@ -40,9 +40,9 @@ public class CursoControlador {
 			
 						
 		@PostMapping("/busqueda-alerta")
-		public String busquedaAlerta(String idAlumno, String idCurso) {				
+		public String busquedaAlerta(String idAlumno, String idCurso, String mensaje) {				
 		
-			cursoSer.alertaProfesor(idAlumno, idCurso);								
+			cursoSer.alertaProfesor(idAlumno, idCurso, mensaje);								
 			
 			return "busqueda.html";
 		}
@@ -63,21 +63,12 @@ public class CursoControlador {
 		public String cargarCursos(ModelMap modelo, @RequestParam(required = false) String error, 
 				String nombreUsuario, String titulo, 
 				Double precioPorHora, String nivelDificultad, String descripcion, 
-				Lenguajes lenguajes) throws ErrorServicio {
+				Lenguajes lenguajes, String id_profesor) throws ErrorServicio {
 			
-			cursoSer.crearCurso(nombreUsuario, titulo, true, precioPorHora, nivelDificultad, descripcion, lenguajes);
+			cursoSer.crearCurso(nombreUsuario, titulo, true, precioPorHora, nivelDificultad, descripcion, lenguajes);			
+			String ruta = ("redirect:/usuario/perfilprofesor/" + id_profesor);
 			
-//			if(error != null) {
-//			
-//				modelo.put("error", "El curso no se ha cargado correctamente");
-//				
-//			}else {
-//			
-//				modelo.put("exito", "El curso se ha cargado correctamente");
-//			}
-
-			
-			return "perfilDocente.html";
+			return ruta;
 		}
 		
 		@PostMapping("/listado-curso-borrar")

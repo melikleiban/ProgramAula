@@ -23,6 +23,7 @@ import proyect.Entidades.Curso;
 import proyect.Entidades.Usuario;
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
+import proyect.Repositorios.CursoRepositorio;
 import proyect.Repositorios.UsuarioRepositorio;
 import proyect.Servicios.CursoServicio;
 import proyect.Servicios.UsuarioServicio;
@@ -102,6 +103,7 @@ public class UsuarioControlador {
 	
 	@GetMapping("/perfilprofesor/{id}")
 	public String perfilProfesor(ModelMap modelo,@PathVariable ("id") String profesor_id ) {
+		
 		
 		List <Curso> cursos = cursoServicio.cursosProfesor(profesor_id);
 		modelo.addAttribute("cursos", cursos);

@@ -41,7 +41,16 @@ public class Curso {
 	@OneToMany
 	private List<Usuario> alumnosInscriptos;
 
+
 	@ManyToOne
 	private Usuario profesor;
+	
+	private String id_profesor;
+	
+	
+	
+	
+	
+	
 	
 }

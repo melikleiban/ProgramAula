@@ -27,9 +27,8 @@ public interface CursoRepositorio extends JpaRepository<Curso, String>{
 	public List<Curso> existsByAmbas (@Param("b")String lenguajes, @Param("clave")String clave);
 	
 
-	@Query("SELECT p FROM Curso p WHERE p.profesor_id LIKE :d")
-	public List<Curso> findByProfesor(@Param("d")String profesor_id);
-	
+	@Query("SELECT p FROM Curso p  WHERE p.id_profesor = :profesor")
+	public List<Curso> findByProfesor(@Param("profesor")String profesor);
 	
 
 
