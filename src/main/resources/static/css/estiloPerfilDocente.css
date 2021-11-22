@@ -78,7 +78,8 @@ body {
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar img {
-    width: 100%;
+    width: 166px;
+    height: 166px;
     position: relative;
     border-radius: 50%;
 }
@@ -346,7 +347,7 @@ p {
 	border-radius: 5px !important;
 	width: 15rem !important;
 	height: 2em !important;
-	width: 150px !important;
+	/**width: 150px !important;**/
 	text-align: center !important;
 >>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
 }

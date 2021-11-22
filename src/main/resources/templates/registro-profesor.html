@@ -78,7 +78,7 @@
 <body>
 
 
-<<<<<<< HEAD
+
     <div class="header">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -100,7 +100,7 @@
      <div class="form">
 	<span class="alert alert-danger" th:if="${error != null}" th:text="${error}" style="padding:0.5em"></span>
 
-        <form class="needs-validation" novalidate th:action="@{/usuario/registro/profesor}" method ="POST" id="formulario">
+        <form class="needs-validation" novalidate th:action="@{/usuario/registro/profesor}" method ="POST" id="formulario" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="firstName" class="form-label">Nombre y Apellido</label>
                 <input type="text" class="form-control" id="firstName" placeholder="Jose Villenas" value="" required name="nombreCompleto" th:value="${nombreCompleto}">
@@ -132,13 +132,19 @@
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="clave" name="contrasenia">
             </div>
+            
+        
+            
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
                 <input type="password" class="form-control" id="clave2">
             </div>
+            
+        
+            
             <div class="mb-3">
-                <label for="email" class="form-label">Teléfono</label>
-                <input type="tel" class="form-control" id="tel" placeholder="341358975" name="telefono" th:value="${telefono}">
+                <label class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="tel" placeholder="341358975" name="telefono">
                 <div class="invalid-feedback">
                     Ingrese un número de teléfono válido.
                 </div>
@@ -188,7 +194,10 @@
                 <div class="invalid-feedback">
                     Ingrese una provincia válida
                 </div>
-
+				        <div class="mb-3">
+                <label class="form-label"> Foto </label>
+                <input type="file" class="form-control" name="archivo" id="foto">
+            </div>
             </div>
 
 
@@ -213,9 +222,8 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="form-validation.js"></script>
-=======
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
 
+<!--  
 	<div class="header">
 		<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
 			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -344,7 +352,7 @@
 		</form>
 	</div>
 
-
+-->
 
 	<footer class="my-5 pt-5 text-muted text-center text-small">
 		<p class="mb-1">&copy; 2021 ProgramAula</p>

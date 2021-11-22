@@ -1,12 +1,10 @@
 package proyect.Controladores;
 
-<<<<<<< HEAD
-//import javax.servlet.http.HttpSession;
-=======
+
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,10 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-<<<<<<< HEAD
-import org.springframework.web.multipart.MultipartFile;
 
-=======
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import proyect.Entidades.Curso;
 import proyect.Entidades.Usuario;
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
 //import org.springframework.web.multipart.MultipartFile;
 import proyect.ErrorServicio.ErrorServicio;
 import proyect.Repositorios.CursoRepositorio;
@@ -63,19 +58,7 @@ public class UsuarioControlador {
 		try {
 			Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
 			
-<<<<<<< HEAD
-			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia,true);
-			modelo.put("exito", "Registro exitoso!!!");
-			return "login.html";
-			
-		}catch(Exception e){
-			modelo.put("error", "Error al Registrarse!!!");	
-			modelo.put("nombreUsuario", nombreUsuario);
-			modelo.put("nombreCompleto", nombreCompleto);
-			modelo.put("email", email);
-			modelo.put("telefono", telefono);
-				return "registro-profesor.html";		
-=======
+
 			if(respuesta.isPresent()) {
 			Usuario usuario = respuesta.get();
 			modelo.addAttribute("perfilAlumnoEditar", usuario);
@@ -83,7 +66,7 @@ public class UsuarioControlador {
 			
 		}catch (Exception e){
 			modelo.put("error", e.getMessage());
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
 		}
 		return "perfilAlumnoEditar.html";
 	}
@@ -121,52 +104,7 @@ public class UsuarioControlador {
 			
 			modelo.put("error", ex.getMessage());
 		}
-<<<<<<< HEAD
 
-	}
-	
-
-	@GetMapping("/perfilAlumno")
-	public String perfilAlumno() {
-		System.out.println("Entra al controller");
-	return "perfilAlumno.html";
-	}
-	
-
-	
-	@GetMapping("/perfilalumno/editar/{id}")
-	public String perfilAlumnoEditar(ModelMap modelo, @PathVariable("id")String id) {
-		
-		return "perfilAlumnoEditar.html";
-	}
-	
-	@PostMapping("/perfilalumno/editar/{id}")
-	public String subirFoto(ModelMap modelo,
-			String nombreUsuario, 
-			String nombreCompleto,
-			String email,
-			String telefono,
-			String localidad,
-			String contrasenia,
-			String descripcion,
-			MultipartFile archivo, 
-			@PathVariable("id")String id) throws ErrorServicio {
-		
-	//	try {			
-			//usuarioServicio.modificar(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, descripcion, archivo);		
-			
-	//	} catch (ErrorServicio ex) {
-		//	modelo.put("error", ex.getMessage());
-			
-	//	}		
-		return "perfilAlumno.html";		
-	}
-	
-
-
-	@GetMapping("/perfilDocente")
-	public String perfilProfesor() {	
-=======
 		return "perfilAlumno.html";
 	}
 	
@@ -177,7 +115,7 @@ public class UsuarioControlador {
 		List <Curso> cursos = cursoServicio.cursosProfesor(profesor_id);
 		modelo.addAttribute("cursos", cursos);
 
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
 		return "perfilDocente.html";
 	}
 
@@ -187,29 +125,7 @@ public class UsuarioControlador {
 	
 	
 	
-<<<<<<< HEAD
-	
-	
-	
-	@GetMapping("/login")
-	public String login(@RequestParam(required = false) String error,@RequestParam(required = false) String logout, ModelMap modelo) {
-		
-		modelo.put("error", "Nombre de Usuario o clave Incorrectos");
-		
-		
-		modelo.put("logout", "Nombre de Usuario o clave Incorrectos");
-		
-		return "login.html";
-	}
-	
-//	@PostMapping("/logearse")
-//	public String logearse(@RequestParam String usuario, @RequestParam String contrasenia) {
-//		System.out.println("Usuario: " + usuario);
-//		System.out.println("Clave: " + contrasenia);
-//		
-//		return "index.html";
-//	}
-=======
+
 //	@GetMapping("/perfilprofesor/cursos")
 //	public String perfilProfesorCursos(ModelMap modelo, @RequestParam ("id") String id) {
 //		
@@ -239,7 +155,7 @@ public class UsuarioControlador {
 		}
 		return "perfilProfesorEditar.html";
 	}
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
 	
 	@PostMapping("/perfilprofesor/editar")
 	public String perfilProfesorEditar(ModelMap modelo,

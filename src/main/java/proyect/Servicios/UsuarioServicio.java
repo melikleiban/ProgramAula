@@ -2,10 +2,8 @@ package proyect.Servicios;
 
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
 
-=======
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -42,7 +40,7 @@ public class UsuarioServicio implements UserDetailsService {
 	private ConfiguracionEmail configuracionEmail;
 	
 	@Transactional
-	public void registro(String nombreUsuario, 
+	public void registro(MultipartFile archivo, String nombreUsuario, 
 			String nombreCompleto,
 			String email,
 			String telefono,
@@ -61,7 +59,8 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setLocalidad(localidad);
 		usuario.setAltaBaja(true);
 		
-
+		Foto foto = fotoServicio.guardarFoto(archivo);
+		usuario.setFoto(foto);
 		
 
 		
@@ -92,13 +91,8 @@ public class UsuarioServicio implements UserDetailsService {
 		
 	}
 
-<<<<<<< HEAD
 
-	
-	
-	
-=======
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
 	@Transactional
 	public void modificar(String nombreUsuario, 
 			String nombreCompleto,
@@ -190,29 +184,12 @@ public class UsuarioServicio implements UserDetailsService {
 	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
 		
 		Usuario usuario = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
-<<<<<<< HEAD
-		if (usuario != null && usuario.getRol() == Rol.PROFESOR) {
-			List<GrantedAuthority> permisos = new ArrayList<>();
 
-			GrantedAuthority p1 = new SimpleGrantedAuthority("MODULO_CURSOS");
-			permisos.add(p1);
-			GrantedAuthority p2 = new SimpleGrantedAuthority("MODULO_FOTO");
-			permisos.add(p2);
-
-			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
-			
-			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-			HttpSession session = attr.getRequest().getSession(true);
-			session.setAttribute("usuariosession", usuario);
-			
-			return user;
-=======
 		
 		if (usuario == null) {
 			
 			return null;
 			
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
 		}
 			
 			List<GrantedAuthority> permisos = new ArrayList<>();
@@ -271,23 +248,10 @@ public class UsuarioServicio implements UserDetailsService {
 //
 //			return user;
 
-<<<<<<< HEAD
-			User user = new User(usuario.getNombreUsuario(), usuario.getContrasenia(), permisos);
-			
-			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-			HttpSession session = attr.getRequest().getSession(true);
-			session.setAttribute("usuariosession", usuario);
-			
-			return user;
 
-		} else {
-			return null;
-		}
-	}
-=======
 		
 	
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
 	
 	public String registroExitosoMensaje(String nombreUsuario, String contrasenia, String nombreCompleto) {
 		
@@ -311,4 +275,6 @@ public class UsuarioServicio implements UserDetailsService {
 		Usuario us = usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario);
 		return us;
 	}
+	
+	
 }

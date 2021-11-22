@@ -83,7 +83,7 @@
     <div class="form">
 	<span class="alert alert-danger" th:if="${error != null}" th:text="${error}" style="padding:0.5em"></span>
 
-        <form class="needs-validation" novalidate th:action="@{/usuario/registro/alumno}" method ="POST" id="formulario">
+        <form class="needs-validation" novalidate th:action="@{/usuario/registro/alumno}" method ="POST" id="formulario" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="firstName" class="form-label">Nombre y Apellido</label>
                 <input type="text" class="form-control" id="firstName" placeholder="Jose Villenas" value="" required name="nombreCompleto" th:value="${nombreCompleto}">
@@ -170,6 +170,12 @@
                 <div class="invalid-feedback">
                     Ingrese una provincia válida
                 </div>
+
+			       </div>
+				        <div class="mb-3">
+                <label class="form-label"> Foto </label>
+                <input type="file" class="form-control" name="archivo" id="foto">
+            </div>
 
             </div>
 
