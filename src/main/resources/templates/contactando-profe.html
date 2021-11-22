@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ProgramAula</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body onload="trayendo()">
+    <form th:action="@{/busqueda/busqueda-alerta-profesor?param=__${idCurso}__}" method="POST">
+      <input type="hidden" th:value="${session.usuariosession.id}" class="form-control" placeholder="Java" name="idAlumno">
+      <input type="hidden" id="idCurso" class="form-control" placeholder="125" name="idCurso">
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mensaje"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+</body>
+<script>
+        /**
+         * @param String name
+         * @return String
+         */
+         function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function trayendo(){
+            document.getElementById('idCurso').value = getParameterByName('param');
+            console.log(getParameterByName('param'));
+        }
+</script>
+</html>

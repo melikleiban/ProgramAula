@@ -56,43 +56,56 @@
     /*]]>*/
     </script>
 
+	<script>
+function mandandoformulario(){
+var idCurso = document.getElementById('curso').value;
+var ruta = "busqueda-alerta-profesor?param=" + idCurso;
+location.href = ruta;
+}
+</script>
 
-	<div class="tabla">
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Curso</th>
-					<th scope="col">Descripción</th>
-					<th scope="col">Precio</th>
-					<th scope="col">Dificultad</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="curso, iterStat : ${cursos}">
-					<td th:text="${curso.titulo}" id="titulo"></td>
-					<td th:text="${curso.descripcion}" id="descripcion"></td>
-					<td th:text="${curso.precioPorHora}" id="pph"></td>
-					<td th:text="${curso.nivelDificultad}" id="dificultad"></td>
+	<form id="formulario" th:action="@{/busqueda-alerta}" method="POST">
+		<div class="tabla">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Curso</th>
+						<th scope="col">Descripción</th>
+						<th scope="col">Precio</th>
+						<th scope="col">Dificultad</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="curso, iterStat : ${cursos}">
+						<td th:text="${curso.titulo}" id="titulo"></td>
+						<td th:text="${curso.descripcion}" id="descripcion"></td>
+						<td th:text="${curso.precioPorHora}" id="pph"></td>
+						<td th:text="${curso.nivelDificultad}" id="dificultad"></td>
 
 
-					<td><a th:href="@{/busqueda-alerta}">
-							<button type="button" class="btn btn-info btn-primary"
-								data-toggle="modal"
-								th:attr="data-target='#modal' + ${iterStat.index}">
-								Contactar</button>
-					</a>
+						
+							<!-- button type="button">
+							<data-toggle="modal" th:attr="data-target='#modal' + ${iterStat.index}">
+								Contactar
+							</button> -->
+
+						<td>
+								<button type="button" class="btn btn-info btn-primary"
+									data-toggle="modal"
+									th:attr="data-target='#modal' + ${iterStat.index}">
+									Contactar</button>
 
 
+							<div class="modal fade" th:id="'modal' + ${iterStat.index}"
+								role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header justify-content-between">
+											<strong> Contactar profesor </strong>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<div class="modal-body">
 
-						<div class="modal fade" th:id="'modal' + ${iterStat.index}"
-							role="dialog">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-									</div>
-									<div class="modal-body">
-										<form th:action="@{/busqueda-alerta}" method="post">
 											<div class="form-group">
 												<label for="exampleFormControlTextarea1">Deja tu
 													mensaje</label>
@@ -102,23 +115,29 @@
 											</div>
 											<div class="modal-footer">
 												<input type="hidden" th:value="${session.usuariosession.id}"
-													name="idAlumno"></input> <input type="hidden"
-													th:value="${curso.idCurso}" name="idCurso"></input>
-												<button style="margin: auto;" type="submit"
+													name="idAlumno" id="alumno"> </input> <input type="hidden"
+													th:value="${curso.idCurso}" name="idCurso" id="curso">
+												</input>
+												<button type="submit" style="margin: auto;"
 													class="btn btn-primary" data-dismiss="modal">Enviar</button>
 
-
 											</div>
-										</form>
-									</div>
 
+										</div>
+
+									</div>
 								</div>
-							</div>
-						</div></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+							</div></td>
+
+
+
+
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</form>
 
 
 	<!--     <div class="tabla"> -->
@@ -180,7 +199,7 @@
 		<div class="container pie">
 			<p>© Equipo 6 😎 - 2021</p>
 			<p>
-				<a style="color: white;" href="terminos">Terminos y condiciones</a>
+				<a style="color: white;" href="terminos">Términos y condiciones</a>
 			</p>
 		</div>
 	</footer>

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequestMapping
+@RequestMapping("/")
 public class CursoControlador {
 	
 	@Autowired
@@ -38,22 +38,25 @@ public class CursoControlador {
 			return "busqueda.html";
 		}
 			
-						
+		
+		
 		@GetMapping("/busqueda-alerta")
+		public String busquedaAlerta() {				
+			return "index.html";
+		}
+		
+		@PostMapping("/busqueda-alerta")
 		public String busquedaAlerta(String idAlumno, String idCurso, String mensaje) {				
 			
-			System.out.println("el controlador funciona");
+			System.out.println("id alumno" + idAlumno + "id curso" + idCurso);
+			
 			cursoSer.alertaProfesor(idAlumno, idCurso, mensaje);								
 			System.out.println("el servicio???");
 			return "index.html";
 		}
 		
 		
-		
-		
-		
-
-		
+			
 		@GetMapping("/usuario/nuevo-curso")
 		public String cargarCursos() {
 					

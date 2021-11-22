@@ -25,11 +25,9 @@
 	</div>
         <div class="no-logueado" th:if="${session.usuariosession} == null">
           <a id="inicia" href="/login">Iniciar Sesion</a>
-<<<<<<< HEAD
-          <a id="inicia" href="/usuario/registro">Registrate</a>  
-=======
-          <a id="inicia" href="/registro">Registrate</a>  
->>>>>>> 7e028a0d76bd8ce95bd7b0c05f7749a031441c4d
+
+          <a id="inicia" href="/usuario/registro">Registrate</a>    
+
         </div>
 
         <div class="logueado" th:if = "${session.usuariosession} != null"> 
@@ -37,29 +35,24 @@
 
           <div class="dropdown text-start">
               <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              
+              
               <!--  Habria que ver como cambiar esta imagen -->
-                <img th:src="${session.usuariosession.foto}" alt="" width="32" height="32" class="rounded-circle">
+                <i class="fas fa-user"></i>
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
   					<!-- Habrtia que ca,mbiar los href de abajo para que lleven el id  -->
                   <li th:if="${session.usuariosession.rol.name()}  == ALUMNO"><a class="dropdown-item" th:href="@{/usuario/perfilalumno}" id="opciones">Mi perfil</a></li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilprofesor}" id="opciones">Mi perfil</a></li> 
-=======
+
                   <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilprofesor/__${session.usuariosession.id}__}" id="opciones">Mi perfil</a></li> 
->>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
+
                   <li><hr class="dropdown-divider" id="opciones"></li> 
-                  <!--  Habria que poner los servicios para que se cierre la sesion -->               
+                
+                               
                   <li><a class="dropdown-item" href="/logout" id="opciones">Cerrar sesión</a></li>
-=======
-                  <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilDocente}" id="opciones">Mi perfil</a></li> 
-                  <li><hr class="dropdown-divider" id="opciones"></li> 
-                  <!--  Habria que poner los servicios para que se cierre la sesion -->               
-                  <li><a class="dropdown-item" href="index.html" id="opciones">Cerrar sesión</a></li>
->>>>>>> 7e028a0d76bd8ce95bd7b0c05f7749a031441c4d
               </ul>
              </div>          
+             
           </div>
       </div>
 	
@@ -88,11 +81,7 @@
     </script>
 
     <div class="slider">
-      <!--
-      <div id="texto_hist">
-        <p>ProgramAula te ofrece los mejores cursos de programación. Busca el lenguaje que quieras aprender <a id ="textito" href="productos.html">aca</a></p>
-      </div>
-      -->
+     
       <div class="fotitos">
 
         <img class="miSlide" src="../img/java.jpg">
@@ -105,7 +94,9 @@
         <img class="miSlide" src="/img/javascript.jpg">
         <img class="miSlide" src="/img/aviso1.png">
 
-        <div class="tex"><p style="margin-left: auto; margin-right: auto;">ProgramAula te ofrece los mejores cursos de programación. Busca el lenguaje que quieras aprender <a id ="textito" href="productos.html">aca</a></p></div>
+        <div class="tex"><p style="margin-left: auto; margin-right: auto;">
+        ProgramAula te ofrece los mejores cursos de programación. Busca el lenguaje que quieras aprender 
+        <a id ="textito" href="busqueda">acá</a></p></div>
       </div>
     </div>
 
