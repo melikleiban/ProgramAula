@@ -6,7 +6,11 @@ target/classes/static/img/icono-profesora.png
 target/classes/static/img/icono-profesor-hombre.png
 =======
 =======
+<<<<<<< HEAD
+>>>>>>> 122c79312751c4138117f75cce7ee486509c7734
+=======
 >>>>>>> 5f1471f5d777ced10b18ecbacc2be58f2dfc1413
+>>>>>>> 1d73cf62c4b5297c708d79078c3fc914a9317d34
 *#
 *.iml
 *.ipr
@@ -50,7 +54,14 @@ secrets.yml
 .gradletasknamecache
 <<<<<<< HEAD
 .sts4-cache
+<<<<<<< HEAD
+>>>>>>> 35535702b1317e7b78b73069d97b740d2b6429be
+=======
+.sts4-cache
+>>>>>>> 122c79312751c4138117f75cce7ee486509c7734
+=======
 >>>>>>> 7f7f7091f1c59b9286206cb12306e5f3799549bb
 =======
 .sts4-cache
 >>>>>>> 5f1471f5d777ced10b18ecbacc2be58f2dfc1413
+>>>>>>> 1d73cf62c4b5297c708d79078c3fc914a9317d34

@@ -77,6 +77,7 @@ body {
     z-index: 1;
 }
 
+
 .seccion-perfil-usuario .perfil-usuario-avatar img {
     width: 100%;
     position: relative;
@@ -146,9 +147,6 @@ body {
     text-align: center;
 }
 
-.seccion-perfil-usuario .lista-cursos li{
-    padding: 5px 0;
-}
 
 .seccion-perfil-usuario .lista-datos {
     width: 100%;
@@ -160,6 +158,11 @@ body {
     padding: 5px 0;
 }
 
+.seccion-perfil-usuario .lista-datos li>.icono {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
 
 h1 {
     font-size: 2rem;
@@ -257,15 +260,6 @@ p {
 	padding-left: 2rem;
 }
 
-#edit1, #edit2, #edit3 {
-	padding-left: 0.05rem;
-	padding-right: 2rem;
-}
-
-#icon-email{
-	padding-top: 2rem;
-	padding-bottom: 1rem;
-}
 
 .lista-datos{
 	padding-top: 1.5rem;
@@ -281,9 +275,7 @@ p {
 	height: 2em;
 	width: 150px;
 	text-align: center;
-	pointer-events:none;
 }
-
 .lista-cursos-finalizados,
 .lista-cursos-actuales{
 	background-color: rgb(124, 115, 255, .5); ;

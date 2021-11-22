@@ -117,6 +117,7 @@ body {
 .seccion-perfil-usuario .perfil-usuario-footer,
 .seccion-perfil-usuario .perfil-usuario-bio,
 .seccion-perfil-usuario .perfil-usuario-cursos {
+<<<<<<< HEAD
 	flex-wrap: wrap;
     padding: 1.5rem 2rem;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
@@ -128,6 +129,19 @@ body {
 .seccion-perfil-usuario .perfil-usuario-footer {
     margin-bottom: 1.25rem;
     text-align: center;
+=======
+	flex-wrap: wrap !important;
+    padding: 1.5rem 2rem !important;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2) !important;
+    background-color: #fff !important;
+    border-radius: 15px !important;
+    width: 100% !important;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer {
+    margin-bottom: 1.25rem !important;
+    text-align: center !important;
+>>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
 }
 
 
@@ -151,6 +165,7 @@ body {
 }
 
 .seccion-perfil-usuario .lista-datos {
+<<<<<<< HEAD
     width: 100%;
     list-style: none;
     text-align: center;
@@ -158,6 +173,15 @@ body {
 
 .seccion-perfil-usuario .lista-datos li {
     padding: 5px 0;
+=======
+    width: 100% !important;
+    list-style: none !important;
+    text-align: left !important;
+}
+
+.seccion-perfil-usuario .lista-datos li {
+    padding: 5px 0 !important;
+>>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
 }
 
 
@@ -254,6 +278,7 @@ p {
 }
 
 .lista-datos i {
+<<<<<<< HEAD
 	padding-left: 2rem;
 }
 
@@ -262,6 +287,12 @@ p {
 }
 
 #edit1, #edit2, #edit3, #edit4 {
+=======
+	padding-left: 2rem !important;
+}
+
+#edit1, #edit2, #edit3 {
+>>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
 	padding-left: 0.05rem;
 	padding-right: 2rem;
 }
@@ -272,6 +303,7 @@ p {
 }
 
 .lista-datos{
+<<<<<<< HEAD
 	padding-top: 1.5rem;
 }
 
@@ -301,6 +333,22 @@ p {
 .lista-cursos-finalizados {
 	text-align: center;
 	padding: 10 0;
+=======
+	padding-top: 1.5rem !important;
+}
+
+.perfil-usuario-footer input {
+	display: inline-block !important;
+	background-color: rgb(124, 115, 255, .5) !important;
+	color: rgb(0, 0, 0) !important;
+	padding: 2px !important; 
+	border: 2px solid rgb(64, 0, 128, .5) !important; 
+	border-radius: 5px !important;
+	width: 15rem !important;
+	height: 2em !important;
+	width: 150px !important;
+	text-align: center !important;
+>>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
 }
 
 .lista-cursos i{
@@ -314,9 +362,15 @@ p {
 }
 
 .lista-datos button{
+<<<<<<< HEAD
 	border: none;
 	text-decoration: none;
 	background-color: transparent;
+=======
+	border: none !important;
+	text-decoration: none !important;
+	background-color: transparent !important;
+>>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
 }
 
 @media (max-width: 750px) {
