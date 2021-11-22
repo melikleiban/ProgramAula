@@ -101,7 +101,8 @@ public class CursoServicio {
 
 	public void alertaProfesor(String idAlumno, String idCurso, String mensaje) {
 		Optional<Usuario> result = usuarioRepositorio.findById(idAlumno);
-		
+	
+		System.out.println("entra al servicio");
 		if (result.isPresent() && result.get().getRol() == Rol.ALUMNO) {
 		
 			Optional<Curso> resultCurso = cursoRepositorio.findById(idCurso);
@@ -109,6 +110,7 @@ public class CursoServicio {
 			configuracionEmail.emailSender("El usuario " + result.get().getNombreUsuario() + " de nombre " + result.get().getNombreCompleto()
 					+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + "." + "\n" + "Mensaje: " +mensaje,
 			"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
+			
 
 		}
 	}

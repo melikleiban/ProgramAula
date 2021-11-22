@@ -39,12 +39,13 @@ public class CursoControlador {
 		}
 			
 						
-		@PostMapping("/busqueda-alerta")
+		@GetMapping("/busqueda-alerta")
 		public String busquedaAlerta(String idAlumno, String idCurso, String mensaje) {				
-		
-			cursoSer.alertaProfesor(idAlumno, idCurso, mensaje);								
 			
-			return "busqueda.html";
+			System.out.println("el controlador funciona");
+			cursoSer.alertaProfesor(idAlumno, idCurso, mensaje);								
+			System.out.println("el servicio???");
+			return "index.html";
 		}
 		
 		

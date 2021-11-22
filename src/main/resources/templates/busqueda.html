@@ -75,10 +75,15 @@
 					<td th:text="${curso.nivelDificultad}" id="dificultad"></td>
 
 
-					<td>
-						<button type="button" class="btn btn-info btn-primary"
-							data-toggle="modal"
-							th:attr="data-target='#modal' + ${iterStat.index}">Contactar</button>
+					<td><a th:href="@{/busqueda-alerta}">
+							<button type="button" class="btn btn-info btn-primary"
+								data-toggle="modal"
+								th:attr="data-target='#modal' + ${iterStat.index}">
+								Contactar</button>
+					</a>
+
+
+
 						<div class="modal fade" th:id="'modal' + ${iterStat.index}"
 							role="dialog">
 							<div class="modal-dialog">
@@ -96,12 +101,12 @@
 
 											</div>
 											<div class="modal-footer">
+												<input type="hidden" th:value="${session.usuariosession.id}"
+													name="idAlumno"></input> <input type="hidden"
+													th:value="${curso.idCurso}" name="idCurso"></input>
 												<button style="margin: auto;" type="submit"
 													class="btn btn-primary" data-dismiss="modal">Enviar</button>
-												<input type="hidden" th:value="${session.usuariosession.id}"
-													name="idAlumno"></input>
-												<input type="hidden" th:value="${curso.idCurso}"
-													name="idCurso"></input>
+
 
 											</div>
 										</form>
@@ -109,8 +114,7 @@
 
 								</div>
 							</div>
-						</div>
-					</td>
+						</div></td>
 				</tr>
 			</tbody>
 		</table>
