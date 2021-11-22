@@ -80,7 +80,7 @@ public class MainControlador {
 		try {	
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
 			modelo.put("exito", "registro exitoso");
-			return "index.html";
+			return "login.html";
 		}catch(Exception e){
 			modelo.put("error", e.getMessage());			
 				return "registro-profesor.html";		
@@ -105,7 +105,7 @@ public class MainControlador {
 		try {			
 			usuarioServicio.registro(nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, false);
 			modelo.put("exito", "registro exitoso");
-			return "index.html";
+			return "login.html";
 			}
 		catch(Exception e){
 			modelo.put("error", e.getMessage());

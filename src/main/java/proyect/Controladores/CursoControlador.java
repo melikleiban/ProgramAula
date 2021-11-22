@@ -11,6 +11,7 @@ import proyect.ErrorServicio.ErrorServicio;
 import proyect.Servicios.CursoServicio;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -28,53 +29,47 @@ public class CursoControlador {
 			return "busqueda.html";
 		}
 		
-		@PostMapping("/busqueda-alerta")
-		public String busquedaAlerta(String idAlumno, String idCurso) {
+		@GetMapping("/busqueda/palabraClave")
+		public String filtroBusqueda(ModelMap modelo, @RequestParam String palabraClave) {
 			
-			
-			
-			
-			cursoSer.alertaProfesor(idAlumno, idCurso);
-						
+			System.out.println(palabraClave);
+			modelo.addAttribute("cursos", cursoSer.listarCursoPorPalabraClave(palabraClave));
 			
 			return "busqueda.html";
 		}
-		
-		
-		
-		
-		
-		@GetMapping("/listado-cursos")
-		public String listadoCursos(ModelMap modelo, String idProfesor) {
+			
 						
-			modelo.addAttribute("cursos",cursoSer.cursosProfesor(idProfesor));
-						
-			return "perfilDocente.html";
+		@GetMapping("/busqueda-alerta")
+		public String busquedaAlerta(String idAlumno, String idCurso, String mensaje) {				
+			
+			System.out.println("el controlador funciona");
+			cursoSer.alertaProfesor(idAlumno, idCurso, mensaje);								
+			System.out.println("el servicio???");
+			return "index.html";
 		}
 		
-		@GetMapping("/listado-cursos-cargar")
+		
+		
+		
+		
+
+		
+		@GetMapping("/usuario/nuevo-curso")
 		public String cargarCursos() {
 					
-			return "listado-cursos.html";
+			return "nuevo-curso.html";
 		}
 		
-		@PostMapping("/listado-cursos-cargar")
-		public String cargarCursos(ModelMap modelo, @RequestParam(required = false) String error, String nombreUsuario, String titulo, Boolean altaBaja, 
-				Double precioPorHora, String nivelDificultad, String descripcion, Lenguajes lenguajes) throws ErrorServicio {
+		@PostMapping("/usuario/nuevo-curso")
+		public String cargarCursos(ModelMap modelo, @RequestParam(required = false) String error, 
+				String nombreUsuario, String titulo, 
+				Double precioPorHora, String nivelDificultad, String descripcion, 
+				Lenguajes lenguajes, String id_profesor) throws ErrorServicio {
 			
-			cursoSer.crearCurso(nombreUsuario, titulo, altaBaja, precioPorHora, nivelDificultad, descripcion, lenguajes);
+			cursoSer.crearCurso(nombreUsuario, titulo, true, precioPorHora, nivelDificultad, descripcion, lenguajes);			
+			String ruta = ("redirect:/usuario/perfilprofesor/" + id_profesor);
 			
-			if(error != null) {
-			
-				modelo.put("error", "El curso no se ha cargado correctamente");
-				
-			}else {
-			
-				modelo.put("exito", "El curso se ha cargado correctamente");
-			}
-
-			
-			return "perfilDocente.html";
+			return ruta;
 		}
 		
 		@PostMapping("/listado-curso-borrar")
@@ -83,10 +78,6 @@ public class CursoControlador {
 			cursoSer.bajaCurso(idCurso);
 			
 			return "perfilDocente.html";
-		}
-		
-		
-		
-		
-		
+		}	
+						
 }

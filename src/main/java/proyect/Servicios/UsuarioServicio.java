@@ -59,7 +59,7 @@ public class UsuarioServicio implements UserDetailsService {
 		
 
 		
-		System.out.println("Holaaaaa");
+
 		
 
 
@@ -74,7 +74,6 @@ public class UsuarioServicio implements UserDetailsService {
 		} else { 
 			usuario.setRol(Rol.ALUMNO);
 		}
-		
 
 		try {
 			

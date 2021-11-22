@@ -51,6 +51,8 @@ public class Usuario {
 
 	@OneToMany
 	private List<Curso> listaCursos;
+	
+	
 
 	
 

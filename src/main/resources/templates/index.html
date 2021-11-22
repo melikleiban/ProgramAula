@@ -38,13 +38,17 @@
           <div class="dropdown text-start">
               <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
               <!--  Habria que ver como cambiar esta imagen -->
-                <img th:src="${session.usuariosession.foto}" alt="mdo" width="32" height="32" class="rounded-circle">
+                <img th:src="${session.usuariosession.foto}" alt="" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" id="opciones">
   					<!-- Habrtia que ca,mbiar los href de abajo para que lleven el id  -->
                   <li th:if="${session.usuariosession.rol.name()}  == ALUMNO"><a class="dropdown-item" th:href="@{/usuario/perfilalumno}" id="opciones">Mi perfil</a></li>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilprofesor}" id="opciones">Mi perfil</a></li> 
+=======
+                  <li th:if="${session.usuariosession.rol.name()}  == PROFESOR"><a class="dropdown-item" th:href="@{/usuario/perfilprofesor/__${session.usuariosession.id}__}" id="opciones">Mi perfil</a></li> 
+>>>>>>> cf906d43c5b07353ecc6ab7aa445a59c479c1d50
                   <li><hr class="dropdown-divider" id="opciones"></li> 
                   <!--  Habria que poner los servicios para que se cierre la sesion -->               
                   <li><a class="dropdown-item" href="/logout" id="opciones">Cerrar sesión</a></li>
@@ -68,9 +72,9 @@
     <div class="buscador">
       <div class="input-group mb-3" style="position: absolute; padding:50px;margin-top: 60px;">
         <div class="input-group-prepend">
-        </div>
-        <input id="myInput" type="text" class="form-control" placeholder="Buscar..." aria-label="Username" aria-describedby="basic-addon1">
-        <button onclick="probando()" type="button" class="btn btn-primary btn-lg btn-block">Buscar</button>
+        </div>        
+        <button onclick="probando()" type="submit" class="btn btn-primary btn-lg btn-block">Buscar</button>
+      	<input id="myInput" type="text" class="form-control" placeholder="Buscar..." aria-label="Username" aria-describedby="basic-addon1" name="palabraClave">
       </div>
     </div>
 
@@ -78,7 +82,7 @@
       function probando(){
         var param_busqueda = document.getElementById("myInput").value;
         console.log(param_busqueda);
-        var ruta="busqueda.html?param=" + param_busqueda;
+        var ruta="busqueda/palabraClave?palabraClave=" + param_busqueda;
         location.href=ruta;
       }
     </script>

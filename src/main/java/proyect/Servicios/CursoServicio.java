@@ -40,6 +40,7 @@ public class CursoServicio {
 
 				validar(titulo, precioPorHora, nivelDificultad, descripcion);
 
+				System.out.println(nombreUsuario+titulo+altaBaja+precioPorHora+nivelDificultad+descripcion+lenguajes);
 				Curso curso = new Curso();
 				curso.setTitulo(titulo);
 				curso.setAltaBaja(true);
@@ -47,28 +48,39 @@ public class CursoServicio {
 				curso.setNivelDificultad(nivelDificultad);
 				curso.setDescripcion(descripcion);
 				curso.setLenguajes(lenguajes);
-				
+				curso.setProfesor(usuario.get());
+				curso.setId_profesor(usuario.get().getId());
+				cursoRepositorio.save(curso);
+								
 				usuario.get().getListaCursos().add(curso);
 				
 				usuarioRepositorio.save(usuario.get());
 				
-				cursoRepositorio.save(curso);
+				
+
 			}
 		} catch (Exception e) {
 			System.err.print(e.getMessage());
 		}
 	}
 
-	public List<Curso> cursosProfesor(String idProfesor) {
+	public List<Curso> cursosProfesor(String profesor_id) {
 	
-		Optional<Usuario> respuesta = usuarioRepositorio.findById(idProfesor);
-		if(respuesta.isPresent()) {
-			Usuario usuario = respuesta.get();
-			List<Curso> listaCursos = usuario.getListaCursos();
+		//Optional<Usuario> respuesta = usuarioRepositorio.findById(idProfesor);
 		
-			return listaCursos;
-		}
-		return null;
+		List <Curso> listaCursos = cursoRepositorio.findByProfesor(profesor_id);
+		
+		return listaCursos;
+		
+		
+//		
+//		if(respuesta.isPresent()) {
+//			Usuario usuario = respuesta.get();
+//			List<Curso> listaCursos = usuario.getListaCursos();
+//			System.out.println("Entra al if");
+//			return listaCursos;
+//		}
+//		return null;
 	}
 		
 	
@@ -87,16 +99,18 @@ public class CursoServicio {
 
 	
 
-	public void alertaProfesor(String idAlumno, String idCurso) {
+	public void alertaProfesor(String idAlumno, String idCurso, String mensaje) {
 		Optional<Usuario> result = usuarioRepositorio.findById(idAlumno);
-		
+	
+		System.out.println("entra al servicio");
 		if (result.isPresent() && result.get().getRol() == Rol.ALUMNO) {
 		
 			Optional<Curso> resultCurso = cursoRepositorio.findById(idCurso);
 			
 			configuracionEmail.emailSender("El usuario " + result.get().getNombreUsuario() + " de nombre " + result.get().getNombreCompleto()
-					+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + ".",
+					+ " solicita acceso a su curso de " + resultCurso.get().getTitulo() + "." + "\n" + "Mensaje: " +mensaje,
 			"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
+			
 
 		}
 	}
@@ -143,6 +157,14 @@ public class CursoServicio {
 		List<Curso> cursos=cursoRepositorio.findAll();
 		return cursos;
 	}
+	
+	public List<Curso> listarCursoPorPalabraClave(String palabraClave){
+		List<Curso> cursos=cursoRepositorio.existsByClave(palabraClave);
+		return cursos;
+	}
+	
+	
+	
 
 	public void validar(String titulo, Double precioPorHora, String nivelDificultad, String descripcion)
 			throws ErrorServicio {
