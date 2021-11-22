@@ -39,8 +39,8 @@
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo" th:text="${session.usuariosession.rol.name()}">Nombre Alumno</h3>
-                <p class="texto"></p>
+                <h3 class="titulo" th:text="${session.usuariosession.nombreCompleto}">Nombre Alumno</h3>
+                <p class="texto" th:text="${session.usuariosession.descripcion}"></p>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">

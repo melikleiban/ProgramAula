@@ -109,9 +109,14 @@ public class CursoServicio {
 			
 			configuracionEmail.emailSender("El usuario " + result.get().getNombreUsuario() 
 					+ " de nombre " + result.get().getNombreCompleto()
-					+ " solicita acceso a su curso titulado: " + resultCurso.get().getTitulo() 
-					+ "." + "\n" + "Mensaje: " +mensaje,
-			"Alerta de inscripiciÃ³n", resultCurso.get().getProfesor().getEmail());
+					+ " solicita acceso a su curso titulado: " + resultCurso.get().getTitulo()
+					+ "\n"
+					+ "Email de contacto: " + result.get().getEmail()
+					+ "\n"
+					+ "Teléfono de contacto: " + result.get().getTelefono()+ "." 
+					+ "\n" 
+					+ "Mensaje: " +mensaje,
+					"Alerta de inscripición", resultCurso.get().getProfesor().getEmail());
 			
 
 		}
