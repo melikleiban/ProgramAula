@@ -75,10 +75,12 @@ public class MainControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
-			@RequestParam(required = false) String contrasenia) throws ErrorServicio{
+			@RequestParam(required = false) String descripcion,
+			@RequestParam(required = false) String contrasenia
+			) throws ErrorServicio{
 
 		try {	
-			usuarioServicio.registro(archivo, nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, true);
+			usuarioServicio.registro(archivo, nombreUsuario, nombreCompleto, email, telefono, localidad, descripcion, contrasenia, true);
 			modelo.put("exito", "registro exitoso");
 			return "login.html";
 		}catch(Exception e){
@@ -100,10 +102,11 @@ public class MainControlador {
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) String telefono,
 			@RequestParam(required = false) String localidad,
+			@RequestParam(required = false) String descripcion,
 			@RequestParam(required = false) String contrasenia
 			) throws ErrorServicio {
 		try {			
-			usuarioServicio.registro(archivo, nombreUsuario, nombreCompleto, email, telefono, localidad, contrasenia, false);
+			usuarioServicio.registro(archivo, nombreUsuario, nombreCompleto, email, telefono, localidad, descripcion, contrasenia, false);
 			modelo.put("exito", "registro exitoso");
 			return "login.html";
 			}

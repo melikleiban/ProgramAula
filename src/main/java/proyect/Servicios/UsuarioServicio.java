@@ -45,6 +45,7 @@ public class UsuarioServicio implements UserDetailsService {
 			String email,
 			String telefono,
 			String localidad,
+			String descripcion,
 			String contrasenia,
 			Boolean rol) throws ErrorServicio {	
 
@@ -57,6 +58,7 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setEmail(email);
 		usuario.setTelefono(telefono);
 		usuario.setLocalidad(localidad);
+		usuario.setDescripcion(descripcion);
 		usuario.setAltaBaja(true);
 		
 		Foto foto = fotoServicio.guardarFoto(archivo);
@@ -82,7 +84,7 @@ public class UsuarioServicio implements UserDetailsService {
 			
 			usuarioRepositorio.save(usuario);
 			
-			//configuracionEmail.emailSender(registroExitosoMensaje(email,contrasenia,nombreCompleto), "Registro ProgramAula", email);
+			configuracionEmail.emailSender(registroExitosoMensaje(email,contrasenia,nombreCompleto), "Registro ProgramAula", email);
 			
 		} catch( Exception e ) {
 			e.printStackTrace();
@@ -144,22 +146,22 @@ public class UsuarioServicio implements UserDetailsService {
 			)throws ErrorServicio{
 
 		if(nombreUsuario==null || nombreUsuario.isEmpty()) {
-			throw new ErrorServicio ("El nombre de usuario no puede ser nulo/vac√≠o.");
+			throw new ErrorServicio ("El nombre de usuario no puede ser nulo/vacÌo.");
 		}
 		if(nombreCompleto==null || nombreCompleto.isEmpty() || nombreCompleto.length() < 3 ) {
-			throw new ErrorServicio ("El nombre de la persona no puede estar vac√≠o o contener menos de 3 letras.");
+			throw new ErrorServicio ("El nombre de la persona no puede estar vacÌo o contener menos de 3 letras.");
 		}
 		if(email==null || email.isEmpty() || email.contains(" ") || !email.contains("@") || !email.contains(".com")) {
-			throw new ErrorServicio ("El email debe ser v√°lido.");
+			throw new ErrorServicio ("El email debe ser v·lido.");
 		}
 		if(telefono==null || telefono.isEmpty() || UsuarioServicio.esNumero(telefono) == false) {
-			throw new ErrorServicio ("El numero de tel√©fono debe ser v√°lido.");
+			throw new ErrorServicio ("El numero de telÈfono debe ser v·lido.");
 		}
 		if(localidad==null || localidad.isEmpty()) {
-			throw new ErrorServicio ("La localidad no puede estar vac√≠a.");
+			throw new ErrorServicio ("La localidad no puede estar vacÌa.");
 		}
-		if(contrasenia==null || contrasenia.isEmpty() || contrasenia.contains(" ") || contrasenia.length() < 8 || contrasenia.length() > 12) {
-			throw new ErrorServicio ("La contrase√±a debe poseer entre 8 y 12 caracteres v√°lidos.");
+		if(contrasenia==null || contrasenia.isEmpty() || contrasenia.contains(" ") || contrasenia.length() < 6) {
+			throw new ErrorServicio ("La contraseÒa debe poseer al menos 6 caracteres v·lidos.");
 		}
 
 	}
